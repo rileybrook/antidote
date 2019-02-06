@@ -73,6 +73,6 @@ A good prefix would be:
 - "update/example" = update an existing feature
 - Ex. "update/submit button styling" means you're updating the styling for the submit button.
 
-To learn more about how Github works, see the quick guide: [Getting Started Guide](https://guides.github.com/activities/hello-world/)
+To learn more about how Github works, see - [Getting Started Guide](https://guides.github.com/activities/hello-world/)
 
 

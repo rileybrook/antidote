@@ -67,7 +67,7 @@ A good github workflow is listed below:
 - Submit Pull Request to be merged into repository
 - Pull Request can then be merget into repository
 
-Ideally name your branches with prefixes and descriptions, like this: [type]/[change]. 
+Ideally name your pull requests with prefixes and descriptions, like this: [type]/[change]. 
 A good prefix would be:
 - "add/example" = add a new feature
 - "update/example" = update an existing feature

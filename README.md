@@ -56,7 +56,7 @@ The Project Board shows completion status for different features. To add an idea
 *So on and so forth....*
 
 
-## Pull Request Workflow (to be reviewed)
+## Pull Request Workflow (to be reviewed) | [Getting Started Guide](https://guides.github.com/activities/hello-world/)
 A good github workflow is listed below:
 
 - Clone repository
@@ -73,6 +73,6 @@ A good prefix would be:
 - "update/example" = update an existing feature
 - Ex. "update/submit button styling" means you're updating the styling for the submit button.
 
-To learn more about how Github works, see the quick guide: [Getting Started]
+To learn more about how Github works, see the quick guide: [Getting Started Guide](https://guides.github.com/activities/hello-world/)
 
 

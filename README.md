@@ -20,7 +20,8 @@ A web app for billing invoice submission
 - Total Amount Calculation
 
 
-## Github Workflow (to be reviewed) | [Git Cheat Sheet](https://docs.google.com/document/d/1nJC1J8b-KYxnV9stmORm5YGm2LLXLCnFoDGSPKHuGpY/edit)
+
+## Github Workflow | [Git Cheat Sheet](https://docs.google.com/document/d/1nJC1J8b-KYxnV9stmORm5YGm2LLXLCnFoDGSPKHuGpY/edit)
 A good github workflow is listed below:
 
 Failsafe pattern to avoid conflicts

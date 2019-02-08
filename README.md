@@ -56,18 +56,19 @@ The Project Board shows completion status for different features. To add an idea
 *So on and so forth....*
 
 
-## Pull Request Workflow (to be reviewed) | [Getting Started Guide](https://guides.github.com/activities/hello-world/)
+## Github Workflow (to be reviewed) | [Getting Started Guide](https://guides.github.com/activities/hello-world/)
 A good github workflow is listed below:
 
-- Clone repository
-- Create a new branch
-- Make code changes
-- Commit code changes within the newly created branch
-- Push branch to repository
-- Submit Pull Request to be merged into repository
-- Pull Request can then be merget into repository
+Failsafe pattern to avoid conflicts
+- git stash
+- git pull
+- git stash apply
+- git diff
+- git add .
+- git commit -m 'some message'
+- git push origin master
 
-Ideally name your pull requests with prefixes and descriptions, like this: [type]/[change]. 
+Ideally name your changes with prefixes and descriptions, like this: [type]/[change]. 
 A good prefix would be:
 - "add/example" = add a new feature
 - "update/example" = update an existing feature

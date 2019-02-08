@@ -5,11 +5,11 @@ A web app for billing invoice submission
 
 ## F.1
 **Add Functionality**
-- Billing Line (in progress)
+- Billing Line (*in-progress*)
 - Patient Field
 - Submit Button 
 - Total Amount Calculation
-- Data Tables for Patients & Billing (in progress)
+- Data Tables for Patients & Billing (*in-progress*)
 - Data Table for Claim.add
 
 ## S.1

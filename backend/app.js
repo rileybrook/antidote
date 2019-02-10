@@ -3,7 +3,12 @@ const express = require("express")
 const cors = require("cors")
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
-const fs = require("fs")
+const config = require("./config")
+const initDb = require("./db").initDb
+const path = require("path")
+// const fs = require("fs")
+
+global.appRoot = path.resolve(__dirname)
 
 const app = express()
 app.use(
@@ -24,8 +29,15 @@ app.use(express.static("public"))
 // Connect to all the routes in folder
 require("./getRoutes")(app)
 
-// Turn on the server
-const server = app.listen(4000, function() {
-  let { address, port } = server.address()
-  console.log(`Listening at http://${address}:${port}`)
+// Connect to db and turn on the server
+// initDb calls back the function through MongoCallback-->connected
+initDb(function(err) {
+  if (err) throw err
+
+  const server = app.listen(config.server.port, function(err) {
+    if (err) throw err
+
+    let { address, port } = server.address()
+    console.log(`Listening at http://${address}:${port}`)
+  })
 })

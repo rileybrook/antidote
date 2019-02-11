@@ -1,11 +1,9 @@
 const router = require("express").Router()
 const getDb = require(global.appRoot + "/db").getDb
 
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
   try {
-    const db = getDb()
-
-    const claim = JSON.parse(req.body)
+    let claim = JSON.parse(req.body)
     const { licence, location, medicare, dx, billingLines } = claim
 
     if (!licence || !location || !medicare || !dx || !billingLines) {
@@ -35,7 +33,17 @@ router.post("/", (req, res) => {
       })
     }
 
-    db.collection("claims").insertOne(claim)
+    const db = getDb()
+
+    claim.chitNumber = (await db
+      .collection("counters")
+      .findOneAndUpdate(
+        { _id: "chitNumber" },
+        { $inc: { sequence_value: 1 } },
+        { returnOriginal: false }
+      )).value.sequence_value
+
+    await db.collection("claims").insertOne(claim)
 
     return res.status(202).send("Claim added")
   } catch (error) {

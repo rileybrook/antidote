@@ -1,5 +1,6 @@
 const router = require("express").Router()
 const getDb = require(global.appRoot + "/db").getDb
+const moment = require("moment")
 
 // request = {
 //   licence: "123456",
@@ -52,8 +53,26 @@ router.post("/", async (req, res) => {
       throw new Error("Billing line numbers not ordered from 1")
     }
 
+    // Transform service date from YY-MM-DD to YYYY-MM-DD
+    claim.billingLines = billingLines.map(line => {
+      if (line.serviceDate.length === 8) {
+        line.serviceDate = "20" + line.serviceDate
+      }
+      return line
+    })
+
+    // Check if service date is valid
+    if (
+      billingLines.every(elem => {
+        return moment(elem.serviceDate, "YYYY-MM-DD", true).isValid()
+      })
+    ) {
+      throw new Error("Invalid service date")
+    }
+
     const db = getDb()
 
+    // Get the next chit number in the sequence and update the database
     const chitNumber = (await db
       .collection("counters")
       .findOneAndUpdate(
@@ -62,12 +81,15 @@ router.post("/", async (req, res) => {
         { returnOriginal: false }
       )).value.sequence_value
 
+    // Add chit number to claim before inserting claim into database
     claim.chitNumber = chitNumber
 
     await db.collection("claims").insertOne(claim)
 
+    // Success
     return res.status(202).json({ success: true, chitNumber })
   } catch (error) {
+    // Failure
     return res.status(400).json({ success: false, error })
   }
 })

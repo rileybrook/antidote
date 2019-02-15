@@ -26,8 +26,6 @@ router.post("/", async (req, res) => {
   try {
     const { filter, birthDate } = JSON.parse(req.body)
 
-    filter
-
     if (birthDate && !moment(birthDate, "YYYY-MM-DD", true).isValid()) {
       throw new Error("Invalid birth date")
     }

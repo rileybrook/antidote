@@ -1,4 +1,4 @@
-# Doctor App
+# Antidote
 
 A web app for billing invoice submission
 

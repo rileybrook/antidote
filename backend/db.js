@@ -6,7 +6,7 @@ const config = require("./config")
 
 let _db
 
-function initDb(callback) {
+function initDatabase(callback) {
   if (_db) {
     console.warn("Trying to init DB again!")
     return callback(null, _db)
@@ -36,12 +36,12 @@ function initDb(callback) {
   )
 }
 
-function getDb() {
+function getDatabase() {
   assert.ok(_db, "Db has not been initialized. Please called init first.")
   return _db
 }
 
 module.exports = {
-  getDb,
-  initDb
+  getDatabase,
+  initDatabase
 }

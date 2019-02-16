@@ -1,54 +1,57 @@
 const router = require("express").Router()
-const getDb = require(global.appRoot + "/db").getDb
+const getDatabase = require(global.appRoot + "/db").getDatabase
 const moment = require("moment")
+const boom = require("boom")
 
-// request = {
+// SAMPLE REQUEST
+// {
 //   filter: "JOHS010",
 // }
 
-// request = {
+// {
 //   filter: "smit"
 // }
 
-// request = {
+// {
 //   birthDate: "2001-01-01"
 // }
 
-// response = {
+// SAMPLE RESPONSE
+// [{
 //   medicare: "JOHS01010122",
-//   lastName: "smith",
-//   firstName: "john",
+//   lastName: "Smith",
+//   firstName: "John",
 //   birthDate: "2001-01-01",
 //   gender: "male"
-// }
+// }]
 
-router.post("/", async (req, res) => {
+router.post("/", async (req, res, next) => {
   try {
     const { filter, birthDate } = JSON.parse(req.body)
 
     if (birthDate && !moment(birthDate, "YYYY-MM-DD", true).isValid()) {
-      throw new Error("Invalid birth date")
+      return next(boom.badRequest("Invalid birth date"))
     }
 
-    const db = getDb()
-
     // Get the next chit number in the sequence and update the database
-    const patients = await db
+    const patients = await getDatabase()
       .collection("patients")
       .find({
-        medicare: { $regex: `/^${filter}/i` },
-        lastName: { $regex: `/^${filter}/i` },
-        firstName: { $regex: `/^${filter}/i` },
-        birthDate: { $eq: new Date(birthDate) }
+        $or: [
+          { medicare: { $regex: new RegExp(`^${filter}`, "i") } },
+          { lastName: { $regex: new RegExp(`^${filter}`, "i") } },
+          { firstName: { $regex: new RegExp(`^${filter}`, "i") } },
+          { birthDate: { $regex: new RegExp(`^${birthDate}`) } }
+        ]
       })
-      .sort({ lastName: 1 }, { firstName: 1 })
+      .sort({ lastName: 1, firstName: 1 })
       .toArray()
 
     // Success
-    return res.status(202).json({ success: true, patients })
-  } catch (error) {
+    return res.status(200).json({ patients })
+  } catch (err) {
     // Failure
-    return res.status(400).json({ success: false, error })
+    return next(boom.badImplementation(err))
   }
 })
 

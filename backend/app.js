@@ -4,7 +4,7 @@ const cors = require("cors")
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
 const config = require("./config")
-const initDb = require("./db").initDb
+const db = require("./db")
 const path = require("path")
 // const fs = require("fs")
 
@@ -29,9 +29,15 @@ app.use(express.static("public"))
 // Connect to all the routes in folder
 require("./getRoutes")(app)
 
+// Error handler (put all 4 arguments)
+app.use((err, req, res, next) => {
+  console.log(err.stack)
+  return res.status(err.output.statusCode).json(err.output.payload)
+})
+
 // Connect to db and turn on the server
 // initDb calls back the function through MongoCallback-->connected
-initDb(function(err) {
+db.initDatabase(function(err) {
   if (err) throw err
 
   const server = app.listen(config.server.port, function(err) {
@@ -39,5 +45,10 @@ initDb(function(err) {
 
     let { address, port } = server.address()
     console.log(`Listening at http://${address}:${port}`)
+
+    // KEEP THIS LINE COMMENTED OUT !!!
+    // db.getDatabase()
+    //   .collection("patients")
+    //   .insertMany(require("./sample_data/samplePatients"))
   })
 })

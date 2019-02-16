@@ -5,15 +5,15 @@ const boom = require("boom")
 
 // SAMPLE REQUEST
 // {
-//   filter: "JOHS010",
+//   "filter": "JOHS010",
 // }
 
 // {
-//   filter: "smit"
+//   "filter": "smit"
 // }
 
 // {
-//   birthDate: "2001-01-01"
+//   "birthDate": "2001-01-01"
 // }
 
 // SAMPLE RESPONSE
@@ -44,6 +44,7 @@ router.post("/", async (req, res, next) => {
           { birthDate: { $regex: new RegExp(`^${birthDate}`) } }
         ]
       })
+      .limit(20)
       .sort({ lastName: 1, firstName: 1 })
       .toArray()
 

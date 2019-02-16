@@ -5,13 +5,13 @@ const boom = require("boom")
 
 // SAMPLE REQUEST
 // {
-//   licence: "123456",
-//   location: "12345",
-//   medicare: "XXXX01010112",
-//   dx: "12345",
-//   billingLines: [
-//     { lineNumber: "1", serviceDate: "19-02-15", billingCode: "12345" },
-//     { lineNumber: "2", serviceDate: "19-02-15", billingCode: "54321" }
+//   "licence": "123456",
+//   "location": "12345",
+//   "medicare": "XXXX01010112",
+//   "dx": "12345",
+//   "billingLines": [
+//     { "lineNumber": "1", "serviceDate": "19-02-15", "billingCode": "12345" },
+//     { "lineNumber": "2", "serviceDate": "19-02-15", "billingCode": "54321" }
 //   ]
 // }
 

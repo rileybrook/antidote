@@ -46,9 +46,12 @@ db.initDatabase(function(err) {
     let { address, port } = server.address()
     console.log(`Listening at http://${address}:${port}`)
 
-    // KEEP THIS LINE COMMENTED OUT !!!
+    // KEEP THESE LINE COMMENTED OUT !!!
     // db.getDatabase()
     //   .collection("patients")
     //   .insertMany(require("./sample_data/samplePatients"))
+    // db.getDatabase()
+    //   .collection("billingCodes")
+    //   .insertMany(require("./sample_data/sampleBillingCodes"))
   })
 })

@@ -5,7 +5,7 @@ const boom = require("boom")
 
 // SAMPLE REQUEST
 // {
-//   "filter": "JOHS010",
+//   "filter": "JOHS010"
 // }
 
 // {
@@ -33,7 +33,6 @@ router.post("/", async (req, res, next) => {
       return next(boom.badRequest("Invalid birth date"))
     }
 
-    // Get the next chit number in the sequence and update the database
     const patients = await getDatabase()
       .collection("patients")
       .find({

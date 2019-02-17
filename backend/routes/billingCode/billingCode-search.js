@@ -5,7 +5,7 @@ const boom = require("boom")
 
 // SAMPLE REQUEST
 // {
-//   filter: "princ"
+//   "filter": "princ"
 // }
 
 // SAMPLE RESPONSE

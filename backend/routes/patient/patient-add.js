@@ -5,11 +5,11 @@ const boom = require("boom")
 
 // SAMPLE REQUEST
 // {
-//   medicare: "SMIJ01010112",
-//   lastName: "smith",
-//   firstName: "john",
-//   birthDate: "2001-01-01",
-//   gender: "male"
+//   "medicare": "SMIJ01010112",
+//   "lastName": "smith",
+//   "firstName": "john",
+//   "birthDate": "2001-01-01",
+//   "gender": "male"
 // }
 
 router.post("/", async (req, res, next) => {

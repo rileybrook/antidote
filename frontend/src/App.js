@@ -1,20 +1,27 @@
 import React, { Component } from "react"
+import { connect } from "react-redux"
+
+import "bootstrap/dist/css/bootstrap.min.css"
 import "./App.css"
-import PtDetails from "./Ptdetails"
-import SpanningTable from "./table"
+
+import AppHeader from "./components/AppHeader"
+import AppMain from "./components/AppMain"
+import ModalContainer from "./ModalContainer"
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header" />
-        <PtDetails />
-        <SpanningTable />
-        <main />
-        <footer />
+        <AppHeader />
+        <AppMain />
+        <ModalContainer />
       </div>
     )
   }
 }
 
-export default App
+let mapStateToProps = function(state) {
+  return {}
+}
+
+export default connect(mapStateToProps)(App)

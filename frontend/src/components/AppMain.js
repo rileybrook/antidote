@@ -16,6 +16,10 @@ import {
 class AppMain extends Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+
+    }
   }
 
   showPatientSearch = () => {
@@ -26,7 +30,7 @@ class AppMain extends Component {
     return (
       <main>
         <div>
-
+<Label    > {this.state.billingCodes.Find(())} </Label>
         <Button  onClick={this.showPatientSearch}>Advanced Search</Button>
 
         </div>

@@ -24,7 +24,7 @@ import {
 
 import { hideModal } from "../actions/modalActions"
 
-class PatientModal extends Component {
+class ModalPatient extends Component {
   constructor(props) {
     super(props)
 
@@ -150,4 +150,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(PatientModal)
+)(ModalPatient)

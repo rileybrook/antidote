@@ -1,10 +1,9 @@
 import React from "react"
 import { connect } from "react-redux"
-
-import PatientSearchModal from "./components/modals/PatientSearch"
+import ModalPatient from "./ModalPatient"
 
 const MODAL_COMPONENTS = {
-  PATIENT_SEARCH_MODAL: PatientSearchModal
+  MODAL_PATIENT: ModalPatient
 }
 
 const ModalContainer = props => {

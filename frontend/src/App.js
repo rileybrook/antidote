@@ -3,11 +3,10 @@ import { connect } from "react-redux"
 
 // import "bootstrap/dist/css/bootstrap.css"
 import "bootstrap/dist/css/bootstrap.min.css"
-import "./App.css"
 
 import AppHeader from "./components/AppHeader"
 import AppMain from "./components/AppMain"
-import ModalContainer from "./ModalContainer"
+import ModalContainer from "./components/ModalContainer"
 
 class App extends Component {
   render() {

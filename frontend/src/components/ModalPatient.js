@@ -22,11 +22,9 @@ import {
   Table
 } from "reactstrap"
 
-import { hideModal } from "../../actions/modalActions"
+import { hideModal } from "../actions/modalActions"
 
-import "./PatientSearch.css"
-
-class PatientSearch extends Component {
+class PatientModal extends Component {
   constructor(props) {
     super(props)
 
@@ -152,4 +150,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(PatientSearch)
+)(PatientModal)

@@ -12,3 +12,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.modal-xl {
+  width: 95%;
+  max-width: 1300px;
+}
+
+.form-control:focus:not(:hover) {
+  background-color: rgb(255, 255, 255);
+}
+
+.form-control:hover:not(:focus) {
+  border-color: rgb(222, 8, 8);
+  border-width: 1px;
+  /* background-color: #f1f1f1; */
+  border-style: double;
+}

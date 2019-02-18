@@ -1,0 +1,1 @@
+export const MODAL_PATIENT = "MODAL_PATIENT"

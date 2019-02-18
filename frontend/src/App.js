@@ -1,8 +1,11 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 
+// import "bootstrap/dist/css/bootstrap.css"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./App.css"
+
+import PatientSearch from "./components/modals/PatientSearch"
 
 import AppHeader from "./components/AppHeader"
 import AppMain from "./components/AppMain"

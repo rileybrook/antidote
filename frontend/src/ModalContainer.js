@@ -19,7 +19,7 @@ const ModalContainer = props => {
 
 const mapStateToProps = state => {
   return {
-    modalType: state.modalType
+    modalType: state.modalReducer.modalType
   }
 }
 

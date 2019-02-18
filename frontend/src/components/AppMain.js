@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { loadModal } from "../actionCreators"
+import { showModal } from "../actions/modalActions"
+import { PATIENT_SEARCH_MODAL } from "./modals/modalTypes"
 
 import "./AppMain.css"
 
@@ -20,7 +21,7 @@ class AppMain extends Component {
   }
 
   showPatientSearch = () => {
-    this.props.loadModal("PATIENT_SEARCH_MODAL")
+    this.props.showModal(PATIENT_SEARCH_MODAL)
   }
 
   render() {
@@ -79,7 +80,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  loadModal: modelType => dispatch(loadModal(modelType))
+  showModal: modelType => dispatch(showModal(modelType))
 })
 
 export default connect(

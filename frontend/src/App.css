@@ -1,3 +1,11 @@
+@media (min-width: 768px) {
+}
+
+.modal-xl {
+  width: 95%;
+  max-width: 1300px;
+}
+
 /* .App {
   text-align: center;
 }

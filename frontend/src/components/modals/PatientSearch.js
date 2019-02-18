@@ -84,11 +84,8 @@ class PatientSearch extends Component {
             <Row>
               <Col>
                 <Form inline>
-                  <Input className="mr-1" placeholder="medicare" />
-                  <Input className="mr-1" placeholder="last name" />
-                  <Input className="mr-1" placeholder="first name" />
-                  <Input className="mr-1" placeholder="date of birth" />
-                  <Dropdown
+                  <Input className="m-1" placeholder="filter" />
+                  {/* <Dropdown
                     isOpen={this.state.sexDropDownOpened}
                     toggle={this.sexDropDownToggle}
                   >
@@ -107,7 +104,7 @@ class PatientSearch extends Component {
                         Male
                       </DropdownItem>
                     </DropdownMenu>
-                  </Dropdown>
+                  </Dropdown> */}
                 </Form>
               </Col>
             </Row>

@@ -9,18 +9,18 @@ import BillingTable from "./BillingTable"
 class BillingLine extends Component {
   render() {
     return (
-        <div>
-      <Container>
-        <Row>
-          <Col>Billing</Col>
-          <Col>
-            <ActDate />
-          </Col>
-          <Col>
-            <BillCode />
-          </Col>
-        </Row>
-      </Container>
+      <div>
+        <Container>
+          <Row>
+            <Col>Billing</Col>
+            <Col>
+              <ActDate />
+            </Col>
+            <Col>
+              <BillCode />
+            </Col>
+          </Row>
+        </Container>
       </div>
     )
   }

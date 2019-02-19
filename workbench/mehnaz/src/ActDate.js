@@ -20,6 +20,7 @@ class ActDate extends Component {
       <form onSubmit={this.handleSubmit}>
         <input
           type="text"
+          placeholder="test date"
           onChange={this.handleChange}
           value={this.state.date}
         />

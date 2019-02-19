@@ -20,6 +20,7 @@ class BillCode extends Component {
       <form onSubmit={this.handleSubmit}>
         <input
           type="text"
+          placeholder="bill code"
           onChange={this.handleChange}
           value={this.state.code}
         />

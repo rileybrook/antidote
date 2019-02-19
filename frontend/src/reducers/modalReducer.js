@@ -12,16 +12,14 @@ export default function(state = initialState, action) {
     case SHOW_MODAL:
       newState.modalType = action.modalType
       newState.modalIsOpen = true
-      break
+      return newState
 
     case HIDE_MODAL:
       newState.modalType = null
       newState.modalIsOpen = false
-      break
+      return newState
 
     default:
       return state
   }
-
-  return newState
 }

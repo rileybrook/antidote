@@ -1,2 +1,5 @@
 export const SHOW_MODAL = "SHOW_MODAL"
 export const HIDE_MODAL = "HIDE_MODAL"
+export const PATIENTS_LOADING = "PATIENTS_LOADING"
+export const GET_PATIENTS = "GET_PATIENTS"
+export const SET_PATIENT = "SET_PATIENT"

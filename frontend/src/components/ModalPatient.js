@@ -23,6 +23,7 @@ import {
 } from "reactstrap"
 
 import { hideModal } from "../actions/modalActions"
+import { getPatients, setPatient } from "../actions/patientActions"
 
 class ModalPatient extends Component {
   constructor(props) {
@@ -38,35 +39,43 @@ class ModalPatient extends Component {
     }
   }
 
-  sexDropDownToggle = () => {
+  componentDidMount() {
+    this.props.getPatients()
+  }
+
+  onSexDropDownToggle = () => {
     this.setState(prevState => ({
       sexDropDownOpened: !prevState.sexDropDownOpened
     }))
   }
 
-  sexDropDownOnClick = e => {
+  onSexDropDownOnClick = e => {
     this.setState({ sexDropDownValue: e.currentTarget.textContent })
   }
 
   getPatientRows = () => {
-    //   <tr>
-    //   <th scope="row">1</th>
-    //   <td>Mark</td>
-    //   <td>Otto</td>
-    //   <td>@mdo</td>
-    // </tr>
-    // <tr>
-    //   <th scope="row">2</th>
-    //   <td>Jacob</td>
-    //   <td>Thornton</td>
-    //   <td>@fat</td>
-    // </tr>
-    // <tr>
-    //   <th scope="row">3</th>
-    //   <td>Larry</td>
-    //   <td>the Bird</td>
-    //   <td>@twitter</td>
-    // </tr>
+    return this.props.patients.map((patient, index) => {
+      // console.log(patient)
+      return (
+        <tr key={index} onClick={this.onRowClicked}>
+          <td style={{ display: "none" }}>{patient._id}</td>
+          <td>{patient.medicare}</td>
+          <td>{patient.lastName}</td>
+          <td>{patient.firstName}</td>
+          <td>{patient.dateOfBirth}</td>
+          <td>{patient.gender}</td>
+        </tr>
+      )
+    })
+  }
+
+  filterTextChanged = e => {
+    this.props.getPatients(e.currentTarget.value)
+  }
+
+  onRowClicked = e => {
+    // console.log("cells", e.currentTarget.cells[0].innerText)
+    this.props.setPatient(e.currentTarget.cells[0].innerText)
   }
 
   render() {
@@ -82,31 +91,15 @@ class ModalPatient extends Component {
             <Row>
               <Col>
                 <Form inline>
-                  <Input className="m-1" placeholder="filter" />
-                  {/* <Dropdown
-                    isOpen={this.state.sexDropDownOpened}
-                    toggle={this.sexDropDownToggle}
-                  >
-                    <DropdownToggle
-                      onClick={() => this.setState({ sexDropDownValue: "Sex" })}
-                      color="white"
-                      caret
-                    >
-                      {this.state.sexDropDownValue}
-                    </DropdownToggle>
-                    <DropdownMenu>
-                      <DropdownItem onClick={this.sexDropDownOnClick}>
-                        Female
-                      </DropdownItem>
-                      <DropdownItem onClick={this.sexDropDownOnClick}>
-                        Male
-                      </DropdownItem>
-                    </DropdownMenu>
-                  </Dropdown> */}
+                  <Input
+                    className="m-1"
+                    placeholder="filter"
+                    onChange={this.filterTextChanged}
+                  />
                 </Form>
               </Col>
             </Row>
-            <Row className="mt-3 {whatever}">
+            <Row className="mt-3">
               <Col>
                 <Table className="table-hover">
                   <thead>
@@ -115,10 +108,10 @@ class ModalPatient extends Component {
                       <th>Last Name</th>
                       <th>First Name</th>
                       <th>Date of Birth</th>
-                      <th>Sex</th>
+                      <th>Gender</th>
                     </tr>
                   </thead>
-                  <tbody>{this.getPatientRows}</tbody>
+                  <tbody>{this.getPatientRows()}</tbody>
                 </Table>
               </Col>
             </Row>
@@ -139,12 +132,16 @@ class ModalPatient extends Component {
 
 const mapStateToProps = state => {
   return {
-    modalIsOpen: state.modalReducer.modalIsOpen
+    modalIsOpen: state.modalReducer.modalIsOpen,
+    patientsLoading: state.patientReducer.patientsLoading,
+    patients: state.patientReducer.patients
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  hideModal: () => dispatch(hideModal())
+  hideModal: () => dispatch(hideModal()),
+  getPatients: filter => dispatch(getPatients(filter)),
+  setPatient: id => dispatch(setPatient(id))
 })
 
 export default connect(

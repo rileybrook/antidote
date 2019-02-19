@@ -14,22 +14,27 @@
   transition: all 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
   margin-top: 50px;
 }
-
+/* Create Invoice Button */
 .create-invoice {
   width: 300px !important;
   opacity: 1;
   transition: all ease 500ms !important;
 }
-
+/* Create Invoice Button Clicked */
 .create-invoice.clicked {
   opacity: 0;
 }
-
-.field {
+/* Class for all input fields */
+.form-control {
   border-radius: 15px !important;
 }
 
-.button {
+/* .form-control:focus {
+--> Add input field highlight color here <--
+/ */
+
+/* Class for all buttons */
+.btn {
   border-radius: 15px !important;
-  background-color: #8b6aef !important;
+  background-color: #8b6aff !important;
 }

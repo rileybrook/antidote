@@ -1,11 +1,35 @@
 .App {
   text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
-.Custom {
-  background-color: blue;
+.patient-search {
+  margin-top: 300px;
+  margin-bottom: 10px;
+  width: 300px !important;
 }
 
-.Custom2 {
-  color: red;
+.patient-search.clicked {
+  transition: all 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+  margin-top: 50px;
+}
+
+.create-invoice {
+  width: 300px !important;
+  opacity: 1;
+  transition: all ease 500ms !important;
+}
+
+.create-invoice.clicked {
+  opacity: 0;
+}
+
+.field {
+  border-radius: 15px !important;
+}
+
+.button {
+  border-radius: 15px !important;
+  background-color: #8b6aef !important;
 }

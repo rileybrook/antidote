@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Input, Row, Col, Fade, Button, Container } from "reactstrap"
+import { Input, Row, Form, Button, Container } from "reactstrap"
 
 let sampleData = [
   {
@@ -42,29 +42,30 @@ class PatientSearch extends Component {
     return (
       <div>
         <Container>
-    
-        <Row>
-          <Input 
-             className={`patient-search field${
-              this.state.clickedClass ? " clicked" : ""
-            }`}
-            placeholder="Search for Patient.."
-            onChange={this.handleChange}
-            value={this.state.query}
-          />
-        </Row>
+          <Form>
+            <Row>
+              <Input
+                className={`patient-search active ${
+                  this.state.clickedClass ? " clicked" : ""
+                }`}
+                placeholder="Search for Patient.."
+                onChange={this.handleChange}
+                value={this.state.query}
+              />
+            </Row>
 
-        <Row>
-        <Button
-          className={`create-invoice button${
-            this.state.clickedClass ? " clicked" : ""
-          }`
-        }
-          onClick={this.handleClick}
-        >Create Invoice
-        </Button>
-        </Row>
-
+            <Row>
+              <Button
+                className={`create-invoice${
+                  this.state.clickedClass ? " clicked" : ""
+                }`}
+                bg-primary
+                onClick={this.handleClick}
+              >
+                Create Invoice
+              </Button>
+            </Row>
+          </Form>
         </Container>
       </div>
     )

@@ -1,8 +1,9 @@
 import React, { Component } from "react"
+import { connect } from "react-redux"
 import "./App.css"
 import "bootstrap/dist/css/bootstrap.min.css"
-import BillingLine from "./BillingLine"
-import BillingTable from "./BillingTable"
+import ConnectedBillingLine from "./BillingLine"
+import ConnectedBillingTable from "./BillingTable"
 
 class BillingSection extends Component {
   constructor() {
@@ -12,13 +13,15 @@ class BillingSection extends Component {
     return (
       <div>
         <h1>
-          <BillingLine />
+          <ConnectedBillingLine />
         </h1>
         <h1>
-          <BillingTable />
+          <ConnectedBillingTable />
         </h1>
       </div>
     )
   }
 }
-export default BillingSection
+let ConnectedBillingSection = connect()(BillingSection)
+
+export default ConnectedBillingSection

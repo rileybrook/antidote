@@ -1,4 +1,5 @@
-import React, { Component } from "react"
+//ignore this component
+/*import React, { Component } from "react"
 import "./App.css"
 import "bootstrap/dist/css/bootstrap.min.css"
 
@@ -28,4 +29,4 @@ class BillCode extends Component {
     )
   }
 }
-export default BillCode
+export default BillCode*/

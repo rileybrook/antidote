@@ -37,5 +37,10 @@ class BillingTable extends Component {
     )
   }
 }
-let ConnectedBillingTable = connect()(BillingTable)
+let mapStateToProps = function(state) {
+  return {
+    setBillingLine: true
+  }
+}
+let ConnectedBillingTable = connect(mapStateToProps)(BillingTable)
 export default ConnectedBillingTable

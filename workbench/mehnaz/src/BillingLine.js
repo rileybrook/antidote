@@ -68,5 +68,10 @@ class BillingLine extends Component {
     )
   }
 }
+/*let mapStateToProps = function(state) {
+  return {
+    actDate: state.actDate,
+    billCode: state.billCode
+  }}*/
 let ConnectedBillingLine = connect()(BillingLine)
 export default ConnectedBillingLine

@@ -10,8 +10,8 @@ class LandingPage extends Component {
     this.state = {
       query: "",
 
-      startShowing: false,
-      invoiceShowing: false,
+      startHidden: false,
+      invoiceHidden: false,
 
       startAnimated: false,
       invoiceAnimated: false
@@ -29,7 +29,7 @@ class LandingPage extends Component {
 
   //Initiate animation: [image-logo (fade) and button-start (shrinks)]
   handleStartClick() {
-    this.setState({ startShowing: true })
+    this.setState({ startHidden: true })
 
     setTimeout(() => {
       this.setState({ startAnimated: true })
@@ -37,7 +37,7 @@ class LandingPage extends Component {
   }
 
   renderElement() {
-    if (this.state.startShowing === false) {
+    if (this.state.startHidden === false) {
       return (
         <div>
           <Row>
@@ -57,8 +57,8 @@ class LandingPage extends Component {
         </div>
       )
     } else if (
-      this.state.startShowing === true ||
-      this.state.invoiceShowing === false
+      this.state.startHidden === true ||
+      this.state.invoiceHidden === false
     ) {
       return (
         <div>
@@ -66,7 +66,7 @@ class LandingPage extends Component {
             {/* Input Field: Patient Search */}
             <Input
               className={`patient-search ${
-                this.state.invoiceShowing ? " clicked" : ""
+                this.state.invoiceHidden ? " clicked" : ""
               }`}
               placeholder="Search for Patient.."
               onChange={this.handleChange}
@@ -80,7 +80,7 @@ class LandingPage extends Component {
             {/* Button: Create Invoice */}
             <Button
               className={`create-invoice${
-                this.state.invoiceShowing ? " clicked" : ""
+                this.state.invoiceHidden ? " clicked" : ""
               }`}
               onClick={this.handleInvoiceClick}
             >
@@ -94,7 +94,7 @@ class LandingPage extends Component {
 
   //Initiate animation: [button-createInvoice (fade) and inputField-patient (zoom-up)]
   handleInvoiceClick() {
-    this.setState({ invoiceShowing: true })
+    this.setState({ invoiceHidden: true })
   }
 
   render() {

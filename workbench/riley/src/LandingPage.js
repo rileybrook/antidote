@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { ReactComponent as Antidote } from "./images/antidote.svg"
-import { Input, Row, Col, Form, Button } from "reactstrap"
+import { Input, Row, Form, Button } from "reactstrap"
 import "./App.css"
 import "bootstrap/dist/css/bootstrap.min.css"
 
@@ -10,11 +10,8 @@ class LandingPage extends Component {
     this.state = {
       query: "",
 
-      startHidden: false,
-      invoiceHidden: false,
-
-      startAnimated: false,
-      invoiceAnimated: false
+      startHidden: true,
+      invoiceBtnShowing: true
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleStartClick = this.handleStartClick.bind(this)
@@ -27,38 +24,35 @@ class LandingPage extends Component {
     this.setState({ query: event.target.value })
   }
 
-  //Initiate animation: [image-logo (fade) and button-start (shrinks)]
+  //Initiate animation: [image-logo and button-get-started (disappear)]
   handleStartClick() {
-    this.setState({ startHidden: true })
+    this.setState({ startHidden: false })
+  }
 
-    setTimeout(() => {
-      this.setState({ startAnimated: true })
-    }, 800)
+  //Initiate animation: [button-createInvoice (disappear) and inputField-patient (zoom-up)]
+  handleInvoiceClick() {
+    this.setState({ invoiceBtnShowing: false })
   }
 
   renderElement() {
-    if (this.state.startHidden === false) {
+    if (this.state.startHidden === true) {
       return (
         <div>
           <Row>
+            {/* Image: Antidote Logo */}
             <Antidote className="logo" />
           </Row>
           <Row>
             {/* Button: Get Started */}
-            <Button
-              className={`get-started${
-                this.state.startAnimated ? " clicked" : ""
-              }`}
-              onClick={this.handleStartClick}
-            >
+            <Button className="get-started" onClick={this.handleStartClick}>
               Get Started
             </Button>
           </Row>
         </div>
       )
     } else if (
-      this.state.startHidden === true ||
-      this.state.invoiceHidden === false
+      this.state.startHidden === false ||
+      this.state.invoiceBtnShowing === true
     ) {
       return (
         <div>
@@ -66,7 +60,7 @@ class LandingPage extends Component {
             {/* Input Field: Patient Search */}
             <Input
               className={`patient-search ${
-                this.state.invoiceHidden ? " clicked" : ""
+                !this.state.invoiceBtnShowing ? " clicked" : ""
               }`}
               placeholder="Search for Patient.."
               onChange={this.handleChange}
@@ -80,7 +74,7 @@ class LandingPage extends Component {
             {/* Button: Create Invoice */}
             <Button
               className={`create-invoice${
-                this.state.invoiceHidden ? " clicked" : ""
+                !this.state.invoiceBtnShowing ? " clicked" : ""
               }`}
               onClick={this.handleInvoiceClick}
             >
@@ -92,25 +86,10 @@ class LandingPage extends Component {
     }
   }
 
-  //Initiate animation: [button-createInvoice (fade) and inputField-patient (zoom-up)]
-  handleInvoiceClick() {
-    this.setState({ invoiceHidden: true })
-  }
-
   render() {
     return (
-      <div>
-        {this.state.invoiceAnimated ? (
-          <Row>
-            <Antidote className="logo" />
-          </Row>
-        ) : (
-          <div />
-        )}
-
-        <div className="landing-page">
-          <Form>{this.renderElement()}</Form>
-        </div>
+      <div className="landing-page">
+        <Form>{this.renderElement()}</Form>
       </div>
     )
   }

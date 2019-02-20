@@ -21,14 +21,14 @@
 /* Input field: Patient-Search */
 .patient-search {
   margin-top: 320px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   width: 240px !important;
 }
 
 /* Input field: Patient-Search - Clicked */
 .patient-search.clicked {
   transition: all 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 /* --- BUTTONS --- */
@@ -39,20 +39,14 @@
 
 /* Button: Get Started */
 .get-started {
-  margin-top: 10px;
   width: 240px !important;
-  opacity: 1;
-  transition: all ease 800ms !important;
-}
-
-/* Button: Get Started - Clicked */
-.get-started.clicked {
-  opacity: 0;
+  margin-bottom: 20px;
 }
 
 /* Button: Create Invoice */
 .create-invoice {
   width: 240px !important;
+  margin-bottom: 20px;
   display: visible;
   transition: all ease 500ms !important;
 }
@@ -73,9 +67,8 @@
 .logo {
   margin-top: 200px;
   margin-left: 64px;
+  margin-bottom: 20px;
 }
-
-
 
 /* --- WORKBENCH STUFF (do not delete) --- */
 

@@ -1,20 +1,11 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import {
-  Button,
   Container,
   Row,
   Col,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
   Form,
-  FormGroup,
-  FormText,
-  Label,
   Input,
-  InputGroup,
   Modal,
   ModalHeader,
   ModalBody,

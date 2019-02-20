@@ -1,6 +1,9 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 
+import { showModal } from "../actions/modalActions"
+import { MODAL_PATIENT } from "./ModalTypes"
+
 import {
   Collapse,
   Navbar,
@@ -26,6 +29,10 @@ class AppHeader extends Component {
     })
   }
 
+  showPatientSearchModal = () => {
+    this.props.showModal(MODAL_PATIENT)
+  }
+
   render() {
     return (
       <header>
@@ -48,7 +55,9 @@ class AppHeader extends Component {
                     Options
                   </DropdownToggle>
                   <DropdownMenu right>
-                    <DropdownItem>Option 1</DropdownItem>
+                    <DropdownItem onClick={this.showPatientSearchModal}>
+                      Show Patient Search
+                    </DropdownItem>
                     <DropdownItem>Option 2</DropdownItem>
                     <DropdownItem divider />
                     <DropdownItem>Reset</DropdownItem>
@@ -63,8 +72,15 @@ class AppHeader extends Component {
   }
 }
 
-let mapStateToProps = function(state) {
+const mapStateToProps = state => {
   return {}
 }
 
-export default connect(mapStateToProps)(AppHeader)
+const mapDispatchToProps = dispatch => ({
+  showModal: modelType => dispatch(showModal(modelType))
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AppHeader)

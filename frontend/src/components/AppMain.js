@@ -3,15 +3,7 @@ import { connect } from "react-redux"
 import { showModal } from "../actions/modalActions"
 import { MODAL_PATIENT } from "./ModalTypes"
 
-import { Button, Container, Row, Col } from "reactstrap"
-import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle
-} from "reactstrap"
+import BillingSection from "./BillingSection"
 
 class AppMain extends Component {
   constructor(props) {
@@ -28,7 +20,7 @@ class AppMain extends Component {
     return (
       <main>
         <div>
-          <Button onClick={this.showPatientSearch}>Advanced Search</Button>
+          <BillingSection />
         </div>
       </main>
     )

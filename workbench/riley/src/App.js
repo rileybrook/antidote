@@ -1,13 +1,16 @@
-import React, { Component } from 'react';
-import './App.css';
-import "bootstrap/dist/css/bootstrap.min.css"   
-import PatientSearch from "./PatientSearch.js"
+import React, { Component } from "react"
+import "./App.css"
+import "bootstrap/dist/css/bootstrap.min.css"
+import AppHeader from "./AppHeader.js"
+import LandingPage from "./LandingPage.js"
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <PatientSearch />
+        <AppHeader />
+        <LandingPage />
       </div>
     )
   }

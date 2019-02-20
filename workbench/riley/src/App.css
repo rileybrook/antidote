@@ -1,40 +1,75 @@
-.App {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-}
-
-.patient-search {
-  margin-top: 300px;
-  margin-bottom: 10px;
-  width: 300px !important;
-}
-
-.patient-search.clicked {
-  transition: all 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
-  margin-top: 50px;
-}
-/* Create Invoice Button */
-.create-invoice {
-  width: 300px !important;
-  opacity: 1;
-  transition: all ease 500ms !important;
-}
-/* Create Invoice Button Clicked */
-.create-invoice.clicked {
-  opacity: 0;
-}
 /* Class for all input fields */
 .form-control {
   border-radius: 15px !important;
+  text-align: center;
 }
 
 /* .form-control:focus {
 --> Add input field highlight color here <--
 / */
 
+/* border-color: red !important;
+color: red !important; */
+
 /* Class for all buttons */
 .btn {
   border-radius: 15px !important;
-  background-color: #8b6aff !important;
+  background-color: #895bdc !important;
 }
+
+/* All of Landing Page */
+.landing-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Image: Logo */
+.logo {
+  margin-top: 200px;
+  margin-left: 64px;
+}
+
+/* Button: Get Started */
+.get-started {
+  margin-top: 10px;
+  width: 240px !important;
+  opacity: 1;
+  transition: all ease 800ms !important;
+}
+
+/* Button: Get Started - Clicked */
+.get-started.clicked {
+  opacity: 0;
+}
+
+/* Input field: Patient-Search */
+.patient-search {
+  margin-top: 320px;
+  margin-bottom: 10px;
+  width: 240px !important;
+}
+
+/* Input field: Patient-Search - Clicked */
+.patient-search.clicked {
+  transition: all 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+  margin-top: 50px;
+}
+
+/* Button: Create Invoice */
+.create-invoice {
+  width: 240px !important;
+  display: visible;
+  transition: all ease 500ms !important;
+}
+
+/* Button: Create Invoice - Clicked */
+.create-invoice.clicked {
+  opacity: 0;
+  display: none;
+}
+
+/* shrink code
+margin-left: 130px;
+width: 34px !important;
+color: transparent !important;
+white-space: nowrap !important; */

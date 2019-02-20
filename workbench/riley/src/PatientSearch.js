@@ -1,23 +1,6 @@
 import React, { Component } from "react"
 import { Input, Row, Form, Button, Container } from "reactstrap"
 
-let sampleData = [
-  {
-    medicare: "COTL13081315",
-    lastName: "COTE",
-    FirstName: "LOGAN",
-    birthDate: "2013-08-13",
-    gender: "male"
-  },
-  {
-    medicare: "NITA13581415",
-    lastName: "NITHERAMAVEERA",
-    FirstName: "AKHSHAYA",
-    birthDate: "2013-08-14",
-    gender: "female"
-  }
-]
-
 class PatientSearch extends Component {
   constructor() {
     super()
@@ -34,7 +17,7 @@ class PatientSearch extends Component {
     this.setState({ query: event.target.value })
   }
 
-  //Initiate (animation: zoom-up) and (animation: button-fade)
+  //Initiate (animation: button-fade) and(animation: zoom-up)
   handleClick() {
     this.setState({ clickedClass: true })
   }
@@ -43,7 +26,7 @@ class PatientSearch extends Component {
       <div>
         <Container>
           <Form>
-            <Row>
+            <Row> {/* Input Field: Patient Search */}
               <Input
                 className={`patient-search active ${
                   this.state.clickedClass ? " clicked" : ""
@@ -54,12 +37,13 @@ class PatientSearch extends Component {
               />
             </Row>
 
-            <Row>
+            {/* --> Add Patient Dropdown functionality here <-- */}
+
+            <Row> {/* Button: Create Invoice */}
               <Button
                 className={`create-invoice${
                   this.state.clickedClass ? " clicked" : ""
                 }`}
-                bg-primary
                 onClick={this.handleClick}
               >
                 Create Invoice

@@ -23,12 +23,20 @@ class AppHeader extends Component {
   }
   render() {
     return (
-      <header className="color-black">
+      <header className="color-black header">
         <div>
-          <Navbar light expand="md">
-            <NavbarBrand className="color-white" href="/">Antidote</NavbarBrand>
-            
-          </Navbar>
+          <Nav vertical className="color-white flex">
+            <NavItem>Logo</NavItem>
+            <NavItem>
+                Search
+            </NavItem>
+            <NavItem>3rd Item</NavItem>
+            {/* <Navbar light expand="md">
+              <NavbarBrand className="color-white" href="/">
+                Antidote
+              </NavbarBrand>
+            </Navbar> */}
+          </Nav>
         </div>
       </header>
     )

@@ -88,7 +88,7 @@ class LandingPage extends Component {
 
   render() {
     return (
-      <div className="landing-page">
+      <div className="landing-page ">
         <Form>{this.renderElement()}</Form>
       </div>
     )

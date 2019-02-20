@@ -7,7 +7,7 @@ import LandingPage from "./LandingPage.js"
 class App extends Component {
   render() {
     return (
-      <div className="color-grey">
+      <div className="color-grey app-layout">
         <AppHeader />
         <LandingPage />
       </div>

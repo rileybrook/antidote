@@ -60,14 +60,26 @@
 /* Landing Page */
 .landing-page {
   display: flex;
-  align-items: center;
   justify-content: center;
+  width: 100%
 }
 /* Logo Image */
 .logo {
   margin-top: 200px;
   margin-left: 64px;
   margin-bottom: 20px;
+}
+
+.app-layout {
+  display: flex;
+}
+
+.header {
+  width: 100px;
+  height: 500px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
 }
 
 /* --- WORKBENCH STUFF (do not delete) --- */

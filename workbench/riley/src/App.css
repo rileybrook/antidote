@@ -1,45 +1,21 @@
-/* Class for all input fields */
+/* --- DEFAULT COLORS --- */
+.color-grey {
+  background-image: linear-gradient(#8880a6, #423c5c);
+}
+.bg-secondary {
+  background-color: #895bdc !important;
+}
+.color-white {
+  color: #d0ced8 !important;
+}
+.color-black {
+  background-color: #273141 !important;
+}
+
+/* --- INPUT FIELDS --- */
 .form-control {
   border-radius: 15px !important;
   text-align: center;
-}
-
-/* .form-control:focus {
---> Add input field highlight color here <--
-/ */
-
-/* border-color: red !important;
-color: red !important; */
-
-/* Class for all buttons */
-.btn {
-  border-radius: 15px !important;
-  background-color: #895bdc !important;
-}
-
-/* All of Landing Page */
-.landing-page {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-/* Image: Logo */
-.logo {
-  margin-top: 200px;
-  margin-left: 64px;
-}
-
-/* Button: Get Started */
-.get-started {
-  margin-top: 10px;
-  width: 240px !important;
-  opacity: 1;
-  transition: all ease 800ms !important;
-}
-
-/* Button: Get Started - Clicked */
-.get-started.clicked {
-  opacity: 0;
 }
 
 /* Input field: Patient-Search */
@@ -55,6 +31,25 @@ color: red !important; */
   margin-top: 50px;
 }
 
+/* --- BUTTONS --- */
+.btn {
+  border-radius: 15px !important;
+  background-color: #895bdc !important;
+}
+
+/* Button: Get Started */
+.get-started {
+  margin-top: 10px;
+  width: 240px !important;
+  opacity: 1;
+  transition: all ease 800ms !important;
+}
+
+/* Button: Get Started - Clicked */
+.get-started.clicked {
+  opacity: 0;
+}
+
 /* Button: Create Invoice */
 .create-invoice {
   width: 240px !important;
@@ -68,8 +63,31 @@ color: red !important; */
   display: none;
 }
 
+/* Landing Page */
+.landing-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Logo Image */
+.logo {
+  margin-top: 200px;
+  margin-left: 64px;
+}
+
+
+
+/* --- WORKBENCH STUFF (do not delete) --- */
+
 /* shrink code
 margin-left: 130px;
 width: 34px !important;
 color: transparent !important;
 white-space: nowrap !important; */
+
+/* .form-control:focus {
+--> Add input field highlight color here <--
+/ */
+
+/* border-color: red !important;
+color: red !important; */

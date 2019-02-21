@@ -12,7 +12,7 @@ import {
   DropdownMenu,
   DropdownItem
 } from "reactstrap"
-class AppHeader extends Component {
+class AppNav extends Component {
   state = {
     isOpen: false
   }
@@ -23,13 +23,11 @@ class AppHeader extends Component {
   }
   render() {
     return (
-      <header className="color-black header">
+      <header className="color-black side-nav">
         <div>
-          <Nav vertical className="color-white flex">
+          <Nav vertical className="color-white">
             <NavItem>Logo</NavItem>
-            <NavItem>
-                Search
-            </NavItem>
+            <NavItem>Search</NavItem>
             <NavItem>3rd Item</NavItem>
             {/* <Navbar light expand="md">
               <NavbarBrand className="color-white" href="/">
@@ -43,4 +41,4 @@ class AppHeader extends Component {
   }
 }
 
-export default AppHeader
+export default AppNav

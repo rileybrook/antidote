@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 // import "bootstrap/dist/css/bootstrap.css"
 import "bootstrap/dist/css/bootstrap.min.css"
 
-import AppHeader from "./components/AppHeader"
+import AppNav from "./components/AppNav"
 import AppMain from "./components/AppMain"
 import ModalContainer from "./components/ModalContainer"
 
@@ -12,7 +12,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <AppHeader />
+        <AppNav />
         <AppMain />
         <ModalContainer />
       </div>

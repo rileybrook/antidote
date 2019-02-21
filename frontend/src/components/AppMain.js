@@ -25,7 +25,7 @@ class AppMain extends Component {
 
   render() {
     return (
-      <main>
+      <main className="main">
         <Container fluid>
           <Row>
             <Col md={{ size: 4, offset: 4 }}>
@@ -33,9 +33,11 @@ class AppMain extends Component {
             </Col>
           </Row>
           <Row>
-            <Col md={12} className={"billingSection" + this.stringClickedInvoice()}>
-              <BillingSection
-              />
+            <Col
+              md={12}
+              className={"billingSection" + this.stringClickedInvoice()}
+            >
+              <BillingSection />
             </Col>
           </Row>
         </Container>

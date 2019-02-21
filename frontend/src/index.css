@@ -1,3 +1,25 @@
+.App {
+  display: flex;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  width: 100%
+}
+
+
+/* --- SideNav --- */
+
+.side-nav {
+  width: 100px;
+  height: 500px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+
 /* --- DEFAULT COLORS --- */
 .color-grey {
   background-image: linear-gradient(#8880a6, #423c5c);
@@ -41,6 +63,7 @@
 }
 
 /* --- LANDING PAGE --- */
+
 .logo {
   margin-top: 100px;
   margin-bottom: 10px;

@@ -1,32 +1,43 @@
 import React, { Component } from "react"
-import logo from "./logo.svg"
+import { connect } from "react-redux"
+
 import "./App.css"
-import { Form, Button, Input } from "reactstrap"
+import "bootstrap/dist/css/bootstrap.min.css"
+
+import { Container, Row, Col, Form, Input } from "reactstrap"
+
+import LandingPage from "./LandingPage"
 
 class App extends Component {
-  buttonClick = () => {
-    console.log(this.nameInput)
-    this.nameInput.focus()
-  }
-
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <Form>
-            <Input
-              type="text"
-              innerRef={input => {
-                this.nameInput = input
-              }}
-            />
-          </Form>
-
-          <Button onClick={this.buttonClick} />
-        </header>
+        <main>
+          <Container fluid className="bg-secondary">
+            <Row className="bg-success">
+              <Col className="bg-primary" md={{ size: 4, offset: 4 }}>
+                <LandingPage />
+              </Col>
+            </Row>
+            <Row>
+              <Col className="bg-warning" md={6}>
+                Row 2
+              </Col>
+            </Row>
+          </Container>
+        </main>
       </div>
     )
   }
 }
 
-export default App
+let mapStateToProps = function(state) {
+  return {}
+}
+
+const mapDispatchToProps = dispatch => ({})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)

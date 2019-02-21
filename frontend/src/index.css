@@ -1,23 +1,50 @@
+/* --- DEFAULT COLORS --- */
+.color-grey {
+  background-image: linear-gradient(#8880a6, #423c5c);
+}
+.bg-secondary {
+  background-color: #895bdc !important;
+}
+.color-white {
+  color: #d0ced8 !important;
+}
+.color-black {
+  background-color: #273141 !important;
+}
+
+/* --- MODAL --- */
 .modal-xl {
   width: 95%;
   max-width: 1300px;
 }
 
+/* --- BUTTONS --- */
+.btn {
+  border-radius: 15px !important;
+  background-color: #895bdc !important;
+}
+
+/* --- INPUT FIELDS --- */
+.form-control {
+  border-radius: 15px !important;
+  text-align: center;
+}
+
 .form-control:focus:not(:hover) {
-  background-color: rgb(255, 255, 255);
+  background-color: #ffffff;
 }
 
 .form-control:hover:not(:focus) {
-  border-color: rgb(222, 8, 8);
-  border-width: 1px;
+  border-color: #895bdc;
+  border-width: 2px;
   /* background-color: #f1f1f1; */
-  border-style: double;
 }
 
+/* --- LANDING PAGE --- */
 .logo {
   margin-top: 100px;
-  margin-bottom: 20px;
-  opacity: 100;
+  margin-bottom: 10px;
+  opacity: 1;
 }
 
 .logo.clickedStart {
@@ -28,39 +55,49 @@
 }
 
 .patient-search {
-  margin-bottom: 0px;
   height: 0px;
   opacity: 0;
   pointer-events: none;
 }
 
 .patient-search.clickedStart {
-  transition: all 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: all cubic-bezier(0.68, -0.55, 0.265, 1.55);
   height: calc(1.5em + 0.75rem + 2px);
-  margin-bottom: 20px;
-  transition: opacity 1.2s;
+  width: 300px;
+  margin-bottom: 10px;
   opacity: 1;
   pointer-events: initial;
 }
 
 .get-started {
-  width: 240px;
+  width: 200px;
   opacity: 1;
 }
 
 .get-started.clickedInvoice {
-  transition: all 0.2s;
-  width: 150px;
+  transition: all 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  color: transparent !important;
+  white-space: nowrap;
+  width: 0px;
   opacity: 0;
 }
 
 .get-started-div {
-  height: 50px;
+  /* height: 30px; */
 }
 
 .get-started-div.clickedInvoice {
-  transition: all 1s;
-  height: 0px;
+  /* transition: all 1s;
+  height: 0px; */
+}
+
+.billingSection {
+  opacity: 0;
+}
+
+.billingSection.clickedInvoice {
+  transition: all 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  opacity: 1;
 }
 
 body {

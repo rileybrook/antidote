@@ -19,6 +19,10 @@ class AppMain extends Component {
     this.props.showModal(MODAL_PATIENT)
   }
 
+  stringClickedInvoice = () => {
+    return this.props.billingSectionShown ? " clickedInvoice" : ""
+  }
+
   render() {
     return (
       <main>
@@ -29,8 +33,9 @@ class AppMain extends Component {
             </Col>
           </Row>
           <Row>
-            <Col md={12}>
-              {this.props.billingSectionShown ? <BillingSection /> : null}
+            <Col md={12} className={"billingSection" + this.stringClickedInvoice()}>
+              <BillingSection
+              />
             </Col>
           </Row>
         </Container>

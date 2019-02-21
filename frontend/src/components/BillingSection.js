@@ -8,12 +8,8 @@ class BillingSection extends Component {
   render() {
     return (
       <div>
-        <h1>
-          <BillingLine />
-        </h1>
-        <h1>
-          <BillingTable />
-        </h1>
+        <BillingLine />
+        <BillingTable />
       </div>
     )
   }

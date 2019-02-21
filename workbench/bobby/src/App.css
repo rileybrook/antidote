@@ -1,10 +1,13 @@
 .logo {
-  margin-top: 320px;
+  /* margin-top: 320px; */
   margin-bottom: 20px;
   /* width: 240px !important; */
+  opacity: 100;
 }
 
 .logo.clicked {
   transition: all 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
-  margin-top: 20px;
+  /* margin-top: -100px; */
+  height: 0;
+  opacity: 0;
 }

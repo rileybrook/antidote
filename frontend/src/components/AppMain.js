@@ -4,6 +4,9 @@ import { showModal } from "../actions/modalActions"
 import { MODAL_PATIENT } from "./ModalTypes"
 
 import BillingSection from "./BillingSection"
+import LandingPage from "./LandingPage"
+
+import { Container, Row, Col } from "reactstrap"
 
 class AppMain extends Component {
   constructor(props) {
@@ -19,16 +22,25 @@ class AppMain extends Component {
   render() {
     return (
       <main>
-        <div>
-          <BillingSection />
-        </div>
+        <Container fluid>
+          <Row>
+            <Col md={{ size: 4, offset: 4 }}>
+              <LandingPage />
+            </Col>
+          </Row>
+          <Row>
+            <Col md={12}>
+              {this.props.billingSectionShown ? <BillingSection /> : null}
+            </Col>
+          </Row>
+        </Container>
       </main>
     )
   }
 }
 
 const mapStateToProps = state => {
-  return {}
+  return { billingSectionShown: state.mainReducer.billingSectionShown }
 }
 
 const mapDispatchToProps = dispatch => ({

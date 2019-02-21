@@ -7,10 +7,10 @@ import BillingTable from "./BillingTable"
 class BillingSection extends Component {
   render() {
     return (
-      <div>
+      <React.Fragment>
         <BillingLine />
         <BillingTable />
-      </div>
+      </React.Fragment>
     )
   }
 }

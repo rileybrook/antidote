@@ -1,6 +1,6 @@
 import { SHOW_BILLING_SECTION } from "./actionTypes"
 
-export const showBillingSection = modalType => {
+export const showBillingSection = () => {
   return {
     type: SHOW_BILLING_SECTION
   }

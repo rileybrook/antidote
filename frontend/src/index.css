@@ -1,18 +1,3 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
 .modal-xl {
   width: 95%;
   max-width: 1300px;
@@ -27,4 +12,68 @@ code {
   border-width: 1px;
   /* background-color: #f1f1f1; */
   border-style: double;
+}
+
+.logo {
+  margin-top: 100px;
+  margin-bottom: 20px;
+  opacity: 100;
+}
+
+.logo.clickedStart {
+  transition: all 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  margin-top: 0px;
+  height: 0;
+  opacity: 0;
+}
+
+.patient-search {
+  margin-bottom: 0px;
+  height: 0px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.patient-search.clickedStart {
+  transition: all 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  height: calc(1.5em + 0.75rem + 2px);
+  margin-bottom: 20px;
+  transition: opacity 1.2s;
+  opacity: 1;
+  pointer-events: initial;
+}
+
+.get-started {
+  width: 240px;
+  opacity: 1;
+}
+
+.get-started.clickedInvoice {
+  transition: all 0.2s;
+  width: 150px;
+  opacity: 0;
+}
+
+.get-started-div {
+  height: 50px;
+}
+
+.get-started-div.clickedInvoice {
+  transition: all 1s;
+  height: 0px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }

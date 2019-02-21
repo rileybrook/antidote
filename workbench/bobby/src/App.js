@@ -20,7 +20,7 @@ class App extends Component {
               </Col>
             </Row>
             <Row>
-              <Col className="bg-warning" md={6}>
+              <Col className="bg-warning" md={12}>
                 Row 2
               </Col>
             </Row>

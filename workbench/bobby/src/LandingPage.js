@@ -22,7 +22,13 @@ class LandingPage extends Component {
 
   //Initiate animation: [image-logo and button-get-started (disappear)]
   handleStartClick = () => {
-    this.setState({ userClickedStart: true })
+    if (!this.state.userClickedStart) {
+      this.setState({ userClickedStart: true })
+    } else if (!this.state.userClickedInvoice) {
+      this.setState({ userClickedInvoice: true })
+    } else {
+      //dispatch
+    }
   }
 
   //Initiate animation: [button-createInvoice (disappear) and inputField-patient (zoom-up)]
@@ -30,22 +36,44 @@ class LandingPage extends Component {
     this.setState({ userClickedInvoice: true })
   }
 
-  render() {
-    const stringClickedStart = this.state.userClickedStart ? " clicked" : ""
-    const stringClickedInvoice = this.state.userClickedInvoice ? " clicked" : ""
+  stringClickedStart = () => {
+    return this.state.userClickedStart ? " clickedStart" : ""
+  }
 
+  stringClickedInvoice = () => {
+    return this.state.userClickedInvoice ? " clickedInvoice" : ""
+  }
+
+  getButtonText = () => {
+    if (!this.state.userClickedStart) return "Get Started"
+    return "Create Invoice"
+  }
+
+  render() {
     return (
       <React.Fragment>
         <Row align="center" className="bg-danger">
           <Col>
-            <Antidote className={"logo" + stringClickedStart} />
+            <Antidote className={"logo" + this.stringClickedStart()} />
           </Col>
         </Row>
         <Row align="center" className="bg-info">
           <Col>
-            <Button className="get-started" onClick={this.handleStartClick}>
-              Get Started
-            </Button>
+            <Form className={"patient-search" + this.stringClickedStart()}>
+              <Input
+                placeholder="Search for patient.."
+                onChange={this.handleChange}
+                value={this.state.query}
+              />
+            </Form>
+            <div className={"get-started-div" + this.stringClickedInvoice()}>
+              <Button
+                className={"get-started" + this.stringClickedInvoice()}
+                onClick={this.handleStartClick}
+              >
+                {this.getButtonText()}
+              </Button>
+            </div>
           </Col>
         </Row>
       </React.Fragment>

@@ -7,7 +7,7 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case ADD_BILLING_LINE:
-      action.billingLine.lineNumber = state.billingLines.length + 1
+      //action.billingLine.lineNumber = state.billingLines.length + 1
       return {
         ...state,
         billingLines: state.billingLines.concat(action.billingLine)

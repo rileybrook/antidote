@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import * as Autosuggest from "react-autosuggest"
+import Autosuggest from "react-autosuggest"
 
 import { getPatients, setPatient } from "../actions/patientActions"
 

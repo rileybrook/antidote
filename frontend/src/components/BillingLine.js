@@ -76,9 +76,7 @@ class BillingLine extends Component {
     return (
       <React.Fragment>
         <Col>
-          <Button outline color="danger" onClick={this.deleteBillingLine}>
-            delete
-          </Button>
+          <Button onClick={this.deleteBillingLine}>delete</Button>
         </Col>
         <Col>
           <Input

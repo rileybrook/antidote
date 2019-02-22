@@ -38,13 +38,13 @@ class LandingPage extends Component {
     } else if (!this.state.userClickedInvoice) {
       this.setState({ userClickedInvoice: true })
       this.props.showBillingSection()
-      this.props.addBillingLine({
-        lineNumber: "",
-        serviceDate: "",
-        billingCode: "",
-        refDoctor: "",
-        units: ""
-      })
+      // this.props.addBillingLine({
+      //   lineNumber: "",
+      //   serviceDate: "",
+      //   billingCode: "",
+      //   refDoctor: "",
+      //   units: ""
+      // })
     }
   }
 

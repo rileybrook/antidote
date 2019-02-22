@@ -22,11 +22,11 @@ class AppMain extends Component {
   stringClickedInvoice = () => {
     return this.props.billingSectionShown ? " clickedInvoice" : ""
   }
-
+  componentDidMount = () => {}
   render() {
     return (
       <main className="main">
-        <Container fluid>
+        <Container>
           <Row>
             <Col md={{ size: 12 }}>
               <LandingPage />

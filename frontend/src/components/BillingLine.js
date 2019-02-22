@@ -1,15 +1,39 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { Button, Form, Input, Container, Row, Col } from "reactstrap"
+import { Button, Input, Col } from "reactstrap"
 
-import { addBillingLine } from "../actions/billingActions"
+import { deleteBillingLine } from "../actions/billingActions"
 
 class BillingLine extends Component {
-  constructor() {
-    super()
-    this.state = {
-      serviceDate: "",
-      billingCode: ""
+  constructor(props) {
+    super(props)
+
+    // console.log(props.currentLine)
+
+    if (props.currentLine) {
+      const {
+        lineNumber,
+        serviceDate,
+        billingCode,
+        refDoctor,
+        units
+      } = props.currentLine
+
+      this.state = {
+        lineNumber,
+        serviceDate,
+        billingCode,
+        refDoctor,
+        units
+      }
+    } else {
+      this.state = {
+        lineNumber: "",
+        serviceDate: "",
+        billingCode: "",
+        refDoctor: "",
+        units: ""
+      }
     }
   }
 
@@ -20,7 +44,12 @@ class BillingLine extends Component {
   handleBillingCodeChange = event => {
     this.setState({ billingCode: event.target.value })
   }
-
+  handldeRefDoctorChange = event => {
+    this.setState({ refDoctor: event.target.value })
+  }
+  handleUnitsChange = event => {
+    this.setState({ units: event.target.value })
+  }
   // handleSubmit = event => {
   //   event.preventDefault()
   //   let b = JSON.stringify({
@@ -39,41 +68,52 @@ class BillingLine extends Component {
 
   // onSubmit={this.handleSubmit}
 
-  buttonClicked = () => {
-    this.props.addBillingLine(this.state)
-    // this.setState({ serviceDate: "", billingCode: "" })
+  deleteBillingLine = () => {
+    this.props.deleteBillingLine(this.state.lineNumber)
   }
 
   render() {
     return (
-      <div>
-        <Container>
-          <Row>
-            <Form>
-              <Col>Billing</Col>
-              <Col>
-                <Input
-                  type="text"
-                  placeholder="service date"
-                  onChange={this.handleServiceDateChange}
-                  value={this.state.serviceDate}
-                />
-              </Col>
-              <Col>
-                <Input
-                  type="text"
-                  placeholder="billing code"
-                  onChange={this.handleBillingCodeChange}
-                  value={this.state.billingCode}
-                />
-              </Col>
-              <Col>
-                <Button onClick={this.buttonClicked} />
-              </Col>
-            </Form>
-          </Row>
-        </Container>
-      </div>
+      <React.Fragment>
+        <Col>
+          <Button outline color="danger" onClick={this.deleteBillingLine}>
+            delete
+          </Button>
+        </Col>
+        <Col>
+          <Input
+            type="text"
+            placeholder="service date"
+            onChange={this.handleServiceDateChange}
+            value={this.state.serviceDate}
+          />
+        </Col>
+        <Col>
+          <Input
+            type="text"
+            placeholder="billing code"
+            onChange={this.handleBillingCodeChange}
+            value={this.state.billingCode}
+          />
+        </Col>
+
+        <Col>
+          <Input
+            type="text"
+            placeholder="reference doctor"
+            onChange={this.handldeRefDoctorChange}
+            value={this.state.refDoctor}
+          />
+        </Col>
+        <Col>
+          <Input
+            type="text"
+            placeholder="units"
+            onChange={this.handleUnitsChange}
+            value={this.state.units}
+          />
+        </Col>
+      </React.Fragment>
     )
   }
 }
@@ -83,7 +123,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  addBillingLine: billingLine => dispatch(addBillingLine(billingLine))
+  //addBillingLine: billingLine => dispatch(addBillingLine(billingLine)),
+  deleteBillingLine: lineNumber => dispatch(deleteBillingLine(lineNumber))
 })
 
 export default connect(

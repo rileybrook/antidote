@@ -3,6 +3,7 @@ import { connect } from "react-redux"
 import { ReactComponent as Antidote } from "../images/antidote.svg"
 import { Row, Col, Button } from "reactstrap"
 import { showBillingSection } from "../actions/mainActions"
+import { addBillingLine } from "../actions/billingActions"
 
 import PatientSearchDropdown from "./PatientSearchDropdown"
 
@@ -15,7 +16,7 @@ class LandingPage extends Component {
     this.state = {
       query: "",
 
-      userClickedStart: false,
+      userClickedStart: true,
       userClickedInvoice: false
     }
   }
@@ -37,6 +38,13 @@ class LandingPage extends Component {
     } else if (!this.state.userClickedInvoice) {
       this.setState({ userClickedInvoice: true })
       this.props.showBillingSection()
+      this.props.addBillingLine({
+        lineNumber: "",
+        serviceDate: "",
+        billingCode: "",
+        refDoctor: "",
+        units: ""
+      })
     }
   }
 
@@ -102,7 +110,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  showBillingSection: () => dispatch(showBillingSection())
+  showBillingSection: () => dispatch(showBillingSection()),
+  addBillingLine: billingLine => dispatch(addBillingLine(billingLine))
 })
 
 export default connect(

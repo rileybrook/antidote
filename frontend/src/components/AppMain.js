@@ -28,7 +28,7 @@ class AppMain extends Component {
       <main className="main">
         <Container fluid>
           <Row>
-            <Col md={{ size: 4, offset: 4 }}>
+            <Col md={{ size: 12 }}>
               <LandingPage />
             </Col>
           </Row>

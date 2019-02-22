@@ -1,17 +1,17 @@
 import React, { Component } from "react"
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from "reactstrap"
+import { Nav, NavItem } from "reactstrap"
+// Collapse,
+// Navbar,
+// NavbarToggler,
+// NavbarBrand,
+// Nav,
+// NavItem,
+// NavLink,
+// UncontrolledDropdown,
+// DropdownToggle,
+// DropdownMenu,
+// DropdownItem
+
 class AppNav extends Component {
   state = {
     isOpen: false

@@ -1,8 +1,12 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { ReactComponent as Antidote } from "../images/antidote.svg"
-import { Input, Row, Col, Form, Button } from "reactstrap"
+import { Row, Col, Button } from "reactstrap"
 import { showBillingSection } from "../actions/mainActions"
+
+import PatientSearchDropdown from "./PatientSearchDropdown"
+
+import "./LandingPage.css"
 
 class LandingPage extends Component {
   constructor(props) {
@@ -25,6 +29,11 @@ class LandingPage extends Component {
   handleStartClick = () => {
     if (!this.state.userClickedStart) {
       this.setState({ userClickedStart: true })
+      try {
+        document.getElementById("patientSearch").children[0].children[0].focus()
+      } catch {
+        console.log("Unable to set focus to the patient search field")
+      }
     } else if (!this.state.userClickedInvoice) {
       this.setState({ userClickedInvoice: true })
       this.props.showBillingSection()
@@ -58,14 +67,21 @@ class LandingPage extends Component {
           </Col>
         </Row>
         <Row align="center">
-          <Col>
-            <Form className={"patient-search" + this.stringClickedStart()}>
+          <Col md={{ size: 12 }}>
+            <div
+              id="patientSearch"
+              className={"mb-4 patient-search" + this.stringClickedStart()}
+            >
+              <PatientSearchDropdown />
+            </div>
+            {/* <Form className={"patient-search" + this.stringClickedStart()}>
               <Input
                 placeholder="Search for patient.."
                 onChange={this.handleChange}
                 value={this.state.query}
               />
-            </Form>
+            </Form> */}
+
             <div className={"get-started-div" + this.stringClickedInvoice()}>
               <Button
                 className={"get-started" + this.stringClickedInvoice()}

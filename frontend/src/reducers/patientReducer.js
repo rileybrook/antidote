@@ -7,7 +7,7 @@ import {
 const initialState = {
   patients: [],
   patientsLoading: false,
-  selectedPatient: {}
+  selectedPatient: ""
 }
 
 export default function(state = initialState, action) {
@@ -21,9 +21,16 @@ export default function(state = initialState, action) {
       }
 
     case SET_PATIENT:
+      // if (
+      //   state.patientsLoading ||
+      //   !state.patients.some(elem => elem.medicare === action.id)
+      // ) {
+      //   return state
+      // }
+
       return {
         ...state,
-        selectedPatient: action.payload
+        selectedPatient: action.id
       }
 
     case PATIENTS_LOADING:

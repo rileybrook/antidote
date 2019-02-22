@@ -5,9 +5,8 @@
 .main {
   display: flex;
   justify-content: center;
-  width: 100%
+  width: 100%;
 }
-
 
 /* --- SideNav --- */
 
@@ -18,7 +17,6 @@
   text-align: center;
   justify-content: center;
 }
-
 
 /* --- DEFAULT COLORS --- */
 .color-grey {
@@ -60,58 +58,6 @@
   border-color: #895bdc;
   border-width: 2px;
   /* background-color: #f1f1f1; */
-}
-
-/* --- LANDING PAGE --- */
-
-.logo {
-  margin-top: 100px;
-  margin-bottom: 10px;
-  opacity: 1;
-}
-
-.logo.clickedStart {
-  transition: all 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  margin-top: 0px;
-  height: 0;
-  opacity: 0;
-}
-
-.patient-search {
-  height: 0px;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.patient-search.clickedStart {
-  transition: all cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  height: calc(1.5em + 0.75rem + 2px);
-  width: 300px;
-  margin-bottom: 10px;
-  opacity: 1;
-  pointer-events: initial;
-}
-
-.get-started {
-  width: 200px;
-  opacity: 1;
-}
-
-.get-started.clickedInvoice {
-  transition: all 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  color: transparent !important;
-  white-space: nowrap;
-  width: 0px;
-  opacity: 0;
-}
-
-.get-started-div {
-  /* height: 30px; */
-}
-
-.get-started-div.clickedInvoice {
-  /* transition: all 1s;
-  height: 0px; */
 }
 
 .billingSection {

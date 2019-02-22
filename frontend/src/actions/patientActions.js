@@ -2,11 +2,9 @@ import { GET_PATIENTS, PATIENTS_LOADING, SET_PATIENT } from "./actionTypes"
 import { serverAddress } from "../config"
 
 export const setPatient = id => {
-  if (!id) id = ""
-
   return {
     type: SET_PATIENT,
-    payload: id
+    id
   }
 }
 

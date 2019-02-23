@@ -18,7 +18,7 @@ class AppNav extends Component {
   }
   render() {
     return (
-      <SideNav className="color-black ">
+      <SideNav className="color-black space-between">
         <Nav defaultSelected="home">
           <NavItem eventKey="home">
             <NavIcon>
@@ -27,53 +27,33 @@ class AppNav extends Component {
           </NavItem>
           <NavItem eventKey="search">
             <NavIcon>
-              <i
-                className="fa fa-fw fa-search-plus"
-                style={{ fontSize: "2em" }}
-              />
+              <i className="fa fa-fw fa-search" style={{ fontSize: "2em" }} />
             </NavIcon>
           </NavItem>
-          <NavItem eventKey="card">
+          <NavItem eventKey="create">
             <NavIcon>
-              <i className="fa fa-fw fa-id-card" style={{ fontSize: "2em" }} />
+              <i className="fa fa-fw fa-plus" style={{ fontSize: "2em" }} />
             </NavIcon>
           </NavItem>
-          <NavItem eventKey="file">
+          <NavItem eventKey="print">
             <NavIcon>
-              <i className="fa fa-fw fa-file" style={{ fontSize: "2em" }} />
+              <i className="fa fa-fw fa-print" style={{ fontSize: "2em" }} />
             </NavIcon>
           </NavItem>
-          <NavItem eventKey="history">
-            <NavIcon>
-              <i className="fa fa-fw fa-history" style={{ fontSize: "2em" }} />
-            </NavIcon>
-          </NavItem>
-          <NavItem eventKey="settings">
-            <NavIcon>
-              <i className="fa fa-fw fa-cog" style={{ fontSize: "2em" }} />
-            </NavIcon>
-          </NavItem>
+        </Nav>
+        <Nav>
           <NavItem eventKey="github">
             <NavIcon>
               <i className="fa fa-fw fa-github" style={{ fontSize: "2em" }} />
             </NavIcon>
           </NavItem>
+          <NavItem eventKey="signout">
+            <NavIcon>
+              <i className="fa fa-fw fa-sign-out" style={{ fontSize: "2em" }} />
+            </NavIcon>
+          </NavItem>
         </Nav>
       </SideNav>
-      // <header className="color-black side-nav">
-      //   <div>
-      //     <Nav vertical className="color-white" defaultSelected="home">
-      //       <NavItem eventKey="home">Logo</NavItem>
-      //       <NavItem>Search</NavItem>
-      //       <NavItem>3rd Item</NavItem>
-      //       {/* <Navbar light expand="md">
-      //         <NavbarBrand className="color-white" href="/">
-      //           Antidote
-      //         </NavbarBrand>
-      //       </Navbar> */}
-      //     </Nav>
-      //   </div>
-      // </header>
     )
   }
 }

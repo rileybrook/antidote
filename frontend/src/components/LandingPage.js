@@ -17,8 +17,8 @@ class LandingPage extends Component {
       query: "",
 
       //TODO(bobby) set these back to false to show logo
-      userClickedStart: true,
-      userClickedInvoice: true
+      userClickedStart: false,
+      userClickedInvoice: false
     }
   }
 

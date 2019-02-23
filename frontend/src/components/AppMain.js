@@ -29,7 +29,7 @@ class AppMain extends Component {
     this.props.loadBillingCodes()
 
     //TODO(bobby) comment out very next line to not show billing section at startup
-    this.props.showBillingSection()
+    // this.props.showBillingSection()
   }
   render() {
     return (

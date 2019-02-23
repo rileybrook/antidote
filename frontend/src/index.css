@@ -35,14 +35,10 @@ code {
   margin-left: 63px;
 }
 
-/* --- SideNav --- */
-
-.side-nav {
-  width: 100px;
-  height: 500px;
+.space-between {
   display: flex;
-  text-align: center;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between !important;
 }
 
 /* --- DEFAULT COLORS --- */

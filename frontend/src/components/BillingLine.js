@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { Button, Input, Col } from "reactstrap"
+import { Button, Input, Col, Label } from "reactstrap"
 
 import { deleteBillingLine } from "../actions/billingActions"
 
@@ -44,9 +44,11 @@ class BillingLine extends Component {
   handleBillingCodeChange = event => {
     this.setState({ billingCode: event.target.value })
   }
+
   handldeRefDoctorChange = event => {
     this.setState({ refDoctor: event.target.value })
   }
+
   handleUnitsChange = event => {
     this.setState({ units: event.target.value })
   }
@@ -72,52 +74,106 @@ class BillingLine extends Component {
     this.props.deleteBillingLine(this.state.lineNumber)
   }
 
+  renderReferringDoctor = () => {
+    if (
+      !this.props.billingCodes.some(
+        elem =>
+          this.state.billingCode === elem._id.toString() &&
+          elem.requiresReferral
+      )
+    ) {
+      return null
+    }
+
+    return (
+      <Col
+        xs={{ size: 5, offset: 1 }}
+        sm={{ size: 3, offset: 0 }}
+        md={{ size: 2, offset: 0 }}
+      >
+        <Input
+          className="mb-1"
+          type="text"
+          placeholder="reference doctor"
+          onChange={this.handldeRefDoctorChange}
+          value={this.state.refDoctor}
+        />
+      </Col>
+    )
+  }
+
+  renderCount = () => {
+    if (
+      !this.props.billingCodes.some(
+        elem =>
+          this.state.billingCode === elem._id.toString() && elem.requiresCount
+      )
+    ) {
+      return null
+    }
+
+    return (
+      <Col
+        xs={{ size: 5, offset: 1 }}
+        sm={{ size: 3, offset: 0 }}
+        md={{ size: 2, offset: 0 }}
+      >
+        <Input
+          className="mb-1"
+          type="text"
+          placeholder="units"
+          onChange={this.handleUnitsChange}
+          value={this.state.units}
+        />
+      </Col>
+    )
+  }
+
   render() {
     return (
       <React.Fragment>
-        <Col>
-          <Button onClick={this.deleteBillingLine}>delete</Button>
+        <Col className="mr-4" xs={1} sm={1} md={1}>
+          <Button className="mb-1" onClick={this.deleteBillingLine}>
+            D
+          </Button>
         </Col>
-        <Col>
+        <Col xs={5} sm={3} md={2}>
           <Input
+            className="mb-1"
             type="text"
             placeholder="service date"
             onChange={this.handleServiceDateChange}
             value={this.state.serviceDate}
           />
         </Col>
-        <Col>
+        <Col xs={5} sm={3} md={2}>
           <Input
+            className="mb-1"
             type="text"
             placeholder="billing code"
             onChange={this.handleBillingCodeChange}
             value={this.state.billingCode}
           />
         </Col>
-
-        <Col>
-          <Input
-            type="text"
-            placeholder="reference doctor"
-            onChange={this.handldeRefDoctorChange}
-            value={this.state.refDoctor}
-          />
-        </Col>
-        <Col>
-          <Input
-            type="text"
-            placeholder="units"
-            onChange={this.handleUnitsChange}
-            value={this.state.units}
-          />
-        </Col>
+        {this.renderReferringDoctor()}
+        {this.renderCount()}
+        <Label
+          className="color-white"
+          xs={{ size: 3, offset: 9, order: 0 }}
+          sm={{ size: 3, offset: 1 }}
+          md={2}
+        >
+          $91.00
+        </Label>
       </React.Fragment>
     )
   }
 }
 
 const mapStateToProps = state => {
-  return {}
+  return {
+    billingCodes: state.billingReducer.billingCodes
+  }
 }
 
 const mapDispatchToProps = dispatch => ({

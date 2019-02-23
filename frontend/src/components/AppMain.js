@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { showModal } from "../actions/modalActions"
+import { showBillingSection } from "../actions/mainActions"
+import { loadBillingCodes } from "../actions/billingActions"
 import { MODAL_PATIENT } from "./ModalTypes"
 
 import BillingSection from "./BillingSection"
@@ -22,10 +24,16 @@ class AppMain extends Component {
   stringClickedInvoice = () => {
     return this.props.billingSectionShown ? " clickedInvoice" : ""
   }
-  componentDidMount = () => {}
+
+  componentDidMount = () => {
+    this.props.loadBillingCodes()
+
+    //TODO(bobby) comment out very next line to not show billing section at startup
+    this.props.showBillingSection()
+  }
   render() {
     return (
-      <main className="main">
+      <main className="main color-grey">
         <Container>
           <Row>
             <Col md={{ size: 12 }}>
@@ -34,7 +42,7 @@ class AppMain extends Component {
           </Row>
           <Row>
             <Col
-              md={12}
+              md={{ size: 12 }}
               className={"billingSection" + this.stringClickedInvoice()}
             >
               <BillingSection />
@@ -47,11 +55,16 @@ class AppMain extends Component {
 }
 
 const mapStateToProps = state => {
-  return { billingSectionShown: state.mainReducer.billingSectionShown }
+  return {
+    billingSectionShown: state.mainReducer.billingSectionShown,
+    billingCodes: state.billingReducer.billingCodes
+  }
 }
 
 const mapDispatchToProps = dispatch => ({
-  showModal: modelType => dispatch(showModal(modelType))
+  showModal: modelType => dispatch(showModal(modelType)),
+  loadBillingCodes: () => dispatch(loadBillingCodes()),
+  showBillingSection: () => dispatch(showBillingSection())
 })
 
 export default connect(

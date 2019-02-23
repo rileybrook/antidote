@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 
 import BillingLine from "./BillingLine"
 
-import { Row, Col, Button } from "reactstrap"
+import { Row, Col, Button, Label } from "reactstrap"
 import { addBillingLine } from "../actions/billingActions"
 
 class BillingSection extends Component {
@@ -21,9 +21,11 @@ class BillingSection extends Component {
     console.log("this.props.billingLine", this.props.billingLines)
     return this.props.billingLines.map((elem, index) => {
       return (
-        <Row>
-          <BillingLine key={index} currentLine={elem} />
-        </Row>
+        <React.Fragment>
+          <Row key={index} className="mb-3">
+            <BillingLine currentLine={elem} />
+          </Row>
+        </React.Fragment>
       )
     })
   }
@@ -38,9 +40,9 @@ class BillingSection extends Component {
     return (
       <React.Fragment>
         <Row className="mb-3">
-          <Col md={{ size: 2, offset: 10 }}>
+          <Col md={{ size: 3, offset: 0 }}>
             {/* <Button onClick={()=>this.props.}>random dispatch</Button> */}
-            <Button onClick={this.buttonClicked}>Add new line</Button>
+            <Button onClick={this.buttonClicked}>New line</Button>
           </Col>
         </Row>
         {this.spanBillingLines()}

@@ -1,11 +1,38 @@
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  height: 100%;
+}
+
+label {
+  font-weight: 800;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
 .App {
   display: flex;
+  height: 100%;
 }
 
 .main {
   display: flex;
   justify-content: center;
   width: 100%;
+  height: 100%;
+  margin-left: 63px;
 }
 
 /* --- SideNav --- */
@@ -22,7 +49,7 @@
 .color-grey {
   background-image: linear-gradient(#8880a6, #423c5c);
 }
-.color-purple  {
+.color-purple {
   background-color: #895bdc !important;
 }
 .color-white {
@@ -67,19 +94,4 @@
 .billingSection.clickedInvoice {
   transition: all 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   opacity: 1;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
 }

@@ -1,7 +1,12 @@
-import { ADD_BILLING_LINE, DELETE_BILLING_LINE } from "../actions/actionTypes"
+import {
+  ADD_BILLING_LINE,
+  DELETE_BILLING_LINE,
+  GET_BILLING_CODES
+} from "../actions/actionTypes"
 
 const initialState = {
-  billingLines: []
+  billingLines: [],
+  billingCodes: []
 }
 
 export default function(state = initialState, action) {
@@ -28,6 +33,13 @@ export default function(state = initialState, action) {
         ...state,
         billingLines: newArray
       }
+
+    case GET_BILLING_CODES:
+      return {
+        ...state,
+        billingCodes: action.payload
+      }
+
     default:
       return state
   }

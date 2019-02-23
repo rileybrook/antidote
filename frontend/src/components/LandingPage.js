@@ -16,8 +16,9 @@ class LandingPage extends Component {
     this.state = {
       query: "",
 
+      //TODO(bobby) set these back to false to show logo
       userClickedStart: true,
-      userClickedInvoice: false
+      userClickedInvoice: true
     }
   }
 

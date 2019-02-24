@@ -20,13 +20,7 @@ class BillingSection extends Component {
   spanBillingLines = () => {
     console.log("this.props.billingLine", this.props.billingLines)
     return this.props.billingLines.map((elem, index) => {
-      return (
-        <React.Fragment>
-          <Row key={index} className="mb-3">
-            <BillingLine currentLine={elem} />
-          </Row>
-        </React.Fragment>
-      )
+      return <BillingLine rowKey={index} currentLine={elem} />
     })
   }
   buttonClicked = () => {

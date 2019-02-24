@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { Button, Input, Col, Label } from "reactstrap"
+import { Button, Input, Fade, Row, Col, Label } from "reactstrap"
 
 import { deleteBillingLine } from "../actions/billingActions"
 
@@ -35,6 +35,8 @@ class BillingLine extends Component {
         units: ""
       }
     }
+
+    this.state.fadeInDescription = true
   }
 
   handleServiceDateChange = event => {
@@ -91,13 +93,15 @@ class BillingLine extends Component {
         sm={{ size: 3, offset: 0 }}
         md={{ size: 2, offset: 0 }}
       >
-        <Input
-          className="mb-1"
-          type="text"
-          placeholder="reference doctor"
-          onChange={this.handldeRefDoctorChange}
-          value={this.state.refDoctor}
-        />
+        <Fade>
+          <Input
+            className="ml-3 mb-1"
+            type="text"
+            placeholder="reference doctor"
+            onChange={this.handldeRefDoctorChange}
+            value={this.state.refDoctor}
+          />
+        </Fade>
       </Col>
     )
   }
@@ -118,53 +122,91 @@ class BillingLine extends Component {
         sm={{ size: 3, offset: 0 }}
         md={{ size: 2, offset: 0 }}
       >
-        <Input
-          className="mb-1"
-          type="text"
-          placeholder="units"
-          onChange={this.handleUnitsChange}
-          value={this.state.units}
-        />
+        <Fade>
+          <Input
+            className="ml-3 mb-1"
+            type="text"
+            placeholder="units"
+            onChange={this.handleUnitsChange}
+            value={this.state.units}
+          />
+        </Fade>
       </Col>
+    )
+  }
+
+  renderBillingCodeFee = () => {
+    const billingCode = this.props.billingCodes.find(
+      elem => this.state.billingCode === elem._id.toString()
+    )
+    if (!billingCode) return null
+    return (
+      <Col className="text-center">
+        <Fade in={true} tag="h5" className="">
+          <Label className="mt-2 color-white">
+            ${billingCode.fee.toFixed(2)}
+          </Label>
+        </Fade>
+      </Col>
+    )
+  }
+
+  renderBillingCodeDescription = () => {
+    const billingCode = this.props.billingCodes.find(
+      elem => this.state.billingCode === elem._id.toString()
+    )
+    if (!billingCode) return null
+    return (
+      <Row key={this.props.rowKey} className="mb-3">
+        <Col className="" md={{ size: 11, offset: 1 }}>
+          <Fade in={true} tag="h5" className="ml-4 mt-0">
+            <Label className="color-white">{billingCode.description}</Label>
+          </Fade>
+        </Col>
+      </Row>
     )
   }
 
   render() {
     return (
       <React.Fragment>
-        <Col className="mr-4" xs={1} sm={1} md={1}>
-          <Button className="mb-1" onClick={this.deleteBillingLine}>
-            D
-          </Button>
-        </Col>
-        <Col xs={5} sm={3} md={2}>
-          <Input
-            className="mb-1"
-            type="text"
-            placeholder="service date"
-            onChange={this.handleServiceDateChange}
-            value={this.state.serviceDate}
-          />
-        </Col>
-        <Col xs={5} sm={3} md={2}>
-          <Input
-            className="mb-1"
-            type="text"
-            placeholder="billing code"
-            onChange={this.handleBillingCodeChange}
-            value={this.state.billingCode}
-          />
-        </Col>
-        {this.renderReferringDoctor()}
-        {this.renderCount()}
-        <Label
-          className="color-white"
-          xs={{ size: 3, offset: 9, order: 0 }}
-          sm={{ size: 3, offset: 1 }}
-          md={2}
-        >
-          $91.00
-        </Label>
+        <Row key={this.props.rowKey} className="mb-3">
+          <Col className="mb-1" xs={1} sm={1} md={1}>
+            <Button className="" onClick={this.deleteBillingLine}>
+              D
+            </Button>
+          </Col>
+          <Col
+            xs={{ size: 5, offset: 0 }}
+            sm={{ size: 3, offset: 0 }}
+            md={{ size: 2, offset: 0 }}
+          >
+            <Input
+              className="ml-3 mb-1"
+              type="text"
+              placeholder="service date"
+              onChange={this.handleServiceDateChange}
+              value={this.state.serviceDate}
+            />
+          </Col>
+          <Col
+            xs={{ size: 5, offset: 0 }}
+            sm={{ size: 2, offset: 0 }}
+            md={{ size: 2, offset: 0 }}
+          >
+            <Input
+              className="ml-3 mb-1"
+              type="text"
+              placeholder="billing code"
+              onChange={this.handleBillingCodeChange}
+              value={this.state.billingCode}
+            />
+          </Col>
+          {this.renderReferringDoctor()}
+          {this.renderCount()}
+          {this.renderBillingCodeFee()}
+        </Row>
+        {this.renderBillingCodeDescription()}
       </React.Fragment>
     )
   }

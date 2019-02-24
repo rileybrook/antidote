@@ -1,5 +1,5 @@
 import {
-  ADD_BILLING_LINE,
+  NEW_BILLING_LINE,
   DELETE_BILLING_LINE,
   GET_BILLING_CODES
 } from "../actions/actionTypes"
@@ -10,12 +10,14 @@ const initialState = {
 }
 
 export default function(state = initialState, action) {
-  console.log("state", state)
   switch (action.type) {
-    case ADD_BILLING_LINE:
+    case NEW_BILLING_LINE:
       const newItem = {
-        ...action.billingLine,
-        lineNumber: state.billingLines.length + 1
+        lineNumber: state.billingLines.length + 1,
+        serviceDate: "",
+        billingCode: "",
+        refDoctor: "",
+        units: ""
       }
       return {
         ...state,
@@ -23,11 +25,11 @@ export default function(state = initialState, action) {
       }
 
     case DELETE_BILLING_LINE:
-      let newArray = state.billingLines.filter((elem, i, arr) => {
-        console.log("elem", elem)
-        console.log("arr", arr)
-        console.log("linemumer", action.lineNumber)
-        return elem.lineNumber !== action.lineNumber
+      let newArray = state.billingLines.filter(
+        elem => elem.lineNumber !== action.lineNumber
+      )
+      newArray = newArray.map((elem, i) => {
+        return { ...elem, lineNumber: i + 1 }
       })
       return {
         ...state,

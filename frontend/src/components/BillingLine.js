@@ -8,34 +8,7 @@ class BillingLine extends Component {
   constructor(props) {
     super(props)
 
-    // console.log(props.currentLine)
-
-    if (props.currentLine) {
-      const {
-        lineNumber,
-        serviceDate,
-        billingCode,
-        refDoctor,
-        units
-      } = props.currentLine
-
-      this.state = {
-        lineNumber,
-        serviceDate,
-        billingCode,
-        refDoctor,
-        units
-      }
-    } else {
-      this.state = {
-        lineNumber: "",
-        serviceDate: "",
-        billingCode: "",
-        refDoctor: "",
-        units: ""
-      }
-    }
-
+    this.state = props.currentLine
     this.state.fadeInDescription = true
   }
 
@@ -54,23 +27,6 @@ class BillingLine extends Component {
   handleUnitsChange = event => {
     this.setState({ units: event.target.value })
   }
-  // handleSubmit = event => {
-  //   event.preventDefault()
-  //   let b = JSON.stringify({
-  //     actDate: this.state.actDate,
-  //     billCode: this.state.billCode
-  //   })
-  //   fetch("http://localhost:4000/", { method: "GET", body: b })
-  //     .then(function(x) {
-  //       x.text()
-  //     })
-  //     .then(responseBody => {
-  //       let body = JSON.parse(responseBody)
-  //       this.props.dispatch({ type: "set-billingLine", item: body })
-  //     })
-  // }
-
-  // onSubmit={this.handleSubmit}
 
   deleteBillingLine = () => {
     this.props.deleteBillingLine(this.state.lineNumber)
@@ -78,6 +34,7 @@ class BillingLine extends Component {
 
   renderReferringDoctor = () => {
     if (
+      !this.state.refDoctor &&
       !this.props.billingCodes.some(
         elem =>
           this.state.billingCode === elem._id.toString() &&
@@ -108,6 +65,7 @@ class BillingLine extends Component {
 
   renderCount = () => {
     if (
+      !this.state.units &&
       !this.props.billingCodes.some(
         elem =>
           this.state.billingCode === elem._id.toString() && elem.requiresCount
@@ -219,7 +177,6 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  //addBillingLine: billingLine => dispatch(addBillingLine(billingLine)),
   deleteBillingLine: lineNumber => dispatch(deleteBillingLine(lineNumber))
 })
 

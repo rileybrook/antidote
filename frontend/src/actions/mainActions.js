@@ -1,7 +1,13 @@
-import { SHOW_BILLING_SECTION } from "./actionTypes"
+// import { USER_CLICKED_START, SHOW_BILLING_SECTION } from "./actionTypes"
 
-export const showBillingSection = () => {
-  return {
-    type: SHOW_BILLING_SECTION
-  }
-}
+// export const userClickedStart = () => {
+//   return {
+//     type: USER_CLICKED_START
+//   }
+// }
+
+// export const showBillingSection = () => {
+//   return {
+//     type: SHOW_BILLING_SECTION
+//   }
+// }

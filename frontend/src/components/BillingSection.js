@@ -24,6 +24,9 @@ class BillingSection extends Component {
   render() {
     return (
       <React.Fragment>
+        {this.props.billingLines.map((elem, index) => {
+          return <BillingLine key={index} currentLine={elem} />
+        })}
         <Row className="mb-3">
           <Col md={{ size: 3, offset: 0 }}>
             <i
@@ -33,9 +36,6 @@ class BillingSection extends Component {
             />
           </Col>
         </Row>
-        {this.props.billingLines.map((elem, index) => {
-          return <BillingLine key={index} currentLine={elem} />
-        })}
         <Row className="mb-3">
           <Col md={{ size: 3, offset: 0 }}>
             <Button onClick={this.handlesSubmitClaimClicked}>

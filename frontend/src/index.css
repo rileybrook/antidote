@@ -136,8 +136,10 @@ code {
 }
 .fa.fa-minus-circle {
   color: whitesmoke;
+  cursor: pointer;
 }
 .fa.fa-plus-circle {
-  size: 3px;
+  size: "3px";
+  cursor: pointer;
   color: white;
 }

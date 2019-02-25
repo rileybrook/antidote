@@ -5,12 +5,12 @@ import {
   UPDATE_BILLING_LINE,
   DELETE_BILLING_LINE,
   GET_BILLING_CODES,
-  RESET_BILLING_LINES
+  RESET_CLAIM
 } from "./actionTypes"
 
-export const resetBillingLines = () => {
+export const resetClaim = () => {
   return {
-    type: RESET_BILLING_LINES
+    type: RESET_CLAIM
   }
 }
 

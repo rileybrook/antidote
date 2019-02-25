@@ -3,19 +3,12 @@ import {
   SUBMIT_CLAIM,
   SUBMIT_CLAIM_SUCCESS,
   SUBMIT_CLAIM_FAILURE,
-  RESET_INDICATORS,
-  RESET_CLAIM
+  RESET_INDICATORS
 } from "./actionTypes"
 
 export const submitClaim = () => {
   return {
     type: SUBMIT_CLAIM
-  }
-}
-
-export const resetClaim = () => {
-  return {
-    type: RESET_CLAIM
   }
 }
 

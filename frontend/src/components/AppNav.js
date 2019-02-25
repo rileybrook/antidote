@@ -1,10 +1,21 @@
 import React, { Component } from "react"
+import { connect } from "react-redux"
+
+import { showModal } from "../actions/modalActions"
+import { MODAL_PATIENT } from "./ModalTypes"
+
 import SideNav, { Nav, NavItem, NavIcon } from "@trendmicro/react-sidenav"
 import "@trendmicro/react-sidenav/dist/react-sidenav.css"
+
 class AppNav extends Component {
   state = {
     isOpen: false
   }
+
+  showPatientSearch = () => {
+    this.props.showModal(MODAL_PATIENT)
+  }
+
   toggle = () => {
     this.setState({
       isOpen: !this.state.isOpen
@@ -12,7 +23,18 @@ class AppNav extends Component {
   }
   render() {
     return (
-      <SideNav className="color-black space-between">
+      <SideNav
+        className="color-black space-between"
+        onSelect={selected => {
+          switch (selected) {
+            case "search":
+              this.showPatientSearch()
+              break
+
+            default:
+          }
+        }}
+      >
         <Nav defaultSelected="home">
           <NavItem eventKey="home">
             <NavIcon>
@@ -52,4 +74,21 @@ class AppNav extends Component {
   }
 }
 
-export default AppNav
+const mapStateToProps = state => {
+  return {
+    billingCodes: state.billingReducer.billingCodes,
+    selectedPatient: state.patientReducer.selectedPatient,
+    invalidClaim: state.mainReducer.invalidClaim,
+    lastChitNumberAdded: state.mainReducer.lastChitNumberAdded,
+    lastClaimSubmitError: state.mainReducer.lastClaimSubmitError
+  }
+}
+
+const mapDispatchToProps = dispatch => ({
+  showModal: modelType => dispatch(showModal(modelType))
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AppNav)

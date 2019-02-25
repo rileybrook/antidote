@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import BillingLine from "./BillingLine"
 
 import { Row, Col, Button } from "reactstrap"
+import { submitClaim } from "../actions/mainActions"
 import { newBillingLine } from "../actions/billingActions"
 
 class BillingSection extends Component {
@@ -14,6 +15,10 @@ class BillingSection extends Component {
 
   handlesNewBillingLineClicked = () => {
     return this.props.newBillingLine()
+  }
+
+  handlesSubmitClaimClicked = () => {
+    return this.props.submitClaim()
   }
 
   render() {
@@ -29,6 +34,13 @@ class BillingSection extends Component {
         {this.props.billingLines.map((elem, index) => {
           return <BillingLine key={index} currentLine={elem} />
         })}
+        <Row className="mb-3">
+          <Col md={{ size: 3, offset: 0 }}>
+            <Button onClick={this.handlesSubmitClaimClicked}>
+              Submit claim
+            </Button>
+          </Col>
+        </Row>
       </React.Fragment>
     )
   }
@@ -39,7 +51,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  newBillingLine: () => dispatch(newBillingLine())
+  newBillingLine: () => dispatch(newBillingLine()),
+  submitClaim: () => dispatch(submitClaim())
 })
 
 export default connect(

@@ -3,7 +3,6 @@ import { connect } from "react-redux"
 import { delay } from "../utility"
 import { showModal } from "../actions/modalActions"
 
-import { submitClaim } from "../actions/mainActions"
 import { loadBillingCodes, newBillingLine } from "../actions/billingActions"
 import { MODAL_PATIENT } from "./ModalTypes"
 import { ReactComponent as Antidote } from "../images/antidote.svg"
@@ -19,8 +18,8 @@ class AppMain extends Component {
 
     this.state = {
       //TODO(bobby) set these back to false to show logo
-      userClickedStart: true,
-      userClickedInvoice: true,
+      userClickedStart: false,
+      userClickedInvoice: false,
       noPatientSelectedTooltipShown: false
     }
   }
@@ -73,10 +72,6 @@ class AppMain extends Component {
     this.setState({
       noPatientSelectedTooltipShown: false
     })
-  }
-
-  handlesSubmitClaimClicked = () => {
-    return this.props.submitClaim()
   }
 
   renderInvalidInputAlert = warning => {
@@ -153,13 +148,6 @@ class AppMain extends Component {
               <BillingSection />
             </Col>
           </Row>
-          <Row align="center" className="mb-3">
-            <Col md={{ size: 3, offset: 0 }}>
-              <Button onClick={this.handlesSubmitClaimClicked}>
-                Submit claim
-              </Button>
-            </Col>
-          </Row>
           {this.props.invalidClaim &&
             this.renderInvalidInputAlert("The claim contains errors")}
           {this.props.lastChitNumberAdded &&
@@ -185,8 +173,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   showModal: modelType => dispatch(showModal(modelType)),
   newBillingLine: () => dispatch(newBillingLine()),
-  loadBillingCodes: () => dispatch(loadBillingCodes()),
-  submitClaim: () => dispatch(submitClaim())
+  loadBillingCodes: () => dispatch(loadBillingCodes())
 })
 
 export default connect(

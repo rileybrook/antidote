@@ -74,7 +74,7 @@ class PatientSearchModal extends Component {
       <Modal
         size="xl"
         isOpen={this.props.modalIsOpen}
-        className="patient-search"
+        className="patient-search-modal"
       >
         <ModalHeader toggle={this.props.hideModal}>Patient Search</ModalHeader>
         <ModalBody>

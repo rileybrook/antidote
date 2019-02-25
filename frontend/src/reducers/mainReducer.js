@@ -9,9 +9,7 @@ import {
 const initialState = {
   invalidClaim: false,
   lastChitNumberAdded: null,
-  lastClaimSubmitError: null,
-  practitioner: { licence: "123456", location: "12345" },
-  patient: { medicare: "XXXX01010112", dx: "12345" }
+  lastClaimSubmitError: null
 }
 
 export default function(state = initialState, action) {

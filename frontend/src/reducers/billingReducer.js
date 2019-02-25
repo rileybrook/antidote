@@ -1,20 +1,22 @@
 import {
+  RESET_CLAIM,
   NEW_BILLING_LINE,
   UPDATE_BILLING_LINE,
   DELETE_BILLING_LINE,
-  GET_BILLING_CODES,
-  RESET_BILLING_LINES
+  GET_BILLING_CODES
 } from "../actions/actionTypes"
 
 const initialState = {
   billingLines: [],
-  billingCodes: []
+  billingCodes: [],
+  practitioner: { licence: "123456", location: "12345" },
+  patient: { medicare: "XXXX01010112", dx: "12345" }
 }
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case RESET_BILLING_LINES:
-      return { ...state, billingLines: [] }
+    case RESET_CLAIM:
+      return { ...state, billingLines: [], patient: null }
 
     case NEW_BILLING_LINE:
       const newItem = {

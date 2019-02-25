@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import { Alert, Button, Input, Fade, Row, Col, Label } from "reactstrap"
 
-import { updateBillingLine, deleteBillingLine } from "../actions/billingActions"
+import { deleteBillingLine, updateBillingLine } from "../actions/billingActions"
 
 class BillingLine extends Component {
   constructor(props) {
@@ -166,9 +166,11 @@ class BillingLine extends Component {
       <React.Fragment>
         <Row key={this.props.rowKey} className="mb-3">
           <Col className="mb-1" xs={1} sm={1} md={1}>
-            <Button className="" onClick={this.deleteBillingLine}>
-              D
-            </Button>
+            <i
+              className="fa fa-minus-circle"
+              color="white"
+              onClick={this.deleteBillingLine}
+            />
           </Col>
           <Col
             xs={{ size: 5, offset: 0 }}

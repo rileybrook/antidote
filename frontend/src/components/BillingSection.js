@@ -26,9 +26,11 @@ class BillingSection extends Component {
       <React.Fragment>
         <Row className="mb-3">
           <Col md={{ size: 3, offset: 0 }}>
-            <Button onClick={this.handlesNewBillingLineClicked}>
-              New billing line
-            </Button>
+            <i
+              className="fa fa-plus-circle"
+              style={{ size: "5x" }}
+              onClick={this.handlesNewBillingLineClicked}
+            />
           </Col>
         </Row>
         {this.props.billingLines.map((elem, index) => {

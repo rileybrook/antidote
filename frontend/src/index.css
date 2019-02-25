@@ -134,3 +134,10 @@ code {
   transition: all 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   opacity: 1;
 }
+.fa.fa-minus-circle {
+  color: whitesmoke;
+}
+.fa.fa-plus-circle {
+  size: 3px;
+  color: white;
+}

@@ -1,6 +1,6 @@
 import {
-  GET_PATIENTS,
   PATIENTS_LOADING,
+  GET_PATIENTS,
   SET_PATIENT
 } from "../actions/actionTypes"
 

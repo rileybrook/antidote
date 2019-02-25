@@ -1,5 +1,6 @@
 import {
   NEW_BILLING_LINE,
+  UPDATE_BILLING_LINE,
   DELETE_BILLING_LINE,
   GET_BILLING_CODES
 } from "./actionTypes"
@@ -8,6 +9,21 @@ import { serverAddress } from "../config"
 export const newBillingLine = () => {
   return {
     type: NEW_BILLING_LINE
+  }
+}
+
+export const updateBillingLine = (
+  lineNumber,
+  property,
+  propertyName,
+  propertyValue
+) => {
+  return {
+    type: UPDATE_BILLING_LINE,
+    lineNumber,
+    property,
+    propertyName,
+    propertyValue
   }
 }
 

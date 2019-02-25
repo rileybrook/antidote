@@ -94,8 +94,8 @@ class PatientSearchDropdown extends Component {
 
     return (
       <Autosuggest
-        type="submit"
         innerId="patientSearchDropdown"
+        type="submit"
         ref={this.patientSearchDropdownRef}
         className="patient-search-autosuggest"
         suggestions={suggestions}

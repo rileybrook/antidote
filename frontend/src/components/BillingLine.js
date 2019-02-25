@@ -1,15 +1,14 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { Button, Input, Fade, Row, Col, Label } from "reactstrap"
+import { Alert, Button, Input, Fade, Row, Col, Label } from "reactstrap"
 
-import { deleteBillingLine } from "../actions/billingActions"
+import { updateBillingLine, deleteBillingLine } from "../actions/billingActions"
 
 class BillingLine extends Component {
   constructor(props) {
     super(props)
 
     this.state = props.currentLine
-    this.state.fadeInDescription = true
   }
 
   handleServiceDateChange = event => {
@@ -26,6 +25,44 @@ class BillingLine extends Component {
 
   handleUnitsChange = event => {
     this.setState({ units: event.target.value })
+  }
+
+  handleServiceDateBlur = () => {
+    this.props.updateBillingLine(
+      this.state.lineNumber,
+      {
+        serviceDate: this.state.serviceDate
+      },
+      "serviceDate",
+      this.state.serviceDate
+    )
+  }
+
+  handleBillingCodeBlur = () => {
+    this.props.updateBillingLine(
+      this.state.lineNumber,
+      { billingCode: this.state.billingCode },
+      "billingCode",
+      this.state.billingCode
+    )
+  }
+
+  handldeRefDoctorBlur = () => {
+    this.props.updateBillingLine(
+      this.state.lineNumber,
+      { refDoctor: this.state.refDoctor },
+      "refDoctor",
+      this.state.refDoctor
+    )
+  }
+
+  handleUnitsBlur = () => {
+    this.props.updateBillingLine(
+      this.state.lineNumber,
+      { units: this.state.units },
+      "units",
+      this.state.units
+    )
   }
 
   deleteBillingLine = () => {
@@ -56,6 +93,7 @@ class BillingLine extends Component {
             type="text"
             placeholder="reference doctor"
             onChange={this.handldeRefDoctorChange}
+            onBlur={this.handldeRefDoctorBlur}
             value={this.state.refDoctor}
           />
         </Fade>
@@ -86,6 +124,7 @@ class BillingLine extends Component {
             type="text"
             placeholder="units"
             onChange={this.handleUnitsChange}
+            onBlur={this.handleUnitsBlur}
             value={this.state.units}
           />
         </Fade>
@@ -125,7 +164,18 @@ class BillingLine extends Component {
     )
   }
 
+  renderInvalidInputAlert = warning => {
+    return (
+      <Row className="mb-3">
+        <Col className="" md={{ size: 7, offset: 1 }}>
+          <Alert color="danger">{warning}</Alert>
+        </Col>
+      </Row>
+    )
+  }
+
   render() {
+    const { errors } = this.props.billingLines[this.state.lineNumber - 1]
     return (
       <React.Fragment>
         <Row key={this.props.rowKey} className="mb-3">
@@ -142,8 +192,9 @@ class BillingLine extends Component {
             <Input
               className="ml-3 mb-1"
               type="text"
-              placeholder="service date"
+              placeholder="YY-MM-DD"
               onChange={this.handleServiceDateChange}
+              onBlur={this.handleServiceDateBlur}
               value={this.state.serviceDate}
             />
           </Col>
@@ -157,6 +208,7 @@ class BillingLine extends Component {
               type="text"
               placeholder="billing code"
               onChange={this.handleBillingCodeChange}
+              onBlur={this.handleBillingCodeBlur}
               value={this.state.billingCode}
             />
           </Col>
@@ -164,6 +216,17 @@ class BillingLine extends Component {
           {this.renderCount()}
           {this.renderBillingCodeFee()}
         </Row>
+        {errors.serviceDate &&
+          this.renderInvalidInputAlert("Invalid service date")}
+        {errors.billingCode &&
+          this.renderInvalidInputAlert("Invalid billing code")}
+        {errors.refDoctor &&
+          this.renderInvalidInputAlert(
+            "Invalid referring doctor's licence number"
+          )}
+        {errors.units &&
+          this.renderInvalidInputAlert("Invalid number of units")}
+
         {this.renderBillingCodeDescription()}
       </React.Fragment>
     )
@@ -172,11 +235,17 @@ class BillingLine extends Component {
 
 const mapStateToProps = state => {
   return {
+    billingLines: state.billingReducer.billingLines,
     billingCodes: state.billingReducer.billingCodes
   }
 }
 
 const mapDispatchToProps = dispatch => ({
+  updateBillingLine: (linenumber, property, propertyName, propertyValue) =>
+    dispatch(
+      updateBillingLine(linenumber, property, propertyName, propertyValue)
+    ),
+
   deleteBillingLine: lineNumber => dispatch(deleteBillingLine(lineNumber))
 })
 

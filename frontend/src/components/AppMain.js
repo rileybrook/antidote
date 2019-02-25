@@ -1,6 +1,9 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
+import { delay } from "../utility"
 import { showModal } from "../actions/modalActions"
+
+import { submitClaim } from "../actions/mainActions"
 import { loadBillingCodes, newBillingLine } from "../actions/billingActions"
 import { MODAL_PATIENT } from "./ModalTypes"
 import { ReactComponent as Antidote } from "../images/antidote.svg"
@@ -8,7 +11,7 @@ import { ReactComponent as Antidote } from "../images/antidote.svg"
 import BillingSection from "./BillingSection"
 import PatientSearchDropdown from "./PatientSearchDropdown"
 
-import { Button, Container, Row, Col } from "reactstrap"
+import { Alert, Button, Container, Row, Col, Tooltip } from "reactstrap"
 
 class AppMain extends Component {
   constructor(props) {
@@ -16,8 +19,9 @@ class AppMain extends Component {
 
     this.state = {
       //TODO(bobby) set these back to false to show logo
-      userClickedStart: false,
-      userClickedInvoice: false
+      userClickedStart: true,
+      userClickedInvoice: true,
+      noPatientSelectedTooltipShown: false
     }
   }
 
@@ -51,9 +55,38 @@ class AppMain extends Component {
         console.log("Unable to set focus to the patient search field")
       }
     } else if (!this.state.userClickedInvoice) {
-      this.setState({ userClickedInvoice: true })
-      this.props.newBillingLine()
+      if (this.props.selectedPatient === "") {
+        this.toggleNoPatientSelected()
+      } else {
+        this.setState({ userClickedInvoice: true })
+        this.props.newBillingLine()
+      }
     }
+  }
+
+  toggleNoPatientSelected = async () => {
+    if (this.state.noPatientSelectedTooltipShown) return
+    this.setState({
+      noPatientSelectedTooltipShown: !this.state.noPatientSelectedTooltipShown
+    })
+    await delay(5000)
+    this.setState({
+      noPatientSelectedTooltipShown: false
+    })
+  }
+
+  handlesSubmitClaimClicked = () => {
+    return this.props.submitClaim()
+  }
+
+  renderInvalidInputAlert = warning => {
+    return (
+      <Row className="mb-3">
+        <Col className="" md={{ size: 7, offset: 1 }}>
+          <Alert color="danger">{warning}</Alert>
+        </Col>
+      </Row>
+    )
   }
 
   render() {
@@ -75,9 +108,18 @@ class AppMain extends Component {
               </div>
               <div className={"get-started-div" + this.stringClickedInvoice()}>
                 <Button
+                  id="Start-Button"
                   className={"get-started" + this.stringClickedInvoice()}
                   onClick={this.handleStartClick}
                 >
+                  <Tooltip
+                    placement="right"
+                    isOpen={this.state.noPatientSelectedTooltipShown}
+                    target="Start-Button"
+                    toggle={this.toggle}
+                  >
+                    You must first select a patient
+                  </Tooltip>
                   {this.getButtonText()}
                 </Button>
               </div>
@@ -91,6 +133,15 @@ class AppMain extends Component {
               <BillingSection />
             </Col>
           </Row>
+          <Row align="center" className="mb-3">
+            <Col md={{ size: 3, offset: 0 }}>
+              <Button onClick={this.handlesSubmitClaimClicked}>
+                Submit claim
+              </Button>
+            </Col>
+          </Row>
+          {this.props.invalidClaim &&
+            this.renderInvalidInputAlert("The claim contains errors")}
         </Container>
       </main>
     )
@@ -99,14 +150,17 @@ class AppMain extends Component {
 
 const mapStateToProps = state => {
   return {
-    billingCodes: state.billingReducer.billingCodes
+    billingCodes: state.billingReducer.billingCodes,
+    selectedPatient: state.patientReducer.selectedPatient,
+    invalidClaim: state.mainReducer.invalidClaim
   }
 }
 
 const mapDispatchToProps = dispatch => ({
   showModal: modelType => dispatch(showModal(modelType)),
   newBillingLine: () => dispatch(newBillingLine()),
-  loadBillingCodes: () => dispatch(loadBillingCodes())
+  loadBillingCodes: () => dispatch(loadBillingCodes()),
+  submitClaim: () => dispatch(submitClaim())
 })
 
 export default connect(

@@ -1,13 +1,14 @@
-// import { USER_CLICKED_START, SHOW_BILLING_SECTION } from "./actionTypes"
+import { CLAIM_VALIDATION_ERROR, SUBMIT_CLAIM } from "./actionTypes"
 
-// export const userClickedStart = () => {
-//   return {
-//     type: USER_CLICKED_START
-//   }
-// }
+export function setClaimValidationError(errors) {
+  return {
+    type: CLAIM_VALIDATION_ERROR,
+    errors
+  }
+}
 
-// export const showBillingSection = () => {
-//   return {
-//     type: SHOW_BILLING_SECTION
-//   }
-// }
+export const submitClaim = () => {
+  return {
+    type: SUBMIT_CLAIM
+  }
+}

@@ -45,12 +45,7 @@ class AppNav extends Component {
         }}
       >
         <Nav>
-            <Antidote className="m-3" width="35px" height="35px"/>
-          {/* <NavItem eventKey="home">
-            <NavIcon>
-              <i className="fa fa-fw fa-home" style={{ fontSize: "2em" }} />
-            </NavIcon>
-          </NavItem> */}
+          <Antidote className="m-3" width="35px" height="35px" />
           <NavItem eventKey="search">
             <NavIcon>
               <i className="fa fa-fw fa-search" style={{ fontSize: "2em" }} />

@@ -6,6 +6,7 @@ import { MODAL_PATIENT } from "./ModalTypes"
 
 import SideNav, { Nav, NavItem, NavIcon } from "@trendmicro/react-sidenav"
 import "@trendmicro/react-sidenav/dist/react-sidenav.css"
+import { ReactComponent as Antidote } from "../images/antidote.svg"
 
 class AppNav extends Component {
   state = {
@@ -31,16 +32,25 @@ class AppNav extends Component {
               this.showPatientSearch()
               break
 
+            case "print":
+              window.print()
+              break
+
+            case "github":
+              window.open("https://github.com/rileybrook/antidote")
+              break
+
             default:
           }
         }}
       >
-        <Nav defaultSelected="home">
-          <NavItem eventKey="home">
+        <Nav>
+            <Antidote className="m-3" width="35px" height="35px"/>
+          {/* <NavItem eventKey="home">
             <NavIcon>
               <i className="fa fa-fw fa-home" style={{ fontSize: "2em" }} />
             </NavIcon>
-          </NavItem>
+          </NavItem> */}
           <NavItem eventKey="search">
             <NavIcon>
               <i className="fa fa-fw fa-search" style={{ fontSize: "2em" }} />

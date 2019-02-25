@@ -1,13 +1,44 @@
-import { CLAIM_VALIDATION_ERROR } from "../actions/actionTypes"
+import {
+  CLAIM_VALIDATION_ERROR,
+  RESET_INDICATORS,
+  SUBMIT_CLAIM_SUCCESS,
+  SUBMIT_CLAIM_FAILURE,
+  RESET_CLAIM
+} from "../actions/actionTypes"
 
 const initialState = {
-  invalidClaim: false
+  invalidClaim: false,
+  lastChitNumberAdded: null,
+  lastClaimSubmitError: null,
+  practitioner: { licence: "123456", location: "12345" },
+  patient: { medicare: "XXXX01010112", dx: "12345" }
 }
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case RESET_CLAIM:
+      return {
+        ...state,
+        practitioner: initialState.practitioner,
+        patient: initialState.patient
+      }
+
     case CLAIM_VALIDATION_ERROR:
       return { ...state, invalidClaim: true }
+
+    case SUBMIT_CLAIM_SUCCESS:
+      return { ...state, lastChitNumberAdded: action.chitNumber }
+
+    case SUBMIT_CLAIM_FAILURE:
+      return { ...state, lastClaimSubmitError: action.error }
+
+    case RESET_INDICATORS:
+      return {
+        ...state,
+        invalidClaim: false,
+        lastChitNumberAdded: null,
+        lastClaimSubmitError: null
+      }
 
     default:
       return state

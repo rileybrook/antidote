@@ -2,7 +2,8 @@ import {
   NEW_BILLING_LINE,
   UPDATE_BILLING_LINE,
   DELETE_BILLING_LINE,
-  GET_BILLING_CODES
+  GET_BILLING_CODES,
+  RESET_BILLING_LINES
 } from "../actions/actionTypes"
 
 const initialState = {
@@ -12,6 +13,9 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case RESET_BILLING_LINES:
+      return { ...state, billingLines: [] }
+
     case NEW_BILLING_LINE:
       const newItem = {
         lineNumber: state.billingLines.length + 1,
@@ -32,15 +36,17 @@ export default function(state = initialState, action) {
       }
 
     case UPDATE_BILLING_LINE:
-      let newArrayUpdate = state.billingLines.map((elem, i) => {
+      const newArrayUpdate = state.billingLines.map((elem, i) => {
         if (i + 1 !== action.lineNumber) {
           return elem
         }
-        let newElem = {
-          ...elem,
-          errors: { ...elem.errors, ...action.errors }
-        }
-        newElem[action.propertyName] = action.propertyValue
+        const newElem = Object.assign(
+          {
+            ...elem,
+            errors: { ...elem.errors, ...action.errors }
+          },
+          action.property
+        )
         return newElem
       })
       return { ...state, billingLines: newArrayUpdate }

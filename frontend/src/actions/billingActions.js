@@ -1,10 +1,18 @@
+import { serverAddress } from "../config"
+
 import {
   NEW_BILLING_LINE,
   UPDATE_BILLING_LINE,
   DELETE_BILLING_LINE,
-  GET_BILLING_CODES
+  GET_BILLING_CODES,
+  RESET_BILLING_LINES
 } from "./actionTypes"
-import { serverAddress } from "../config"
+
+export const resetBillingLines = () => {
+  return {
+    type: RESET_BILLING_LINES
+  }
+}
 
 export const newBillingLine = () => {
   return {
@@ -12,18 +20,11 @@ export const newBillingLine = () => {
   }
 }
 
-export const updateBillingLine = (
-  lineNumber,
-  property,
-  propertyName,
-  propertyValue
-) => {
+export const updateBillingLine = (lineNumber, property) => {
   return {
     type: UPDATE_BILLING_LINE,
     lineNumber,
-    property,
-    propertyName,
-    propertyValue
+    property
   }
 }
 

@@ -28,41 +28,27 @@ class BillingLine extends Component {
   }
 
   handleServiceDateBlur = () => {
-    this.props.updateBillingLine(
-      this.state.lineNumber,
-      {
-        serviceDate: this.state.serviceDate
-      },
-      "serviceDate",
-      this.state.serviceDate
-    )
+    this.props.updateBillingLine(this.state.lineNumber, {
+      serviceDate: this.state.serviceDate
+    })
   }
 
   handleBillingCodeBlur = () => {
-    this.props.updateBillingLine(
-      this.state.lineNumber,
-      { billingCode: this.state.billingCode },
-      "billingCode",
-      this.state.billingCode
-    )
+    this.props.updateBillingLine(this.state.lineNumber, {
+      billingCode: this.state.billingCode
+    })
   }
 
   handldeRefDoctorBlur = () => {
-    this.props.updateBillingLine(
-      this.state.lineNumber,
-      { refDoctor: this.state.refDoctor },
-      "refDoctor",
-      this.state.refDoctor
-    )
+    this.props.updateBillingLine(this.state.lineNumber, {
+      refDoctor: this.state.refDoctor
+    })
   }
 
   handleUnitsBlur = () => {
-    this.props.updateBillingLine(
-      this.state.lineNumber,
-      { units: this.state.units },
-      "units",
-      this.state.units
-    )
+    this.props.updateBillingLine(this.state.lineNumber, {
+      units: this.state.units
+    })
   }
 
   deleteBillingLine = () => {
@@ -241,10 +227,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  updateBillingLine: (linenumber, property, propertyName, propertyValue) =>
-    dispatch(
-      updateBillingLine(linenumber, property, propertyName, propertyValue)
-    ),
+  updateBillingLine: (linenumber, property) =>
+    dispatch(updateBillingLine(linenumber, property)),
 
   deleteBillingLine: lineNumber => dispatch(deleteBillingLine(lineNumber))
 })

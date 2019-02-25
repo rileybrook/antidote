@@ -3,13 +3,15 @@ import rootReducer from "./reducers"
 import thunk from "redux-thunk"
 import validateClaimMiddleware from "./middleware/validateClaimMiddleware"
 import validateBillingLinePropertyUpdateMiddleware from "./middleware/validateBillingLinePropertyUpdateMiddleware"
+import apiMiddleware from "./middleware/apiMiddleware"
 
 const initialState = {}
 
 const middleware = [
   thunk,
   validateClaimMiddleware,
-  validateBillingLinePropertyUpdateMiddleware
+  validateBillingLinePropertyUpdateMiddleware,
+  apiMiddleware
 ]
 
 let composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose

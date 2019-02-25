@@ -2,9 +2,9 @@ import moment from "moment"
 
 export const billingLinePropertyValidators = {
   serviceDate: serviceDateValid,
-  billingCode: billingCodeValid
-  // refDoctor: refDoctorValid,
-  // units: unitsValid
+  billingCode: billingCodeValid,
+  refDoctor: refDoctorValid,
+  units: unitsValid
 }
 
 function serviceDateValid({ serviceDate }) {
@@ -32,9 +32,11 @@ function isNaturalNumberLessThanOrEqualTo(str, lessThanOrEqualTo) {
 }
 
 function refDoctorValid({ refDoctor }) {
+  if (!refDoctor) return true
   return isNaturalNumberLessThanOrEqualTo(refDoctor, 999999)
 }
 
 function unitsValid({ units }) {
+  if (!units) return true
   return isNaturalNumberLessThanOrEqualTo(units, 99)
 }

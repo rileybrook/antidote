@@ -89,6 +89,26 @@ class AppMain extends Component {
     )
   }
 
+  renderClaimSubmitSuccessAlert = chitNumber => {
+    return (
+      <Row className="mb-3">
+        <Col className="" md={{ size: 7, offset: 1 }}>
+          <Alert color="success">{`Claim ${chitNumber} succesfully created`}</Alert>
+        </Col>
+      </Row>
+    )
+  }
+
+  renderClaimSubmitFailedAlert = error => {
+    return (
+      <Row className="mb-3">
+        <Col className="" md={{ size: 7, offset: 1 }}>
+          <Alert color="danger">{`Claim submission failed: ${error}`}</Alert>
+        </Col>
+      </Row>
+    )
+  }
+
   render() {
     return (
       <main className="main color-grey">
@@ -142,6 +162,10 @@ class AppMain extends Component {
           </Row>
           {this.props.invalidClaim &&
             this.renderInvalidInputAlert("The claim contains errors")}
+          {this.props.lastChitNumberAdded &&
+            this.renderClaimSubmitSuccessAlert(this.props.lastChitNumberAdded)}
+          {this.props.lastClaimSubmitError &&
+            this.renderClaimSubmitFailedAlert(this.props.lastClaimSubmitError)}
         </Container>
       </main>
     )
@@ -152,7 +176,9 @@ const mapStateToProps = state => {
   return {
     billingCodes: state.billingReducer.billingCodes,
     selectedPatient: state.patientReducer.selectedPatient,
-    invalidClaim: state.mainReducer.invalidClaim
+    invalidClaim: state.mainReducer.invalidClaim,
+    lastChitNumberAdded: state.mainReducer.lastChitNumberAdded,
+    lastClaimSubmitError: state.mainReducer.lastClaimSubmitError
   }
 }
 

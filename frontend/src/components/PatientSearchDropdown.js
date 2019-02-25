@@ -80,6 +80,10 @@ class PatientSearchDropdown extends Component {
       default:
     }
   }
+  onClick = event => {
+    event.preventDefault()
+    this.props.setPatient({ value: event.target.value })
+  }
 
   render() {
     const { value, suggestions } = this.state
@@ -89,7 +93,8 @@ class PatientSearchDropdown extends Component {
       placeholder: "Search for patient . . .",
       value,
       onChange: this.onChange,
-      onKeyDown: this.onKeyDown
+      onKeyDown: this.onKeyDown,
+      onClick: this.onClick
     }
 
     return (

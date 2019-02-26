@@ -118,8 +118,16 @@ code {
 
 /* --- BUTTONS --- */
 .btn {
+  border-width: medium;
+  border-color: #895bdc !important;
   border-radius: 5px !important;
-  background-color: #895bdc !important;
+  background: none !important;
+  box-shadow: none !important;
+  color: #afafaf !important
+}
+
+.btn:hover:not(:focus) {
+  border-color:#E2AE74!important;
 }
 
 .billingSection.clickedInvoice {
@@ -130,6 +138,7 @@ code {
   cursor: pointer;
   color: rgba(235, 102, 76, 0.705);
   font-size: 2vmax;
+  margin-top: 15px
 }
 .fa.fa-plus-circle {
   cursor: pointer;

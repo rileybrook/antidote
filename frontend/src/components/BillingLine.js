@@ -165,7 +165,7 @@ class BillingLine extends Component {
     return (
       <React.Fragment>
         <Row className="mb-3">
-          <Col className="ml-5 mb-1" xs={1} sm={1} md={1}>
+          <Col className="ml-5 mb-4" xs={1} sm={1} md={1}>
             <i
               className="fa fa-minus-circle"
               onClick={this.deleteBillingLine}

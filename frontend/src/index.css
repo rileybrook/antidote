@@ -72,7 +72,7 @@ code {
 }
 
 .get-started {
-  width: 200px;
+  width: 200px !important;
   opacity: 1;
 }
 
@@ -89,7 +89,7 @@ code {
   background-color: #895bdc !important;
 }
 .color-white {
-  color: #d0ced8 !important;
+  color: #8f8f8f !important;
 }
 .color-black {
   background-color: #273141 !important;
@@ -126,8 +126,18 @@ code {
 
 /* --- BUTTONS --- */
 .btn {
-  border-radius: 15px !important;
-  background-color: #895bdc !important;
+  width: 300px;
+  font-size: 1.2rem !important;
+  border-width: medium;
+  border-color: #895bdc !important;
+  border-radius: 5px !important;
+  background: none !important;
+  box-shadow: none !important;
+  color: #afafaf !important
+}
+
+.btn:hover:not(:focus) {
+  border-color:#E2AE74!important;
 }
 
 .billingSection.clickedInvoice {
@@ -136,31 +146,51 @@ code {
 }
 .fa.fa-minus-circle {
   cursor: pointer;
-  color: rgba(221, 165, 119, 0.808);
+  color: rgba(235, 102, 76, 0.705);
   font-size: 2vmax;
+  margin-top: 15px
 }
 .fa.fa-plus-circle {
   cursor: pointer;
-  color: rgba(76, 235, 174, 0.726);
+  color: rgba(76, 235, 174, 0.651);
   font-size: 2vmax;
 }
 
 /* --- INPUT FIELDS --- */
 .form-control {
-  border-radius: 15px !important;
+  border-radius: 4px !important;
   text-align: center;
+  color: #8f8f8f !important;
+}
+
+.form-control:focus {
+  background: none !important;
+  border-color: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  color: #afafaf !important;
 }
 
 .form-control:focus:not(:hover) {
-  background-color: #ffffff;
+  background-color: none;
 }
 
 .form-control:hover:not(:focus) {
   border-color: #895bdc;
-  border-width: 2px;
+  border-width: 3px;
   /* background-color: #f1f1f1; */
 }
 
 .billingSection {
   opacity: 0;
+}
+
+input[type="text"] {
+  background: transparent;
+  border: none;
+  color: #afafaf !important;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 20px;
+  border-bottom: 2px solid #8f8f8f;
 }

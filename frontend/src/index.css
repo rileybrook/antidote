@@ -88,12 +88,6 @@ code {
 .color-purple {
   background-color: #895bdc !important;
 }
-.color-green {
-  background-color: #3ca36a !important;
-}
-.color-red {
-  background-color: #c6693d !important;
-}
 .color-white {
   color: #d0ced8 !important;
 }
@@ -103,7 +97,6 @@ code {
 .color-grey {
   background-image: linear-gradient(#8880a6, #423c5c);
 }
-
 
 /* --- MODAL --- */
 .modal-xl {
@@ -151,24 +144,3 @@ code {
 .billingSection {
   opacity: 0;
 }
-
-<<<<<<< Updated upstream
-.billingSection.clickedInvoice {
-  transition: all 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  opacity: 1;
-}
-.fa.fa-minus-circle {
-  margin-top: 7px;
-  cursor: pointer;
-  color: whitesmoke;
-  font-size: 2vmax;
-}
-.fa.fa-plus-circle {
-  margin-top: 7px;
-  cursor: pointer;
-  color: white;
-  font-size: 2vmax;
-}
-=======
-
->>>>>>> Stashed changes

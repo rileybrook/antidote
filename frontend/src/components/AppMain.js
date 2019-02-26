@@ -77,7 +77,7 @@ class AppMain extends Component {
   renderInvalidInputAlert = warning => {
     return (
       <Row className="mb-3">
-        <Col className="" md={{ size: 7, offset: 1 }}>
+        <Col className="" md={{ size: 7, offset: 0 }}>
           <Alert color="danger">{warning}</Alert>
         </Col>
       </Row>
@@ -87,7 +87,7 @@ class AppMain extends Component {
   renderClaimSubmitSuccessAlert = chitNumber => {
     return (
       <Row className="mb-3">
-        <Col className="" md={{ size: 7, offset: 1 }}>
+        <Col className="" md={{ size: 7, offset: 0 }}>
           <Alert color="success">{`Claim ${chitNumber} succesfully created`}</Alert>
         </Col>
       </Row>

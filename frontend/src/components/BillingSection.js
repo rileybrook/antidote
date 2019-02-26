@@ -28,7 +28,7 @@ class BillingSection extends Component {
           return <BillingLine key={index} index={index} />
         })}
         <Row className="mb-3">
-          <Col md={{ size: 3, offset: 0 }}>
+          <Col className="ml-5" md={{ size: 3, offset: 0 }}>
             <i
               className="fa fa-plus-circle"
               style={{ size: "5x" }}
@@ -36,29 +36,30 @@ class BillingSection extends Component {
             />
           </Col>
         </Row>
-        <Row className="mb-3">
-          <Col xs={{ offset: 9 }} sm={{ offset: 10 }} md={{ offset: 9 }}>
-            <Fade in={true} tag="h5" className="">
-              <Label className="ml-3 mt-2 color-white">
-                {"$" +
-                  this.props.billingLines
-                    .reduce((value, billingLine) => {
-                      if (!billingLine.units) {
-                        return value + billingLine.fee
-                      } else {
-                        return value + billingLine.fee * billingLine.units
-                      }
-                    }, 0)
-                    .toFixed(2)}
-              </Label>
-            </Fade>
-          </Col>
-        </Row>
+        {/* xs={{ offset: 9 }} sm={{ offset: 10 }} md={{ offset: 9 }} */}
         <Row className="mb-3">
           <Col md={{ size: 3, offset: 0 }}>
             <Button onClick={this.handlesSubmitClaimClicked}>
               Submit claim
             </Button>
+          </Col>
+          <Col>
+            <div className="d-flex flex-row-reverse">
+              <Fade in={true} tag="h5">
+                <Label className="mr-5 mt-2 color-white">
+                  {"$" +
+                    this.props.billingLines
+                      .reduce((value, billingLine) => {
+                        if (!billingLine.units) {
+                          return value + billingLine.fee
+                        } else {
+                          return value + billingLine.fee * billingLine.units
+                        }
+                      }, 0)
+                      .toFixed(2)}
+                </Label>
+              </Fade>
+            </div>
           </Col>
         </Row>
       </React.Fragment>

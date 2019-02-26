@@ -6,6 +6,41 @@ import {
   GET_BILLING_CODES
 } from "../actions/actionTypes"
 
+// {
+//   lineNumber: 1,
+//   serviceDate: "",
+//   billingCode: "356",
+//   fee: 123.45,
+//   description: null,
+//   requiresReferral: false,
+//   refDoctor: "",
+//   requiresUnits: false,
+//   units: "",
+//   errors: {
+//     serviceDate: null,
+//     billingCode: null,
+//     refDoctor: null,
+//     units: null
+//   }
+// },
+// {
+//   lineNumber: 2,
+//   serviceDate: "",
+//   billingCode: "9170",
+//   fee: 22,
+//   description: null,
+//   requiresReferral: false,
+//   refDoctor: "",
+//   requiresUnits: false,
+//   units: "",
+//   errors: {
+//     serviceDate: null,
+//     billingCode: null,
+//     refDoctor: null,
+//     units: null
+//   }
+// }
+
 const initialState = {
   billingLines: [],
   billingCodes: [],

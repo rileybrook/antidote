@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { Alert, Button, Input, Fade, Row, Col, Label } from "reactstrap"
+import { Alert, Input, Fade, Row, Col, Label } from "reactstrap"
 
 import { deleteBillingLine, updateBillingLine } from "../actions/billingActions"
 
@@ -117,15 +117,18 @@ class BillingLine extends Component {
     } else {
       fee = this.billingLine().fee * this.billingLine().units
     }
+
+    // className="ml-4"
+    // xs={{ size: 1, offset: 0 }}
+    // sm={{ size: 1, offset: 10 }}
+    // md={{ size: 1, offset: 0 }}
     return (
-      <Col
-        xs={{ size: 1, offset: 0 }}
-        sm={{ size: 1, offset: 10 }}
-        md={{ size: 1, offset: 0 }}
-      >
-        <Fade in={true} tag="h5" className="">
-          <Label className="mt-2 color-white">${fee.toFixed(2)}</Label>
-        </Fade>
+      <Col>
+        <div className="d-flex flex-row-reverse">
+          <Fade in={true} tag="h5">
+            <Label className="mr-5 mt-2 color-white">${fee.toFixed(2)}</Label>
+          </Fade>
+        </div>
       </Col>
     )
   }
@@ -161,7 +164,7 @@ class BillingLine extends Component {
     return (
       <React.Fragment>
         <Row className="mb-3">
-          <Col className="mb-1" xs={1} sm={1} md={1}>
+          <Col className="ml-5 mb-1" xs={1} sm={1} md={1}>
             <i
               className="fa fa-minus-circle"
               color="white"
@@ -174,7 +177,7 @@ class BillingLine extends Component {
             md={{ size: 2, offset: 0 }}
           >
             <Input
-              className="ml-3 mb-1"
+              className="mb-1"
               type="text"
               placeholder="YY-MM-DD"
               onChange={this.handleServiceDateChange}

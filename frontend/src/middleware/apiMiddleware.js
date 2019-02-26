@@ -19,7 +19,7 @@ const apiMiddleware = ({ dispatch, getState }) => next => async action => {
   let errorMessage = ""
 
   try {
-    const { practitioner, patient } = getState().mainReducer
+    const { practitioner, patient } = getState().billingReducer
     const billingLines = {
       billingLines: getState().billingReducer.billingLines
     }

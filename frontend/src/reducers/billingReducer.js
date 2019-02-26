@@ -23,7 +23,11 @@ export default function(state = initialState, action) {
         lineNumber: state.billingLines.length + 1,
         serviceDate: "",
         billingCode: "",
+        fee: null,
+        description: null,
+        requiresReferral: false,
         refDoctor: "",
+        requiresUnits: false,
         units: "",
         errors: {
           serviceDate: null,
@@ -42,13 +46,24 @@ export default function(state = initialState, action) {
         if (i + 1 !== action.lineNumber) {
           return elem
         }
-        const newElem = Object.assign(
+
+        let newElem = Object.assign(
           {
             ...elem,
             errors: { ...elem.errors, ...action.errors }
           },
           action.property
         )
+
+        let billingCode = {}
+        if (Object.keys(action.property)[0] === "billingCode") {
+          billingCode = state.billingCodes.find(
+            elem => action.property.billingCode === elem._id.toString()
+          )
+
+          newElem = Object.assign(newElem, billingCode)
+        }
+
         return newElem
       })
       return { ...state, billingLines: newArrayUpdate }

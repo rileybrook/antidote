@@ -25,7 +25,7 @@ class BillingSection extends Component {
     return (
       <React.Fragment>
         {this.props.billingLines.map((elem, index) => {
-          return <BillingLine key={index} currentLine={elem} />
+          return <BillingLine key={index} index={index} />
         })}
         <Row className="mb-3">
           <Col md={{ size: 3, offset: 0 }}>

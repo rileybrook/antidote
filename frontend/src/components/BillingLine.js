@@ -65,59 +65,66 @@ class BillingLine extends Component {
   }
 
   renderReferringDoctor = () => {
-    if (!this.billingLine().refDoctor && !this.billingLine().requiresReferral)
-      return null
-
     return (
       <Col
-        xs={{ size: 5, offset: 1 }}
+        xs={{ size: 5, offset: 0 }}
         sm={{ size: 3, offset: 0 }}
         md={{ size: 2, offset: 0 }}
       >
-        <Fade>
-          <Input
-            className="ml-3 mb-1"
-            type="text"
-            placeholder="referring doctor"
-            onChange={this.handldeRefDoctorChange}
-            value={this.billingLine().refDoctor}
-          />
-        </Fade>
+        {(this.billingLine().refDoctor ||
+          this.billingLine().requiresReferral) && (
+          <Fade>
+            <Input
+              className="ml-3 mb-1"
+              type="text"
+              placeholder="referring doctor"
+              onChange={this.handldeRefDoctorChange}
+              value={this.billingLine().refDoctor}
+            />
+          </Fade>
+        )}
       </Col>
     )
   }
 
   renderUnits = () => {
-    if (!this.billingLine().units && !this.billingLine().requiresUnits)
-      return null
-
     return (
       <Col
-        xs={{ size: 5, offset: 1 }}
-        sm={{ size: 3, offset: 0 }}
+        xs={{ size: 3, offset: 1 }}
+        sm={{ size: 2, offset: 0 }}
         md={{ size: 2, offset: 0 }}
       >
-        <Fade>
-          <Input
-            className="ml-3 mb-1"
-            type="text"
-            placeholder="units"
-            onChange={this.handleUnitsChange}
-            value={this.billingLine().units}
-          />
-        </Fade>
+        {(this.billingLine().units || this.billingLine().requiresUnits) && (
+          <Fade>
+            <Input
+              className="ml-3 mb-1"
+              type="text"
+              placeholder="units"
+              onChange={this.handleUnitsChange}
+              value={this.billingLine().units}
+            />
+          </Fade>
+        )}
       </Col>
     )
   }
 
   renderBillingCodeFee = () => {
     if (!this.billingLine().fee) return null
+    let fee = 0
+    if (!this.billingLine().units) {
+      fee = this.billingLine().fee
+    } else {
+      fee = this.billingLine().fee * this.billingLine().units
+    }
     return (
-      <Col className="text-center">
+      <Col
+        xs={{ size: 1, offset: 0 }}
+        sm={{ size: 1, offset: 10 }}
+        md={{ size: 1, offset: 0 }}
+      >
         <Fade in={true} tag="h5" className="">
-          <Label className="mt-2 color-white">
-            ${this.billingLine().fee.toFixed(2)}
-          </Label>
+          <Label className="mt-2 color-white">${fee.toFixed(2)}</Label>
         </Fade>
       </Col>
     )
@@ -177,7 +184,7 @@ class BillingLine extends Component {
           </Col>
           <Col
             xs={{ size: 5, offset: 0 }}
-            sm={{ size: 2, offset: 0 }}
+            sm={{ size: 3, offset: 0 }}
             md={{ size: 2, offset: 0 }}
           >
             <Input

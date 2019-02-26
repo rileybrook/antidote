@@ -80,9 +80,12 @@ class PatientSearchDropdown extends Component {
       default:
     }
   }
-  onClick = event => {
+
+  onSuggestionSelected = (event, { suggestion }) => {
     event.preventDefault()
-    this.props.setPatient({ value: event.target.value })
+    const value = getSuggestionValue(suggestion)
+    this.setState({ value })
+    this.props.setPatient({ value })
   }
 
   render() {
@@ -104,6 +107,7 @@ class PatientSearchDropdown extends Component {
         ref={this.patientSearchDropdownRef}
         className="patient-search-autosuggest"
         suggestions={suggestions}
+        onSuggestionSelected={this.onSuggestionSelected}
         onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
         onSuggestionsClearRequested={this.onSuggestionsClearRequested}
         getSuggestionValue={getSuggestionValue}

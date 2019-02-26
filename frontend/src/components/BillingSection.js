@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 
 import BillingLine from "./BillingLine"
 
-import { Row, Col, Button } from "reactstrap"
+import { Row, Col, Button, Fade, Label } from "reactstrap"
 import { submitClaim } from "../actions/mainActions"
 import { newBillingLine } from "../actions/billingActions"
 
@@ -34,6 +34,24 @@ class BillingSection extends Component {
               style={{ size: "5x" }}
               onClick={this.handlesNewBillingLineClicked}
             />
+          </Col>
+        </Row>
+        <Row className="mb-3">
+          <Col xs={{ offset: 9 }} sm={{ offset: 10 }} md={{ offset: 9 }}>
+            <Fade in={true} tag="h5" className="">
+              <Label className="ml-3 mt-2 color-white">
+                {"$" +
+                  this.props.billingLines
+                    .reduce((value, billingLine) => {
+                      if (!billingLine.units) {
+                        return value + billingLine.fee
+                      } else {
+                        return value + billingLine.fee * billingLine.units
+                      }
+                    }, 0)
+                    .toFixed(2)}
+              </Label>
+            </Fade>
           </Col>
         </Row>
         <Row className="mb-3">

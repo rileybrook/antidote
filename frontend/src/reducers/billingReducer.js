@@ -9,7 +9,12 @@ import {
 const initialState = {
   billingLines: [],
   billingCodes: [],
-  practitioner: { licence: "123456", location: "12345" },
+  practitioner: {
+    licence: "118011",
+    name: "Dr. Bailey",
+    location: "66552",
+    locationName: "Montreal"
+  },
   patient: { medicare: "XXXX01010112", dx: "12345" }
 }
 

@@ -135,11 +135,13 @@ code {
   opacity: 1;
 }
 .fa.fa-minus-circle {
+  margin-top: 7px;
   cursor: pointer;
   color: whitesmoke;
   font-size: 2vmax;
 }
 .fa.fa-plus-circle {
+  margin-top: 7px;
   cursor: pointer;
   color: white;
   font-size: 2vmax;

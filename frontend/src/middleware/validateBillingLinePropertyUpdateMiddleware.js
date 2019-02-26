@@ -12,7 +12,7 @@ const validateBillingLinePropertyUpdateMiddleware = ({
   const { lineNumber, property } = action
   const billingLine = getState().billingReducer.billingLines[lineNumber - 1]
 
-  let updatedBillingLine = { ...billingLine, ...property }
+  const updatedBillingLine = { ...billingLine, ...property }
   const attrName = Object.keys(property)[0]
 
   action.errors = {

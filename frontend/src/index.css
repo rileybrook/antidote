@@ -84,7 +84,7 @@ code {
 }
 
 .get-started {
-  width: 200px;
+  width: 200px !important;
   opacity: 1;
 }
 
@@ -118,6 +118,8 @@ code {
 
 /* --- BUTTONS --- */
 .btn {
+  width: 300px;
+  font-size: 1.2rem !important;
   border-width: medium;
   border-color: #895bdc !important;
   border-radius: 5px !important;

@@ -14,7 +14,9 @@ import {
 } from "reactstrap"
 
 import { hideModal } from "../actions/modalActions"
-import { getPatients, setPatient } from "../actions/patientActions"
+import { getPatients } from "../actions/patientActions"
+
+import { setPatient } from "../actions/billingActions"
 
 class PatientSearchModal extends Component {
   constructor(props) {
@@ -65,8 +67,9 @@ class PatientSearchModal extends Component {
   }
 
   onRowClicked = e => {
-    // console.log("cells", e.currentTarget.cells[0].innerText)
-    this.props.setPatient(e.currentTarget.cells[0].innerText)
+    // console.log("cells", e.currentTarget.cells[1])
+    this.props.setPatient(e.currentTarget.cells[1].innerText)
+    this.props.hideModal()
   }
 
   render() {
@@ -132,7 +135,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   hideModal: () => dispatch(hideModal()),
   getPatients: filter => dispatch(getPatients(filter)),
-  setPatient: id => dispatch(setPatient(id))
+  setPatient: medicare => dispatch(setPatient(medicare))
 })
 
 export default connect(

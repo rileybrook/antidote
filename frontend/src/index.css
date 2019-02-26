@@ -1,15 +1,3 @@
-.billing-fee-col {
-  align-content: flex-end !important;
-  text-align: right !important;
-  align-items: flex-end !important;
-  text-align-last: right !important;
-}
-
-.billing-fee-label {
-  text-align-last: right !important;
-  text-align: right !important;
-}
-
 body {
   height: 100vh;
   margin: 0;
@@ -112,8 +100,28 @@ code {
 
 /* --- MODAL --- */
 .modal-xl {
-  width: 95%;
-  max-width: 1300px;
+  width: 95% !important;
+  max-width: 1300px !important;
+}
+
+.modal-lg {
+  width: 90% !important;
+}
+
+.modal-md {
+  width: 90% !important;
+}
+
+.modal-sm {
+  width: 90% !important;
+}
+
+.modal-xs {
+  width: 90% !important;
+}
+
+.patient-search-modal {
+  margin-left: 80px;
 }
 
 /* --- BUTTONS --- */

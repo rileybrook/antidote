@@ -2,7 +2,9 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import Autosuggest from "react-autosuggest"
 
-import { getPatients, setPatient } from "../actions/patientActions"
+import { getPatients } from "../actions/patientActions"
+
+import { setPatient } from "../actions/billingActions"
 
 import "./PatientSearchDropdown.css"
 
@@ -27,17 +29,16 @@ class PatientSearchDropdown extends Component {
     super(props)
 
     this.state = {
-      value: "",
       suggestions: []
     }
 
     this.patientSearchDropdownRef = React.createRef()
   }
 
+  handleServiceDateChange = event => {}
+
   onChange = (event, { newValue }) => {
-    this.setState({
-      value: newValue
-    })
+    this.props.setPatient(newValue)
   }
 
   // Autosuggest will call this function every time you need to update suggestions.
@@ -75,7 +76,7 @@ class PatientSearchDropdown extends Component {
     switch (event.keyCode) {
       case 13:
         event.preventDefault()
-        this.props.setPatient(this.state.value)
+        // this.props.setPatient(this.state.value)
         break
       default:
     }
@@ -89,12 +90,12 @@ class PatientSearchDropdown extends Component {
   }
 
   render() {
-    const { value, suggestions } = this.state
+    const { suggestions } = this.state
 
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
       placeholder: "Search for patient . . .",
-      value,
+      value: this.props.medicare,
       onChange: this.onChange,
       onKeyDown: this.onKeyDown,
       onClick: this.onClick
@@ -119,12 +120,15 @@ class PatientSearchDropdown extends Component {
 }
 
 const mapStateToProps = state => {
-  return { patients: state.patientReducer.patients }
+  return {
+    patients: state.patientReducer.patients,
+    medicare: state.billingReducer.patient.medicare
+  }
 }
 
 const mapDispatchToProps = dispatch => ({
   getPatients: filter => dispatch(getPatients(filter)),
-  setPatient: id => dispatch(setPatient(id))
+  setPatient: medicare => dispatch(setPatient(medicare))
 })
 
 export default connect(

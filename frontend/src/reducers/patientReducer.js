@@ -1,13 +1,8 @@
-import {
-  PATIENTS_LOADING,
-  GET_PATIENTS,
-  SET_PATIENT
-} from "../actions/actionTypes"
+import { PATIENTS_LOADING, GET_PATIENTS } from "../actions/actionTypes"
 
 const initialState = {
   patients: [],
-  patientsLoading: false,
-  selectedPatient: ""
+  patientsLoading: false
 }
 
 export default function(state = initialState, action) {
@@ -18,19 +13,6 @@ export default function(state = initialState, action) {
         ...state,
         patients: action.payload,
         patientsLoading: false
-      }
-
-    case SET_PATIENT:
-      // if (
-      //   state.patientsLoading ||
-      //   !state.patients.some(elem => elem.medicare === action.id)
-      // ) {
-      //   return state
-      // }
-
-      return {
-        ...state,
-        selectedPatient: action.id
       }
 
     case PATIENTS_LOADING:

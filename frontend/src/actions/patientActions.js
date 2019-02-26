@@ -1,12 +1,5 @@
-import { GET_PATIENTS, PATIENTS_LOADING, SET_PATIENT } from "./actionTypes"
+import { GET_PATIENTS, PATIENTS_LOADING } from "./actionTypes"
 import { serverAddress } from "../config"
-
-export const setPatient = id => {
-  return {
-    type: SET_PATIENT,
-    id
-  }
-}
 
 export const getPatients = filter => async dispatch => {
   dispatch(setItemsLoading())

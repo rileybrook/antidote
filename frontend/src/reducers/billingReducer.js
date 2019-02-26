@@ -1,4 +1,5 @@
 import {
+  SET_PATIENT,
   RESET_CLAIM,
   NEW_BILLING_LINE,
   UPDATE_BILLING_LINE,
@@ -55,6 +56,12 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case SET_PATIENT:
+      return {
+        ...state,
+        patient: action.patient
+      }
+
     case RESET_CLAIM:
       return { ...state, billingLines: [], patient: null }
 
@@ -82,31 +89,33 @@ export default function(state = initialState, action) {
       }
 
     case UPDATE_BILLING_LINE:
-      const newArrayUpdate = state.billingLines.map((elem, i) => {
-        if (i + 1 !== action.lineNumber) {
-          return elem
-        }
+      const billingLinesUpdatedWithCodeInfo = state.billingLines.map(
+        (elem, i) => {
+          if (i + 1 !== action.lineNumber) {
+            return elem
+          }
 
-        let newElem = Object.assign(
-          {
-            ...elem,
-            errors: { ...elem.errors, ...action.errors }
-          },
-          action.property
-        )
-
-        let billingCode = {}
-        if (Object.keys(action.property)[0] === "billingCode") {
-          billingCode = state.billingCodes.find(
-            elem => action.property.billingCode === elem._id.toString()
+          let newElem = Object.assign(
+            {
+              ...elem,
+              errors: { ...elem.errors, ...action.errors }
+            },
+            action.property
           )
 
-          newElem = Object.assign(newElem, billingCode)
-        }
+          let billingCode = {}
+          if (Object.keys(action.property)[0] === "billingCode") {
+            billingCode = state.billingCodes.find(
+              elem => action.property.billingCode === elem._id.toString()
+            )
 
-        return newElem
-      })
-      return { ...state, billingLines: newArrayUpdate }
+            newElem = Object.assign(newElem, billingCode)
+          }
+
+          return newElem
+        }
+      )
+      return { ...state, billingLines: billingLinesUpdatedWithCodeInfo }
 
     case DELETE_BILLING_LINE:
       let newArrayAfterDelete = state.billingLines.filter(

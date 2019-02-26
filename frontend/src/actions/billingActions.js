@@ -1,12 +1,20 @@
 import { serverAddress } from "../config"
 
 import {
+  SET_PATIENT,
   NEW_BILLING_LINE,
   UPDATE_BILLING_LINE,
   DELETE_BILLING_LINE,
   GET_BILLING_CODES,
   RESET_CLAIM
 } from "./actionTypes"
+
+export const setPatient = medicare => {
+  return {
+    type: SET_PATIENT,
+    patient: { medicare }
+  }
+}
 
 export const resetClaim = () => {
   return {
@@ -41,7 +49,9 @@ export const loadBillingCodes = () => async dispatch => {
     const response = await fetch(serverAddress + "/billingCode/list", {
       method: "GET"
     })
-    payload = JSON.parse(await response.text()).billingCodes
+    let responseBody = await response.text()
+
+    payload = JSON.parse(responseBody).billingCodes
   } catch (err) {
     payload = []
     console.log(err)

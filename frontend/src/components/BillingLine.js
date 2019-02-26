@@ -36,6 +36,7 @@ class BillingLine extends Component {
   handleServiceDateBlur = event => {
     this.setState({ serviceDateBlurred: true })
   }
+
   handleServiceDateChange = event => {
     this.props.updateBillingLine(this.state.index + 1, {
       serviceDate: event.target.value

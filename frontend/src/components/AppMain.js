@@ -54,7 +54,7 @@ class AppMain extends Component {
         console.log("Unable to set focus to the patient search field")
       }
     } else if (!this.state.userClickedInvoice) {
-      if (this.props.selectedPatient === "") {
+      if (this.props.selectedPatientMedicare === "") {
         this.toggleNoPatientSelected()
       } else {
         this.setState({ userClickedInvoice: true })
@@ -163,7 +163,7 @@ class AppMain extends Component {
 const mapStateToProps = state => {
   return {
     billingCodes: state.billingReducer.billingCodes,
-    selectedPatient: state.patientReducer.selectedPatient,
+    selectedPatientMedicare: state.billingReducer.patient.medicare,
     invalidClaim: state.mainReducer.invalidClaim,
     lastChitNumberAdded: state.mainReducer.lastChitNumberAdded,
     lastClaimSubmitError: state.mainReducer.lastClaimSubmitError

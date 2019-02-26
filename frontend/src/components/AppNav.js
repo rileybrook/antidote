@@ -82,7 +82,6 @@ class AppNav extends Component {
 const mapStateToProps = state => {
   return {
     billingCodes: state.billingReducer.billingCodes,
-    selectedPatient: state.patientReducer.selectedPatient,
     invalidClaim: state.mainReducer.invalidClaim,
     lastChitNumberAdded: state.mainReducer.lastChitNumberAdded,
     lastClaimSubmitError: state.mainReducer.lastClaimSubmitError

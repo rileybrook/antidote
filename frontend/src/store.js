@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, compose } from "redux"
 import rootReducer from "./reducers"
 import thunk from "redux-thunk"
+import joinPatientInfoMiddleware from "./middleware/joinPatientInfoMiddleware"
 import validateClaimMiddleware from "./middleware/validateClaimMiddleware"
 import validateBillingLinePropertyUpdateMiddleware from "./middleware/validateBillingLinePropertyUpdateMiddleware"
 import apiMiddleware from "./middleware/apiMiddleware"
@@ -9,6 +10,7 @@ const initialState = {}
 
 const middleware = [
   thunk,
+  joinPatientInfoMiddleware,
   validateClaimMiddleware,
   validateBillingLinePropertyUpdateMiddleware,
   apiMiddleware

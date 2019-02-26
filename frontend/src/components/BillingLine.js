@@ -167,7 +167,6 @@ class BillingLine extends Component {
           <Col className="ml-5 mb-1" xs={1} sm={1} md={1}>
             <i
               className="fa fa-minus-circle"
-              color="white"
               onClick={this.deleteBillingLine}
             />
           </Col>

@@ -5,7 +5,8 @@ import {
   RESET_INDICATORS,
   RESET_SCREEN,
   SUBMIT_CLAIM_SUCCESS,
-  SUBMIT_CLAIM_FAILURE
+  SUBMIT_CLAIM_FAILURE,
+  RESET_CLAIM
 } from "../actions/actionTypes"
 
 const initialState = {

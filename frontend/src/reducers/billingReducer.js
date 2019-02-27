@@ -115,7 +115,6 @@ export default function(state = initialState, action) {
         ...state,
         billingCodes: action.payload
       }
-
     default:
       return state
   }

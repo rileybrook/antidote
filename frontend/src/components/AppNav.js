@@ -3,10 +3,13 @@ import { connect } from "react-redux"
 
 import { showModal } from "../actions/modalActions"
 import { MODAL_PATIENT } from "./ModalTypes"
-
+import { resetScreen } from "../actions/mainActions"
+import { resetClaim } from "../actions/billingActions"
+import { updatePatientSearchValue } from "../actions/patientActions"
 import SideNav, { Nav, NavItem, NavIcon } from "@trendmicro/react-sidenav"
 import "@trendmicro/react-sidenav/dist/react-sidenav.css"
 import { ReactComponent as Antidote } from "../images/antidote.svg"
+import AppMain from "./AppMain"
 
 class AppNav extends Component {
   state = {
@@ -17,6 +20,11 @@ class AppNav extends Component {
     this.props.showModal(MODAL_PATIENT)
   }
 
+  resetButton = () => {
+    this.props.resetScreen()
+    this.props.resetClaim()
+    this.props.updatePatientSearchValue()
+  }
   toggle = () => {
     this.setState({
       isOpen: !this.state.isOpen
@@ -30,6 +38,10 @@ class AppNav extends Component {
           switch (selected) {
             case "search":
               this.showPatientSearch()
+              break
+
+            case "create":
+              this.resetButton()
               break
 
             case "print":
@@ -82,6 +94,7 @@ class AppNav extends Component {
 const mapStateToProps = state => {
   return {
     billingCodes: state.billingReducer.billingCodes,
+    selectedPatient: state.patientReducer.selectedPatient,
     invalidClaim: state.mainReducer.invalidClaim,
     lastChitNumberAdded: state.mainReducer.lastChitNumberAdded,
     lastClaimSubmitError: state.mainReducer.lastClaimSubmitError
@@ -89,7 +102,10 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  showModal: modelType => dispatch(showModal(modelType))
+  showModal: modelType => dispatch(showModal(modelType)),
+  resetScreen: () => dispatch(resetScreen()),
+  resetClaim: () => dispatch(resetClaim()),
+  updatePatientSearchValue: value => dispatch(updatePatientSearchValue(value))
 })
 
 export default connect(

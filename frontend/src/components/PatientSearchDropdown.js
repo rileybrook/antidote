@@ -9,6 +9,7 @@ import {
 
 import { setPatient } from "../actions/billingActions"
 import "./PatientSearchDropdown.css"
+//import { updatePatientMedicare } from "../actions/billingActions"
 
 const getSuggestionValue = suggestion => {
   return (
@@ -99,8 +100,8 @@ class PatientSearchDropdown extends Component {
       placeholder: "Search for patient . . .",
       value: this.props.patientSearchValue ? this.props.patientSearchValue : "",
       onChange: this.onChange,
-      onKeyDown: this.onKeyDown,
-      onClick: this.onClick
+      onKeyDown: this.onKeyDown
+      //onClick: this.onClick
     }
 
     return (

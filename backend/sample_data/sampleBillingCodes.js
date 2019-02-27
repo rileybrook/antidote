@@ -1,7 +1,7 @@
 module.exports = [
   {
     _id: 9170,
-    description: "Consultation",
+    description: "Consultation Visit: Inter-specialty (referral required)",
     fee: 122.25,
     requiresReferral: true,
     requiresUnits: false

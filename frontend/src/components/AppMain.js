@@ -15,6 +15,7 @@ import { MODAL_PATIENT } from "./ModalTypes"
 import { ReactComponent as Antidote } from "../images/antidote.svg"
 
 import PatientSection from "./PatientSection"
+import PractitionerSection from "./PractitionerSection"
 import BillingSection from "./BillingSection"
 import PatientSearchDropdown from "./PatientSearchDropdown"
 import { reset } from "../utility"
@@ -162,13 +163,16 @@ class AppMain extends Component {
       <main className="main color-grey">
         <Container>
           <Row align="center">
-            <Col md={{ size: 4, offset: 4 }}>
+            <Col md={{ size: 4, offset: 0 }}>
+              {this.props.userClickedInvoice && <PractitionerSection />}
+            </Col>
+            <Col md={{ size: 4, offset: 0 }}>
               {this.renderLogoRow()}
               {this.renderPatientSearchRow()}
               {this.renderButtonRow()}
             </Col>
             <Col md={{ size: 4, offset: 0 }}>
-              {this.props.selectedPatientLastName && <PatientSection />}
+              {this.props.userClickedInvoice && <PatientSection />}
             </Col>
           </Row>
           <Row>
@@ -194,7 +198,6 @@ class AppMain extends Component {
 const mapStateToProps = state => {
   return {
     billingCodes: state.billingReducer.billingCodes,
-    selectedPatientLastName: state.billingReducer.patient.lastName,
     selectedPatientMedicare: state.billingReducer.patient.medicare,
     invalidClaim: state.mainReducer.invalidClaim,
     lastChitNumberAdded: state.mainReducer.lastChitNumberAdded,

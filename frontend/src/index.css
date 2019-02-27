@@ -211,15 +211,15 @@ input[type="text"] {
 }
 
 .modal-header {
-margin-top: 20px;
- margin-left: 90px;
- margin-right: 90px;
- border-bottom-style: hidden !important;
- height: 50px;
+  margin-top: 20px;
+  margin-left: 90px;
+  margin-right: 90px;
+  border-bottom-style: hidden !important;
+  height: 50px;
 }
 .modal-header h5 {
   font-size: 1.5rem;
-  }
+}
 
 .modal-content table {
   color: #afafaf !important;
@@ -227,4 +227,18 @@ margin-top: 20px;
 
 .close {
   color: #afafaf !important;
+}
+
+.info-section {
+  border: 2px solid #8f8f8f;
+  border-radius: 20px;
+  /* color: #8f8f8f; */
+}
+
+.info-section label {
+  color: #afafaf;
+  font-weight: 300;
+  font-style: italic;
+  font-family: Helvetica, sans-serif;
+  font-size: 18px;
 }

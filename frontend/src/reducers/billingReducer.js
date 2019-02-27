@@ -12,7 +12,7 @@ const initialState = {
   billingCodes: [],
   practitioner: {
     licence: "118011",
-    name: "Dr. Bailey",
+    name: "Bailey, Sharon",
     location: "66552",
     locationName: "Montreal"
   },

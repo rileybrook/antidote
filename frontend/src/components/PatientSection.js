@@ -23,38 +23,37 @@ class PatientSection extends Component {
 
   render() {
     return (
-      <Row align="left">
-        <Col className="mt-4" md={{ size: 4 }}>
+      <Row align="left" className="mt-4 info-section">
+        <Col className="mt-1" md={{ size: 4 }}>
           <div>
             <Label>Name</Label>
           </div>
           <div>
             <Label>Birthdate</Label>
           </div>
-          <div>
+          {/* <div>
             <Label>Gender</Label>
           </div>
           <div>
             <Label>Age</Label>
-          </div>
+          </div> */}
         </Col>
-        <Col className="mt-4" md="auto">
+        <Col className="mt-1" md="auto">
           <div>
             <Label>{this.renderName()}</Label>
           </div>
           <div>
             <Label>{this.props.patient.dateOfBirth}</Label>
           </div>
-          <div>
+          {/* <div>
             <Label>{this.props.patient.gender}</Label>
           </div>
           <div>
             <Label>{this.renderAge()}</Label>
-          </div>
+          </div> */}
         </Col>
       </Row>
-    )
-  }
+    )  }
 }
 
 const mapStateToProps = state => {

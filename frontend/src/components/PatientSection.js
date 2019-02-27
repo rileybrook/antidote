@@ -26,7 +26,7 @@ class PatientSection extends Component {
       <Row align="left" className="mt-4 info-section">
         <Col className="mt-1" md={{ size: 4 }}>
           <div>
-            <Label>Name</Label>
+            <Label>Patient</Label>
           </div>
           <div>
             <Label>Birthdate</Label>
@@ -53,7 +53,8 @@ class PatientSection extends Component {
           </div> */}
         </Col>
       </Row>
-    )  }
+    )
+  }
 }
 
 const mapStateToProps = state => {

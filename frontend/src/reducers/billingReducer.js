@@ -14,7 +14,8 @@ const initialState = {
     licence: "118011",
     name: "Bailey, Sharon",
     location: "66552",
-    locationName: "Montreal"
+    locationName: "Montreal",
+    specialty: "Neurologist"
   },
   patient: {
     medicare: "",

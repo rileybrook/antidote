@@ -12,7 +12,6 @@ export function getAge(dateString) {
   }
   return age
 }
-<<<<<<< Updated upstream
 
 export function reset() {
   try {
@@ -21,5 +20,3 @@ export function reset() {
     console.log("Unable to set focus to the patient search field")
   }
 }
-=======
->>>>>>> Stashed changes

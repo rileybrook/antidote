@@ -24,7 +24,7 @@ class PractitionerSection extends Component {
             <Label>Doctor</Label>
           </div>
           <div>
-            <Label>Location</Label>
+            <Label>Specialty</Label>
           </div>
         </Col>
         <Col className="mt-1" md="auto">
@@ -32,7 +32,7 @@ class PractitionerSection extends Component {
             <Label>{this.props.practitioner.name}</Label>
           </div>
           <div>
-            <Label>{this.props.practitioner.locationName}</Label>
+            <Label>{this.props.practitioner.specialty}</Label>
           </div>
         </Col>
       </Row>

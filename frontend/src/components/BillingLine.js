@@ -137,22 +137,24 @@ class BillingLine extends Component {
   renderBillingCodeDescription = () => {
     if (!this.billingLine().description) return null
     return (
-      <Row className="mb-3">
-        <Col className="" md={{ size: 11, offset: 1 }}>
-          <Fade in={true} tag="h5" className="ml-4 mt-0">
-            <Label className="color-white">
-              {this.billingLine().description}
-            </Label>
-          </Fade>
-        </Col>
-      </Row>
+      <div className="billing-description">
+        <Row className="mb-3">
+          <Col className="" md={{ size: 9, offset: 3 }}>
+            <Fade in={true} tag="h5" className="ml-1 mt-0">
+              <Label className="color-white">
+                {this.billingLine().description}
+              </Label>
+            </Fade>
+          </Col>
+        </Row>
+      </div>
     )
   }
 
   renderInvalidInputAlert = warning => {
     return (
       <Row align="center" className="mb-3">
-        <Col >
+        <Col>
           <Alert color="danger">{warning}</Alert>
         </Col>
       </Row>
@@ -197,6 +199,8 @@ class BillingLine extends Component {
               onChange={this.handleBillingCodeChange}
               value={this.billingLine().billingCode}
             />
+
+            {this.renderBillingCodeDescription()}
           </Col>
           {this.renderReferringDoctor()}
           {this.renderUnits()}
@@ -213,8 +217,6 @@ class BillingLine extends Component {
           )}
         {errors.units &&
           this.renderInvalidInputAlert("Invalid number of units")}
-
-        {this.renderBillingCodeDescription()}
       </React.Fragment>
     )
   }

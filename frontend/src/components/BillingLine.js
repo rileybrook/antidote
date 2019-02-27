@@ -151,8 +151,8 @@ class BillingLine extends Component {
 
   renderInvalidInputAlert = warning => {
     return (
-      <Row className="mb-3">
-        <Col className="" md={{ size: 7, offset: 1 }}>
+      <Row align="center" className="mb-3">
+        <Col >
           <Alert color="danger">{warning}</Alert>
         </Col>
       </Row>

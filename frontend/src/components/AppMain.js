@@ -5,8 +5,11 @@ import { showModal } from "../actions/modalActions"
 
 import {
   setUserClickedStart,
-  setUserClickedInvoice
+  setUserClickedInvoice,
+  resetScreen
 } from "../actions/mainActions"
+import { resetClaim } from "../actions/billingActions"
+import { updatePatientSearchValue } from "../actions/patientActions"
 import { loadBillingCodes, newBillingLine } from "../actions/billingActions"
 import { MODAL_PATIENT } from "./ModalTypes"
 import { ReactComponent as Antidote } from "../images/antidote.svg"
@@ -42,7 +45,9 @@ class AppMain extends Component {
     if (!this.props.userClickedStart) return "Get Started"
     return "Create Invoice"
   }
-
+  resetButton = () => {
+    this.props.resetScreen()
+  }
   componentDidMount = () => {
     this.props.loadBillingCodes()
   }
@@ -207,7 +212,10 @@ const mapDispatchToProps = dispatch => ({
   setUserClickedInvoice: () => dispatch(setUserClickedInvoice()),
   showModal: modelType => dispatch(showModal(modelType)),
   newBillingLine: () => dispatch(newBillingLine()),
-  loadBillingCodes: () => dispatch(loadBillingCodes())
+  loadBillingCodes: () => dispatch(loadBillingCodes()),
+  resetScreen: () => dispatch(resetScreen()),
+  resetClaim: () => dispatch(resetClaim()),
+  updatePatientSearchValue: value => dispatch(updatePatientSearchValue(value))
 })
 
 export default connect(

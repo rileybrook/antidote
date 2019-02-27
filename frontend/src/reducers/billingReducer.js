@@ -20,8 +20,8 @@ const initialState = {
     medicare: "",
     dx: "",
     lastName: "",
-    FirstName: "",
-    birthDate: "",
+    firstName: "",
+    dateOfBirth: "",
     gender: ""
   }
 }

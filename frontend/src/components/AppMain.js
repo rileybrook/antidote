@@ -11,6 +11,7 @@ import { loadBillingCodes, newBillingLine } from "../actions/billingActions"
 import { MODAL_PATIENT } from "./ModalTypes"
 import { ReactComponent as Antidote } from "../images/antidote.svg"
 
+import PatientSection from "./PatientSection"
 import BillingSection from "./BillingSection"
 import PatientSearchDropdown from "./PatientSearchDropdown"
 
@@ -105,40 +106,67 @@ class AppMain extends Component {
     )
   }
 
+  renderLogoRow = () => {
+    return (
+      <Row>
+        <Col>
+          <Antidote className={"logo" + this.stringClickedStart()} />
+        </Col>
+      </Row>
+    )
+  }
+
+  renderPatientSearchRow = () => {
+    return (
+      <Row>
+        <Col>
+          <div
+            id="patientSearch"
+            className={"mb-4 patient-search" + this.stringClickedStart()}
+          >
+            <PatientSearchDropdown />
+          </div>
+        </Col>
+      </Row>
+    )
+  }
+
+  renderButtonRow = () => {
+    return (
+      <Row>
+        <Col className={"get-started-div" + this.stringClickedInvoice()}>
+          <Button
+            id="Start-Button"
+            className={"get-started" + this.stringClickedInvoice()}
+            onClick={this.handleStartClick}
+          >
+            <Tooltip
+              placement="right"
+              isOpen={this.state.noPatientSelectedTooltipShown}
+              target="Start-Button"
+              toggle={this.toggle}
+            >
+              You must first select a patient
+            </Tooltip>
+            {this.getButtonText()}
+          </Button>
+        </Col>
+      </Row>
+    )
+  }
+
   render() {
     return (
       <main className="main color-grey">
         <Container>
           <Row align="center">
-            <Col>
-              <Antidote className={"logo" + this.stringClickedStart()} />
+            <Col md={{ size: 4, offset: 4 }}>
+              {this.renderLogoRow()}
+              {this.renderPatientSearchRow()}
+              {this.renderButtonRow()}
             </Col>
-          </Row>
-          <Row align="center">
-            <Col md={{ size: 12 }}>
-              <div
-                id="patientSearch"
-                className={"mb-4 patient-search" + this.stringClickedStart()}
-              >
-                <PatientSearchDropdown />
-              </div>
-              <div className={"get-started-div" + this.stringClickedInvoice()}>
-                <Button
-                  id="Start-Button"
-                  className={"get-started" + this.stringClickedInvoice()}
-                  onClick={this.handleStartClick}
-                >
-                  <Tooltip
-                    placement="right"
-                    isOpen={this.state.noPatientSelectedTooltipShown}
-                    target="Start-Button"
-                    toggle={this.toggle}
-                  >
-                    You must first select a patient
-                  </Tooltip>
-                  {this.getButtonText()}
-                </Button>
-              </div>
+            <Col md={{ size: 4, offset: 0 }}>
+              {this.props.selectedPatientLastName && <PatientSection />}
             </Col>
           </Row>
           <Row>
@@ -164,6 +192,7 @@ class AppMain extends Component {
 const mapStateToProps = state => {
   return {
     billingCodes: state.billingReducer.billingCodes,
+    selectedPatientLastName: state.billingReducer.patient.lastName,
     selectedPatientMedicare: state.billingReducer.patient.medicare,
     invalidClaim: state.mainReducer.invalidClaim,
     lastChitNumberAdded: state.mainReducer.lastChitNumberAdded,

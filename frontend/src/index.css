@@ -65,7 +65,7 @@ code {
 .patient-search.clickedStart {
   transition: all cubic-bezier(0.68, -0.55, 0.265, 1.55);
   height: calc(1.5em + 0.75rem + 2px);
-  width: 300px;
+  width: 200px;
   margin-bottom: 10px;
   opacity: 1;
   pointer-events: initial;
@@ -133,11 +133,11 @@ code {
   border-radius: 5px !important;
   background: none !important;
   box-shadow: none !important;
-  color: #afafaf !important
+  color: #afafaf !important;
 }
 
 .btn:hover:not(:focus) {
-  border-color:#E2AE74!important;
+  border-color: #e2ae74 !important;
 }
 
 .billingSection.clickedInvoice {
@@ -148,7 +148,7 @@ code {
   cursor: pointer;
   color: rgba(235, 102, 76, 0.705);
   font-size: 2vmax;
-  margin-top: 15px
+  margin-top: 15px;
 }
 .fa.fa-plus-circle {
   cursor: pointer;

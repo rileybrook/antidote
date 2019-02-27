@@ -31,7 +31,7 @@ require("./getRoutes")(app)
 
 // Error handler (put all 4 arguments)
 app.use((err, req, res, next) => {
-  console.log(err.stack)
+  console.log(err.output.payload)
   return res.status(err.output.statusCode).json(err.output.payload)
 })
 

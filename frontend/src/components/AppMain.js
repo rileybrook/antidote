@@ -17,7 +17,7 @@ import { ReactComponent as Antidote } from "../images/antidote.svg"
 import PatientSection from "./PatientSection"
 import BillingSection from "./BillingSection"
 import PatientSearchDropdown from "./PatientSearchDropdown"
-
+import { reset } from "../utility"
 import { Alert, Button, Container, Row, Col, Tooltip } from "reactstrap"
 
 class AppMain extends Component {
@@ -47,6 +47,8 @@ class AppMain extends Component {
   }
   resetButton = () => {
     this.props.resetScreen()
+    this.props.resetClaim()
+    this.props.updatePatientSearchValue()
   }
   componentDidMount = () => {
     this.props.loadBillingCodes()
@@ -54,12 +56,7 @@ class AppMain extends Component {
 
   handleStartClick = () => {
     if (!this.props.userClickedStart) {
-      this.props.setUserClickedStart()
-      try {
-        document.getElementById("patientSearch").children[0].children[0].focus()
-      } catch {
-        console.log("Unable to set focus to the patient search field")
-      }
+      reset(this.props.setUserClickedStart())
     } else if (!this.props.userClickedInvoice) {
       if (this.props.selectedPatientMedicare === "") {
         this.toggleNoPatientSelected()

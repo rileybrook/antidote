@@ -3,10 +3,13 @@ import { delay } from "../utility"
 
 import { SUBMIT_CLAIM } from "../actions/actionTypes"
 
+import { updatePatientSearchValue } from "../actions/patientActions"
+
 import {
   submitClaimSuccess,
   submitClaimFailure,
-  resetIndicators
+  resetIndicators,
+  resetScreen
 } from "../actions/mainActions"
 
 import { resetClaim } from "../actions/billingActions"
@@ -24,7 +27,9 @@ const apiMiddleware = ({ dispatch, getState }) => next => async action => {
       billingLines: getState().billingReducer.billingLines
     }
 
-    const claim = { ...practitioner, ...patient, ...billingLines }
+    let claim = { ...practitioner, ...patient, ...billingLines }
+
+    delete claim._id
 
     const response = await fetch(serverAddress + "/claim/add", {
       method: "POST",
@@ -41,7 +46,11 @@ const apiMiddleware = ({ dispatch, getState }) => next => async action => {
       throw new Error()
     }
     dispatch(submitClaimSuccess(payload.chitNumber))
+
+    // Reset everything
+    dispatch(updatePatientSearchValue(""))
     dispatch(resetClaim())
+    dispatch(resetScreen())
   } catch (error) {
     if (error.message === "Failed to fetch") {
       dispatch(submitClaimFailure("unable to contact the server"))

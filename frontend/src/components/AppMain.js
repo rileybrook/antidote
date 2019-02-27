@@ -3,6 +3,10 @@ import { connect } from "react-redux"
 import { delay } from "../utility"
 import { showModal } from "../actions/modalActions"
 
+import {
+  setUserClickedStart,
+  setUserClickedInvoice
+} from "../actions/mainActions"
 import { loadBillingCodes, newBillingLine } from "../actions/billingActions"
 import { MODAL_PATIENT } from "./ModalTypes"
 import { ReactComponent as Antidote } from "../images/antidote.svg"
@@ -17,9 +21,6 @@ class AppMain extends Component {
     super(props)
 
     this.state = {
-      //TODO(bobby) set these back to false to show logo
-      userClickedStart: false,
-      userClickedInvoice: false,
       noPatientSelectedTooltipShown: false
     }
   }
@@ -29,15 +30,15 @@ class AppMain extends Component {
   }
 
   stringClickedStart = () => {
-    return this.state.userClickedStart ? " clickedStart" : ""
+    return this.props.userClickedStart ? " clickedStart" : ""
   }
 
   stringClickedInvoice = () => {
-    return this.state.userClickedInvoice ? " clickedInvoice" : ""
+    return this.props.userClickedInvoice ? " clickedInvoice" : ""
   }
 
   getButtonText = () => {
-    if (!this.state.userClickedStart) return "Get Started"
+    if (!this.props.userClickedStart) return "Get Started"
     return "Create Invoice"
   }
 
@@ -46,18 +47,18 @@ class AppMain extends Component {
   }
 
   handleStartClick = () => {
-    if (!this.state.userClickedStart) {
-      this.setState({ userClickedStart: true })
+    if (!this.props.userClickedStart) {
+      this.props.setUserClickedStart()
       try {
         document.getElementById("patientSearch").children[0].children[0].focus()
       } catch {
         console.log("Unable to set focus to the patient search field")
       }
-    } else if (!this.state.userClickedInvoice) {
+    } else if (!this.props.userClickedInvoice) {
       if (this.props.selectedPatientMedicare === "") {
         this.toggleNoPatientSelected()
       } else {
-        this.setState({ userClickedInvoice: true })
+        this.props.setUserClickedInvoice()
         this.props.newBillingLine()
       }
     }
@@ -166,11 +167,15 @@ const mapStateToProps = state => {
     selectedPatientMedicare: state.billingReducer.patient.medicare,
     invalidClaim: state.mainReducer.invalidClaim,
     lastChitNumberAdded: state.mainReducer.lastChitNumberAdded,
-    lastClaimSubmitError: state.mainReducer.lastClaimSubmitError
+    lastClaimSubmitError: state.mainReducer.lastClaimSubmitError,
+    userClickedStart: state.mainReducer.userClickedStart,
+    userClickedInvoice: state.mainReducer.userClickedInvoice
   }
 }
 
 const mapDispatchToProps = dispatch => ({
+  setUserClickedStart: () => dispatch(setUserClickedStart()),
+  setUserClickedInvoice: () => dispatch(setUserClickedInvoice()),
   showModal: modelType => dispatch(showModal(modelType)),
   newBillingLine: () => dispatch(newBillingLine()),
   loadBillingCodes: () => dispatch(loadBillingCodes())

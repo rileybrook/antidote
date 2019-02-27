@@ -25,7 +25,7 @@ export const getPatients = filter => async dispatch => {
     })
 
     payload = JSON.parse(await response.text()).patients
-    // console.log(payload)
+    console.log(payload)
   } catch (err) {
     payload = []
     console.log(err)

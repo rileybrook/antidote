@@ -1,11 +1,16 @@
 import {
+  USER_CLICKED_START,
+  USER_CLICKED_INVOICE,
   CLAIM_VALIDATION_ERROR,
   RESET_INDICATORS,
+  RESET_SCREEN,
   SUBMIT_CLAIM_SUCCESS,
   SUBMIT_CLAIM_FAILURE
 } from "../actions/actionTypes"
 
 const initialState = {
+  userClickedStart: false,
+  userClickedInvoice: false,
   invalidClaim: false,
   lastChitNumberAdded: null,
   lastClaimSubmitError: null
@@ -13,6 +18,12 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case USER_CLICKED_START:
+      return { ...state, userClickedStart: true }
+
+    case USER_CLICKED_INVOICE:
+      return { ...state, userClickedInvoice: true }
+
     case CLAIM_VALIDATION_ERROR:
       return { ...state, invalidClaim: true }
 
@@ -29,6 +40,9 @@ export default function(state = initialState, action) {
         lastChitNumberAdded: null,
         lastClaimSubmitError: null
       }
+
+    case RESET_SCREEN:
+      return { ...state, userClickedInvoice: false }
 
     default:
       return state

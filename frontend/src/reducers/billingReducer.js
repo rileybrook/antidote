@@ -18,6 +18,7 @@ const initialState = {
   },
   patient: {
     medicare: "",
+    dx: "",
     lastName: "",
     FirstName: "",
     birthDate: "",

@@ -24,9 +24,9 @@ const boom = require("boom")
 router.post("/", async (req, res, next) => {
   try {
     let claim = JSON.parse(req.body)
-    let { licence, location, medicare, dx, billingLines } = claim
+    let { licence, location, medicare, billingLines } = claim // dx is not validated
 
-    if (!licence || !location || !medicare || !dx || !billingLines) {
+    if (!licence || !location || !medicare || !billingLines) {
       return next(boom.badRequest("Incomplete claim"))
     }
 

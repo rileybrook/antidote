@@ -39,7 +39,7 @@ class BillingSection extends Component {
             <div className="d-flex flex-row-reverse">
               <Fade in={true} tag="h5">
                 <Label className="mr-5 mt-2 color-white">
-                  {"$" +
+                  {"Total: $" +
                     this.props.billingLines
                       .reduce((value, billingLine) => {
                         if (!billingLine.units) {
@@ -57,7 +57,7 @@ class BillingSection extends Component {
         {/* xs={{ offset: 9 }} sm={{ offset: 10 }} md={{ offset: 9 }} */}
         <Row align="center" className="mb-3">
           <Col>
-            <Button width="300px"onClick={this.handlesSubmitClaimClicked}>
+            <Button width="300px" onClick={this.handlesSubmitClaimClicked}>
               Submit claim
             </Button>
           </Col>

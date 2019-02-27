@@ -29,11 +29,13 @@ export default function(state = initialState, action) {
   switch (action.type) {
     case SET_PATIENT:
       if (action.patient) {
+        // Middleware supplies action.patient
         return {
           ...state,
           patient: action.patient
         }
       } else {
+        // The middleware did not find a medicare match in the DB, so we just put the medicare number
         return {
           ...state,
           patient: { ...initialState.patient, ...{ medicare: action.value } }

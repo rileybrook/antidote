@@ -133,11 +133,11 @@ code {
   border-radius: 5px !important;
   background: none !important;
   box-shadow: none !important;
-  color: #afafaf !important
+  color: #afafaf !important;
 }
 
 .btn:hover:not(:focus) {
-  border-color:#E2AE74!important;
+  border-color: #e2ae74 !important;
 }
 
 .billingSection.clickedInvoice {
@@ -146,9 +146,9 @@ code {
 }
 .fa.fa-minus-circle {
   cursor: pointer;
-  color: rgba(235, 102, 76, 0.705);
+  color: rgba(235, 102, 76, 0.61);
   font-size: 2vmax;
-  margin-top: 15px
+  margin-top: 15px;
 }
 .fa.fa-plus-circle {
   cursor: pointer;
@@ -180,6 +180,14 @@ code {
   border-width: 3px;
   /* background-color: #f1f1f1; */
 }
+.alert {
+  border-radius: 10px !important;
+  background: rgba(197, 77, 53, 0.342) !important;
+  box-shadow: none !important;
+  color: rgba(255, 255, 255, 0.76) !important;
+  max-width: 200px;
+  padding: -0.25rem 1.25rem;
+}
 
 .billingSection {
   opacity: 0;
@@ -193,4 +201,30 @@ input[type="text"] {
   font-style: italic;
   font-size: 20px;
   border-bottom: 2px solid #8f8f8f;
+}
+
+/* --- MODAL --- */
+
+.modal-content {
+  background-image: linear-gradient(#434247, #28203de1) !important;
+  color: #afafaf !important;
+}
+
+.modal-header {
+margin-top: 20px;
+ margin-left: 90px;
+ margin-right: 90px;
+ border-bottom-style: hidden !important;
+ height: 50px;
+}
+.modal-header h5 {
+  font-size: 1.5rem;
+  }
+
+.modal-content table {
+  color: #afafaf !important;
+}
+
+.close {
+  color: #afafaf !important;
 }

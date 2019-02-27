@@ -7,41 +7,6 @@ import {
   GET_BILLING_CODES
 } from "../actions/actionTypes"
 
-// {
-//   lineNumber: 1,
-//   serviceDate: "",
-//   billingCode: "356",
-//   fee: 123.45,
-//   description: null,
-//   requiresReferral: false,
-//   refDoctor: "",
-//   requiresUnits: false,
-//   units: "",
-//   errors: {
-//     serviceDate: null,
-//     billingCode: null,
-//     refDoctor: null,
-//     units: null
-//   }
-// },
-// {
-//   lineNumber: 2,
-//   serviceDate: "",
-//   billingCode: "9170",
-//   fee: 22,
-//   description: null,
-//   requiresReferral: false,
-//   refDoctor: "",
-//   requiresUnits: false,
-//   units: "",
-//   errors: {
-//     serviceDate: null,
-//     billingCode: null,
-//     refDoctor: null,
-//     units: null
-//   }
-// }
-
 const initialState = {
   billingLines: [],
   billingCodes: [],
@@ -51,19 +16,32 @@ const initialState = {
     location: "66552",
     locationName: "Montreal"
   },
-  patient: { medicare: "XXXX01010112", dx: "12345" }
+  patient: {
+    medicare: "",
+    lastName: "",
+    FirstName: "",
+    birthDate: "",
+    gender: ""
+  }
 }
 
 export default function(state = initialState, action) {
   switch (action.type) {
     case SET_PATIENT:
-      return {
-        ...state,
-        patient: action.patient
+      if (action.patient) {
+        return {
+          ...state,
+          patient: action.patient
+        }
+      } else {
+        return {
+          ...state,
+          patient: { ...initialState.patient, ...{ medicare: action.value } }
+        }
       }
 
     case RESET_CLAIM:
-      return { ...state, billingLines: [], patient: null }
+      return { ...state, billingLines: [], patient: initialState.patient }
 
     case NEW_BILLING_LINE:
       const newItem = {

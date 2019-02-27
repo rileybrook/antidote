@@ -9,10 +9,10 @@ import {
   RESET_CLAIM
 } from "./actionTypes"
 
-export const setPatient = medicare => {
+export const setPatient = value => {
   return {
     type: SET_PATIENT,
-    patient: { medicare }
+    value
   }
 }
 

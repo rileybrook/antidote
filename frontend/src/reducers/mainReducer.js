@@ -2,8 +2,7 @@ import {
   CLAIM_VALIDATION_ERROR,
   RESET_INDICATORS,
   SUBMIT_CLAIM_SUCCESS,
-  SUBMIT_CLAIM_FAILURE,
-  RESET_CLAIM
+  SUBMIT_CLAIM_FAILURE
 } from "../actions/actionTypes"
 
 const initialState = {
@@ -14,13 +13,6 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case RESET_CLAIM:
-      return {
-        ...state,
-        practitioner: initialState.practitioner,
-        patient: initialState.patient
-      }
-
     case CLAIM_VALIDATION_ERROR:
       return { ...state, invalidClaim: true }
 

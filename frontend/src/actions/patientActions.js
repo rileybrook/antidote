@@ -1,5 +1,16 @@
-import { GET_PATIENTS, PATIENTS_LOADING } from "./actionTypes"
+import {
+  GET_PATIENTS,
+  PATIENTS_LOADING,
+  UPDATE_PATIENT_SEARCH_VALUE
+} from "./actionTypes"
 import { serverAddress } from "../config"
+
+export const updatePatientSearchValue = value => {
+  return {
+    type: UPDATE_PATIENT_SEARCH_VALUE,
+    value
+  }
+}
 
 export const getPatients = filter => async dispatch => {
   dispatch(setItemsLoading())

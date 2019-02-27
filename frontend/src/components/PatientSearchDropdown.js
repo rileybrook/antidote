@@ -2,43 +2,46 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import Autosuggest from "react-autosuggest"
 
-import { getPatients } from "../actions/patientActions"
+import {
+  getPatients,
+  updatePatientSearchValue
+} from "../actions/patientActions"
 
 import { setPatient } from "../actions/billingActions"
-
 import "./PatientSearchDropdown.css"
 
-// When suggestion is clicked, Autosuggest needs to populate the input
-// based on the clicked suggestion. Teach Autosuggest how to calculate the
-// input value for every given suggestion.
-const getSuggestionValue = suggestion =>
-  suggestion.medicare.slice(0, 4) +
-  "-" +
-  suggestion.medicare.slice(4, 8) +
-  "-" +
-  suggestion.medicare.slice(8, 12)
+const getSuggestionValue = suggestion => {
+  return (
+    suggestion.medicare.slice(0, 4) +
+    "-" +
+    suggestion.medicare.slice(4, 8) +
+    "-" +
+    suggestion.medicare.slice(8, 12)
+  )
+}
 
-// Use your imagination to render suggestions.
-const renderSuggestion = suggestion => (
-  <div>{suggestion.lastName + ", " + suggestion.firstName}</div>
-)
-// Teach Autosuggest how to calculate suggestions for any given input value.
+const renderSuggestion = suggestion => {
+  return suggestion.lastName + ", " + suggestion.firstName
+}
 
 class PatientSearchDropdown extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      suggestions: []
+      suggestions: [""]
+      // value: ""
     }
 
     this.patientSearchDropdownRef = React.createRef()
   }
 
-  handleServiceDateChange = event => {}
-
   onChange = (event, { newValue }) => {
-    this.props.setPatient(newValue)
+    console.log("newvalue", newValue)
+    this.props.updatePatientSearchValue(newValue)
+    // this.setState({
+    //   value: typeof newValue !== "undefined" ? newValue : ""
+    // })
   }
 
   // Autosuggest will call this function every time you need to update suggestions.
@@ -76,7 +79,7 @@ class PatientSearchDropdown extends Component {
     switch (event.keyCode) {
       case 13:
         event.preventDefault()
-        // this.props.setPatient(this.state.value)
+        this.props.setPatient()
         break
       default:
     }
@@ -84,9 +87,8 @@ class PatientSearchDropdown extends Component {
 
   onSuggestionSelected = (event, { suggestion }) => {
     event.preventDefault()
-    const value = getSuggestionValue(suggestion)
-    this.setState({ value })
-    this.props.setPatient({ value })
+    console.log("sugg", suggestion)
+    this.props.setPatient(suggestion.medicare)
   }
 
   render() {
@@ -95,7 +97,7 @@ class PatientSearchDropdown extends Component {
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
       placeholder: "Search for patient . . .",
-      value: this.props.medicare,
+      value: this.props.patientSearchValue ? this.props.patientSearchValue : "",
       onChange: this.onChange,
       onKeyDown: this.onKeyDown,
       onClick: this.onClick
@@ -103,8 +105,8 @@ class PatientSearchDropdown extends Component {
 
     return (
       <Autosuggest
-        innerId="patientSearchDropdown"
         type="submit"
+        innerId="patientSearchDropdown"
         ref={this.patientSearchDropdownRef}
         className="patient-search-autosuggest"
         suggestions={suggestions}
@@ -122,13 +124,14 @@ class PatientSearchDropdown extends Component {
 const mapStateToProps = state => {
   return {
     patients: state.patientReducer.patients,
-    medicare: state.billingReducer.patient.medicare
+    patientSearchValue: state.patientReducer.patientSearchValue
   }
 }
 
 const mapDispatchToProps = dispatch => ({
   getPatients: filter => dispatch(getPatients(filter)),
-  setPatient: medicare => dispatch(setPatient(medicare))
+  setPatient: value => dispatch(setPatient(value)),
+  updatePatientSearchValue: value => dispatch(updatePatientSearchValue(value))
 })
 
 export default connect(

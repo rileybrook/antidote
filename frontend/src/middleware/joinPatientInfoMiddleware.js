@@ -1,5 +1,4 @@
 import { SET_PATIENT } from "../actions/actionTypes"
-import { object } from "prop-types"
 
 const joinPatientInfoMiddleware = ({
   dispatch,
@@ -9,24 +8,21 @@ const joinPatientInfoMiddleware = ({
     return next(action)
   }
 
-  console.log("pt red", getState().patientReducer)
-  console.log("action.patient", action.patient)
+  // If setPatient was called with argument, then use that value
+  // Otherwise (no argument), it means use the value already in the store
+  const currentMedicareValue = action.value
+    ? action.value
+    : getState().billingReducer.patient.medicare
 
-  //NOTE(bobby) since we are in middleware, we can mutate action
-  let patientUpdatedWithPatientInfo = getState().patientReducer.patients.find(
-    elem => action.patient.medicare === elem.medicare
+  // See if we match one in the database to get the additional info
+  // Mutating action in middleware is OK
+  action.patient = getState().patientReducer.patients.find(
+    elem => elem.medicare === currentMedicareValue
   )
 
-  if (patientUpdatedWithPatientInfo) {
-    patientUpdatedWithPatientInfo = Object.assign(
-      patientUpdatedWithPatientInfo,
-      action.patient
-    )
-  } else {
-    patientUpdatedWithPatientInfo = action.patient
-  }
+  // If action.patient is undefined, then the billing reducer will use initialState
 
-  next({ ...action, patient: patientUpdatedWithPatientInfo })
+  next({ ...action, patient: action.patient })
 }
 
 export default joinPatientInfoMiddleware

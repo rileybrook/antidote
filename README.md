@@ -1,10 +1,9 @@
 # Antidote
-
 A web app for electronic medical billing
 
 ## Backend Node.js
 
-# Express Server routes
+### Express Server routes
 /claim/add
 /claim/get
 /patient/add
@@ -12,7 +11,7 @@ A web app for electronic medical billing
 /billingCode/list
 /billingCode/search
 
-# MongoDB Collections
+### MongoDB Collections
 - claims
 - counters (to increment the chitNumber when inserting a new claim)
 - patients
@@ -20,22 +19,22 @@ A web app for electronic medical billing
 
 ## Frontend React.js
 
-# Reactstrap
+### Reactstrap
 - leveraged layout components (container/row/col)
 
-# Redux reducers
+### Redux reducers
 - main
 - billing
 - patient
 - modal
  
-# Redux middleware
+### Redux middleware
 - thunk
 - billing field validation
 - claim validation upon submit
 - api to transmit claim to backend
 
-# Other libraries
+### Other libraries
 - moment
 - react-datepicker
 - react-autosuggest

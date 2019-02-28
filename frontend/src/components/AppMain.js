@@ -52,7 +52,7 @@ class AppMain extends Component {
     this.props.resetClaim()
     this.props.updatePatientSearchValue()
   }
-  restartBtn=()=>{
+  restartBtn = () => {
     this.props.restart()
     this.props.resetScreen()
     this.props.resetClaim()
@@ -89,7 +89,7 @@ class AppMain extends Component {
   renderInvalidInputAlert = warning => {
     return (
       <Row className="mb-3">
-        <Col className="" md={{ size: 7, offset: 5 }}>
+        <Col className="" md={{ size: 4, offset: 4 }}>
           <Alert color="danger">{warning}</Alert>
         </Col>
       </Row>
@@ -99,7 +99,7 @@ class AppMain extends Component {
   renderClaimSubmitSuccessAlert = chitNumber => {
     return (
       <Row className="mb-3">
-        <Col className="" md={{ size: 7, offset: 5 }}>
+        <Col className="" md={{ size: 4, offset: 4 }}>
           <Alert color="success">{`Claim ${chitNumber} succesfully created`}</Alert>
         </Col>
       </Row>
@@ -109,7 +109,7 @@ class AppMain extends Component {
   renderClaimSubmitFailedAlert = error => {
     return (
       <Row className="mb-3">
-        <Col className="" md={{ size: 7, offset: 5 }}>
+        <Col className="" md={{ size: 4, offset: 4 }}>
           <Alert color="danger">{`Claim submission failed: ${error}`}</Alert>
         </Col>
       </Row>
@@ -223,7 +223,7 @@ const mapDispatchToProps = dispatch => ({
   resetScreen: () => dispatch(resetScreen()),
   resetClaim: () => dispatch(resetClaim()),
   updatePatientSearchValue: value => dispatch(updatePatientSearchValue(value)),
-  restart:()=>dispatch(restart())
+  restart: () => dispatch(restart())
 })
 
 export default connect(

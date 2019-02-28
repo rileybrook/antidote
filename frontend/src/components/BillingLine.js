@@ -164,6 +164,12 @@ class BillingLine extends Component {
     )
   }
 
+  componentDidMount() {
+    this.props.updateBillingLine(this.state.index + 1, {
+      serviceDate: moment(this.state.serviceStartDate).format("YY-MM-DD")
+    })
+  }
+
   render() {
     const { errors } = this.billingLine()
 
@@ -191,8 +197,7 @@ class BillingLine extends Component {
             /> */}
             <DatePicker
               className="date-picker"
-              dateFormat="YY-MM-DD"
-              placeholder="YY-MM-DD"
+              dateFormat="YY-MM-dd"
               value={this.billingLine().serviceDate}
               onChange={this.handleServiceDateChange}
               onBlur={this.handleServiceDateBlur}

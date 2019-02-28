@@ -228,11 +228,15 @@ code {
 input[type="text"] {
   background: transparent;
   border: none;
-  color: #afafaf !important;
+  color: #e2ae74 !important;
   font-weight: 400;
   font-style: italic;
   font-size: 20px;
   border-bottom: 2px solid #8f8f8f;
+}
+
+.react-autosuggest__input {
+  color: #e2ae74 !important;
 }
 
 /* --- MODAL --- */
@@ -290,7 +294,7 @@ input[type="text"] {
 }
 
 .price-total {
-  color: #e2ae74  !important;
+  color: #afafaf !important;
   font-weight: 400;
   font-family: Helvetica, sans-serif;
   font-size: 26px; 

@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 
-import { Row, Col, Button, Fade, Label } from "reactstrap"
+import { Row, Col, Label } from "reactstrap"
 
 class PractitionerSection extends Component {
   constructor(props) {

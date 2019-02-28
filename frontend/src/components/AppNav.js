@@ -9,7 +9,6 @@ import { updatePatientSearchValue } from "../actions/patientActions"
 import SideNav, { Nav, NavItem, NavIcon } from "@trendmicro/react-sidenav"
 import "@trendmicro/react-sidenav/dist/react-sidenav.css"
 import { ReactComponent as Antidote } from "../images/antidote.svg"
-import AppMain from "./AppMain"
 
 class AppNav extends Component {
   state = {
@@ -59,6 +58,7 @@ class AppNav extends Component {
               break
             case "restart":
               this.restart()
+              break
             default:
           }
         }}

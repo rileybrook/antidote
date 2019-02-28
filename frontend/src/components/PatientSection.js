@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 
 import { getAge } from "../utility"
 
-import { Row, Col, Button, Fade, Label } from "reactstrap"
+import { Row, Col, Label } from "reactstrap"
 
 class PatientSection extends Component {
   constructor(props) {

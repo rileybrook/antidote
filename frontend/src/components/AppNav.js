@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 
 import { showModal } from "../actions/modalActions"
 import { MODAL_PATIENT } from "./ModalTypes"
-import { resetScreen } from "../actions/mainActions"
+import { resetScreen, restart } from "../actions/mainActions"
 import { resetClaim } from "../actions/billingActions"
 import { updatePatientSearchValue } from "../actions/patientActions"
 import SideNav, { Nav, NavItem, NavIcon } from "@trendmicro/react-sidenav"
@@ -21,6 +21,12 @@ class AppNav extends Component {
   }
 
   resetButton = () => {
+    this.props.resetScreen()
+    this.props.resetClaim()
+    this.props.updatePatientSearchValue()
+  }
+  restart = () => {
+    this.props.restart()
     this.props.resetScreen()
     this.props.resetClaim()
     this.props.updatePatientSearchValue()
@@ -51,7 +57,8 @@ class AppNav extends Component {
             case "github":
               window.open("https://github.com/rileybrook/antidote")
               break
-
+            case "restart":
+              this.restart()
             default:
           }
         }}
@@ -80,7 +87,7 @@ class AppNav extends Component {
               <i className="fa fa-fw fa-github" style={{ fontSize: "2em" }} />
             </NavIcon>
           </NavItem>
-          <NavItem eventKey="signout">
+          <NavItem eventKey="restart">
             <NavIcon>
               <i className="fa fa-fw fa-sign-out" style={{ fontSize: "2em" }} />
             </NavIcon>
@@ -105,7 +112,8 @@ const mapDispatchToProps = dispatch => ({
   showModal: modelType => dispatch(showModal(modelType)),
   resetScreen: () => dispatch(resetScreen()),
   resetClaim: () => dispatch(resetClaim()),
-  updatePatientSearchValue: value => dispatch(updatePatientSearchValue(value))
+  updatePatientSearchValue: value => dispatch(updatePatientSearchValue(value)),
+  restart: () => dispatch(restart())
 })
 
 export default connect(

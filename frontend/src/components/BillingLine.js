@@ -130,7 +130,7 @@ class BillingLine extends Component {
       <Col>
         <div className="d-flex flex-row-reverse">
           <Fade in={true} tag="h5">
-            <Label className="mr-5 mt-2 color-white">${fee.toFixed(2)}</Label>
+            <Label className="mt-3 price">${fee.toFixed(2)}</Label>
           </Fade>
         </div>
       </Col>
@@ -144,7 +144,7 @@ class BillingLine extends Component {
         <Row className="mb-2">
           <Col className="" md={{ size: 8, offset: 4 }}>
             <Fade in={true} tag="h5" className="ml-0 mt-0">
-              <Label className="color-white">
+              <Label className="description">
                 {this.billingLine().description}
               </Label>
             </Fade>

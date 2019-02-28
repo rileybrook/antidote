@@ -259,12 +259,15 @@ input[type="text"] {
 
 .modal-content table {
   color: #afafaf !important;
+  cursor: pointer;
 }
 
 .close {
   color: #afafaf !important;
 }
-
+.modal-content table :hover {
+  color: orange;
+}
 .info-section {
   border: 2px solid #8f8f8f;
   border-radius: 20px;

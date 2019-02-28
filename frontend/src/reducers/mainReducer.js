@@ -6,7 +6,8 @@ import {
   RESET_SCREEN,
   SUBMIT_CLAIM_SUCCESS,
   SUBMIT_CLAIM_FAILURE,
-  RESET_CLAIM
+  RESET_CLAIM,
+  RESTART
 } from "../actions/actionTypes"
 
 const initialState = {
@@ -45,6 +46,9 @@ export default function(state = initialState, action) {
     case RESET_SCREEN:
       return { ...state, userClickedInvoice: false }
 
+    case RESTART:
+    return{...state,userClickedStart:false}
+    
     default:
       return state
   }

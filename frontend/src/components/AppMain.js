@@ -6,7 +6,8 @@ import { showModal } from "../actions/modalActions"
 import {
   setUserClickedStart,
   setUserClickedInvoice,
-  resetScreen
+  resetScreen,
+  restart
 } from "../actions/mainActions"
 import { resetClaim } from "../actions/billingActions"
 import { updatePatientSearchValue } from "../actions/patientActions"
@@ -51,6 +52,12 @@ class AppMain extends Component {
     this.props.resetClaim()
     this.props.updatePatientSearchValue()
   }
+  restartBtn=()=>{
+    this.props.restart()
+    this.props.resetScreen()
+    this.props.resetClaim()
+    this.props.updatePatientSearchValue()
+  }
   componentDidMount = () => {
     this.props.loadBillingCodes()
   }
@@ -82,7 +89,7 @@ class AppMain extends Component {
   renderInvalidInputAlert = warning => {
     return (
       <Row className="mb-3">
-        <Col className="" md={{ size: 7, offset: 0 }}>
+        <Col className="" md={{ size: 7, offset: 5 }}>
           <Alert color="danger">{warning}</Alert>
         </Col>
       </Row>
@@ -92,7 +99,7 @@ class AppMain extends Component {
   renderClaimSubmitSuccessAlert = chitNumber => {
     return (
       <Row className="mb-3">
-        <Col className="" md={{ size: 7, offset: 0 }}>
+        <Col className="" md={{ size: 7, offset: 5 }}>
           <Alert color="success">{`Claim ${chitNumber} succesfully created`}</Alert>
         </Col>
       </Row>
@@ -102,7 +109,7 @@ class AppMain extends Component {
   renderClaimSubmitFailedAlert = error => {
     return (
       <Row className="mb-3">
-        <Col className="" md={{ size: 7, offset: 1 }}>
+        <Col className="" md={{ size: 7, offset: 5 }}>
           <Alert color="danger">{`Claim submission failed: ${error}`}</Alert>
         </Col>
       </Row>
@@ -215,7 +222,8 @@ const mapDispatchToProps = dispatch => ({
   loadBillingCodes: () => dispatch(loadBillingCodes()),
   resetScreen: () => dispatch(resetScreen()),
   resetClaim: () => dispatch(resetClaim()),
-  updatePatientSearchValue: value => dispatch(updatePatientSearchValue(value))
+  updatePatientSearchValue: value => dispatch(updatePatientSearchValue(value)),
+  restart:()=>dispatch(restart())
 })
 
 export default connect(

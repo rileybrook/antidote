@@ -6,7 +6,8 @@ import {
   SUBMIT_CLAIM_SUCCESS,
   SUBMIT_CLAIM_FAILURE,
   RESET_INDICATORS,
-  RESET_SCREEN
+  RESET_SCREEN,
+  RESTART
 } from "./actionTypes"
 
 export const setUserClickedStart = () => {
@@ -57,5 +58,10 @@ export const resetIndicators = () => {
 export const resetScreen = () => {
   return {
     type: RESET_SCREEN
+  }
+}
+export const restart=()=>{
+  return {
+    type: RESTART
   }
 }

@@ -16,9 +16,11 @@ class PatientSection extends Component {
     return `${this.props.patient.lastName}, ${this.props.patient.firstName}`
   }
 
-  renderAge = () => {
-    if (!this.props.patient.dateOfBirth) return ""
-    return getAge(this.props.patient.dateOfBirth)
+  renderBirthdate = () => {
+    if (!this.props.patient.birthDate) return ""
+    return `${this.props.patient.birthDate} (age ${getAge(
+      this.props.patient.birthDate
+    )})`
   }
 
   render() {
@@ -43,7 +45,7 @@ class PatientSection extends Component {
             <Label>{this.renderName()}</Label>
           </div>
           <div>
-            <Label>{this.props.patient.dateOfBirth}</Label>
+            <Label>{this.renderBirthdate()}</Label>
           </div>
           {/* <div>
             <Label>{this.props.patient.gender}</Label>

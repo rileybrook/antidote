@@ -194,7 +194,24 @@ code {
 }
 
 .billing-description {
-  overflow: visible;
+  margin: -10px;
+  font-weight: 300;
+  font-style: italic;
+  font-family: Helvetica, sans-serif;
+  font-size: 18px;
+}
+
+.date-picker {
+  margin-top: 10px;
+  width: 160px;
+  text-align: center;
+  background: transparent;
+  border: none;
+  color: #afafaf !important;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 20px;
+  border-bottom: 2px solid #8f8f8f;
 }
 
 input[type="text"] {

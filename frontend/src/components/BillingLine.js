@@ -4,11 +4,18 @@ import { Alert, Input, Fade, Row, Col, Label } from "reactstrap"
 
 import { deleteBillingLine, updateBillingLine } from "../actions/billingActions"
 
+import moment from "moment"
+
+import DatePicker from "react-datepicker"
+
+import "react-datepicker/dist/react-datepicker.css"
+
 class BillingLine extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
+      serviceStartDate: new Date(),
       index: this.props.index,
       serviceDateBlurred: false
     }
@@ -39,7 +46,7 @@ class BillingLine extends Component {
 
   handleServiceDateChange = event => {
     this.props.updateBillingLine(this.state.index + 1, {
-      serviceDate: event.target.value
+      serviceDate: moment(event).format("YY-MM-DD")
     })
   }
 
@@ -119,10 +126,6 @@ class BillingLine extends Component {
       fee = this.billingLine().fee * this.billingLine().units
     }
 
-    // className="ml-4"
-    // xs={{ size: 1, offset: 0 }}
-    // sm={{ size: 1, offset: 10 }}
-    // md={{ size: 1, offset: 0 }}
     return (
       <Col>
         <div className="d-flex flex-row-reverse">
@@ -138,9 +141,9 @@ class BillingLine extends Component {
     if (!this.billingLine().description) return null
     return (
       <div className="billing-description">
-        <Row className="mb-3">
-          <Col className="" md={{ size: 9, offset: 3 }}>
-            <Fade in={true} tag="h5" className="ml-1 mt-0">
+        <Row className="mb-2">
+          <Col className="" md={{ size: 8, offset: 4 }}>
+            <Fade in={true} tag="h5" className="ml-0 mt-0">
               <Label className="color-white">
                 {this.billingLine().description}
               </Label>
@@ -166,7 +169,7 @@ class BillingLine extends Component {
 
     return (
       <React.Fragment>
-        <Row className="mb-3">
+        <Row className={`mb-${this.billingLine().description ? "0" : "3"}`}>
           <Col className="ml-5 mb-4" xs={1} sm={1} md={1}>
             <i
               className="fa fa-minus-circle"
@@ -178,13 +181,22 @@ class BillingLine extends Component {
             sm={{ size: 3, offset: 0 }}
             md={{ size: 2, offset: 0 }}
           >
-            <Input
+            {/* <Input
               className="mb-1"
               type="text"
               placeholder="YY-MM-DD"
               onChange={this.handleServiceDateChange}
               onBlur={this.handleServiceDateBlur}
               value={this.billingLine().serviceDate}
+            /> */}
+            <DatePicker
+              className="date-picker"
+              dateFormat="YY-MM-DD"
+              placeholder="YY-MM-DD"
+              value={this.billingLine().serviceDate}
+              onChange={this.handleServiceDateChange}
+              onBlur={this.handleServiceDateBlur}
+              selected={this.state.serviceStartDate}
             />
           </Col>
           <Col
@@ -199,13 +211,12 @@ class BillingLine extends Component {
               onChange={this.handleBillingCodeChange}
               value={this.billingLine().billingCode}
             />
-
-            {this.renderBillingCodeDescription()}
           </Col>
           {this.renderReferringDoctor()}
           {this.renderUnits()}
           {this.renderBillingCodeFee()}
         </Row>
+        {this.renderBillingCodeDescription()}
         {this.state.serviceDateBlurred &&
           errors.serviceDate &&
           this.renderInvalidInputAlert("Invalid service date")}

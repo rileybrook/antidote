@@ -12,6 +12,7 @@ import "./PatientSearchDropdown.css"
 //import { updatePatientMedicare } from "../actions/billingActions"
 
 const getSuggestionValue = suggestion => {
+  if (!suggestion) return ""
   return (
     suggestion.medicare.slice(0, 4) +
     "-" +
@@ -22,6 +23,7 @@ const getSuggestionValue = suggestion => {
 }
 
 const renderSuggestion = suggestion => {
+  if (!suggestion) return null
   return suggestion.lastName + ", " + suggestion.firstName
 }
 

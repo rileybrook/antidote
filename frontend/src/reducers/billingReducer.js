@@ -15,14 +15,14 @@ const initialState = {
     name: "Bailey, Sharon",
     location: "66552",
     locationName: "Montreal",
-    specialty: "Neurologist"
+    specialty: "Neurology"
   },
   patient: {
     medicare: "",
     dx: "",
     lastName: "",
     firstName: "",
-    dateOfBirth: "",
+    birthDate: "",
     gender: ""
   }
 }
@@ -50,7 +50,7 @@ export default function(state = initialState, action) {
     case NEW_BILLING_LINE:
       const newItem = {
         lineNumber: state.billingLines.length + 1,
-        serviceDate: "",
+        serviceDate: null,
         billingCode: "",
         fee: null,
         description: null,

@@ -38,7 +38,7 @@ class BillingSection extends Component {
           <Col>
             <div className="d-flex flex-row-reverse">
               <Fade in={true} tag="h5">
-                <Label className="mr-5 mt-2 color-white">
+                <Label className=" price-total mt-2 color-white">
                   {"Total: $" +
                     this.props.billingLines
                       .reduce((value, billingLine) => {

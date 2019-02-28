@@ -91,6 +91,7 @@ code {
 .color-white {
   color: #8f8f8f !important;
 }
+
 .color-black {
   background-color: #273141 !important;
 }
@@ -236,7 +237,6 @@ input[type="text"] {
 .info-section {
   border: 2px solid #8f8f8f;
   border-radius: 20px;
-  /* color: #8f8f8f; */
 }
 
 .info-section label {
@@ -245,4 +245,26 @@ input[type="text"] {
   font-style: italic;
   font-family: Helvetica, sans-serif;
   font-size: 18px;
+}
+
+.description {
+  color: #afafaf !important;
+  font-weight: 400;
+  /* font-style: medium; */
+  font-family: Helvetica, sans-serif;
+  font-size: 20px; 
+}
+
+.price {
+  color: #afafaf !important;
+  font-weight: 300;
+  font-family: Helvetica, sans-serif;
+  font-size: 24px; 
+}
+
+.price-total {
+  color: #e2ae74  !important;
+  font-weight: 400;
+  font-family: Helvetica, sans-serif;
+  font-size: 26px; 
 }

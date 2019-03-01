@@ -257,7 +257,11 @@ input[type="text"] {
   font-size: 1.5rem;
 }
 
-.modal-content table {
+.modal-content tr :hover {
+  color: orange;
+}
+
+.modal-content tr {
   color: #afafaf !important;
   cursor: pointer;
 }
@@ -265,9 +269,7 @@ input[type="text"] {
 .close {
   color: #afafaf !important;
 }
-.modal-content table :hover {
-  color: orange;
-}
+
 .info-section {
   border: 2px solid #8f8f8f;
   border-radius: 20px;

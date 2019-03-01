@@ -4,12 +4,12 @@ A web app for electronic medical billing
 ## Backend Node.js
 
 ### Express Server routes
-/claim/add
-/claim/get
-/patient/add
-/patient/search
-/billingCode/list
-/billingCode/search
+- /claim/add
+- /claim/get
+- /patient/add
+- /patient/search
+- /billingCode/list
+- /billingCode/search
 
 ### MongoDB Collections
 - claims
